@@ -1,0 +1,61 @@
+<section class="m-5 p-3">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top " style='box-shadow: #777 0px 3px 5px'>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto ">
+                <li class="nav-item active">
+                    <a class="nav-link  font-weight-bold " href="/">Page d'accueil <span
+                            class="sr-only">(current)</span></a>
+                </li>
+
+                <li class="nav-item active ">
+                    <a class="nav-link   font-weight-bold" href="/Article">Articles</a>
+                </li>
+
+                <li class="nav-item active ">
+                    <a class="nav-link   font-weight-bold" href="/logout">Se Déconnecter</a>
+                </li>
+
+
+                <!-- Button trigger modal register-->
+
+                <li class="nav-item active ">
+                    <a class="nav-link  font-weight-bold" data-toggle="modal" data-target="#register" href="#">Se
+                        connecter/S'inscrire</a>
+                </li>
+
+                {{!-- Appel le modal de ce bouton --}}
+
+                <li class="nav-item active ">
+                    <a class="nav-link  font-weight-bold" href="/Profil">Mon Compte</a>
+                </li>
+
+
+
+                <li class="nav-item active ">
+                    <a class="nav-link  font-weight-bold" href="/Contact">Contact</a>
+                </li>
+
+
+                <li class="nav-item active ">
+                    <a class="nav-link   font-weight-bold" href="/Agenda">Agenda</a>
+                </li>
+
+
+
+                <li class="nav-item active  ">
+                    <a class="nav-link  font-weight-bold" href="/admin">Admin</a>
+                </li>
+
+
+
+                <span class="navbar-text   font-weight-bold  ">
+                    Bonjour user
+                </span>
+
+
+            </ul>
+        </div>
+    </nav>
+</section>
+
+{{> navbar/register }}

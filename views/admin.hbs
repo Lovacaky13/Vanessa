@@ -1,0 +1,34 @@
+{{!-- 
+  Commenter ...
+ --}}
+
+<div class="container">
+    <div class="row d-flex justify-content-start ml-3 mt-3">
+        <a href="" class="text-dark mr-3 pt-1"><i class="far fa-user account"></i></a>
+        <h1> Administration</h1>
+    </div>
+
+    <div class="row">
+        <div class="accordion col-md-12 pt-3" id="accordionAdmin">
+
+
+            <div class="card bg-secondary">
+                <div class="card-header" id="headingUser">
+                    <h2 class="mb-0">
+                        <button class="btn collapsed text-light" type="button" data-toggle="collapse"
+                            data-target="#collapseUser" aria-expanded="false" aria-controls="collapseUser">
+                            Liste Des Utilisateurs
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseUser" class="collapse" aria-labelledby="headingUser" data-parent="#accordionAdmin">
+
+                    {{!-- Components Liste User Page Admin --}}
+                    {{> admin/adminUser }}
+                    {{!-- Components Liste User Page Admin --}}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
