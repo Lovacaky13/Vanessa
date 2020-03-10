@@ -1,0 +1,87 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 ">
+                <h1 class="font-weight-bold text-center ">Vanessa Binet - ASG  -</h1>
+
+                <h2>{{ dbArticle.title }}</h2>
+
+                <img src="{{ dbArticle.image }}" class="card-img-top" alt="...">
+
+                <h4 class="card-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula
+                    eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
+                    ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat
+                    massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo,
+                    rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer
+                    tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo
+                    ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra
+                    quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean
+                    imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam
+                    rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet
+                    adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
+                    Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam
+                    quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet
+                    nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus
+                    nunc,
+                </h4>
+
+                <h3 class="p-2"> <u>Publié le {{ moment dbArticle.createDate format="DD-MM-YYYY" }}</u></h3>
+{{#if isAdmin}}
+                <div class="row">
+
+                    <div class="col-md-6">
+                        {{!-- Button trigger modal modifier--}}
+                        <button type="submit" class="btn btn-warning" data-toggle="modal"
+                            data-target="#modalModifArticle{{_id}}"> edit</button>
+                        {{!-- / Button trigger modal modifier--}}
+                    </div>
+
+                    <div class="col-md-6">
+                        <form action="/ArticleSingle/{{dbArticle.id}}/?_method=DELETE" method="post">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </div>
+
+                </div>
+{{/if}}
+            </div>
+        </div>
+
+
+        {{!-- Modal Btn Modifier --}}
+        <div class="modal fade" id="modalModifArticle{{_id}}" tabindex="-1" role="dialog"
+            aria-labelledby="modalModifArticle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <form action="/ArticleSingle/{{dbArticle.id}}?_method=PUT" method="post" enctype="multipart/form-data">
+                            <div class="modal-body">
+                                <label for="formGroupExampleInput">Titre : </label>
+                                <input type="text" class="form-control" name='title' id="formGroupExampleInput"
+                                    value="{{ dbArticle.title }}">
+                                <div class="form-group">
+                                    <label>Cover</label>
+                                    <input type="file" class="form-control" name='image'>
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <button type="button" class="btn btn-warning m-3"
+                                                data-dismiss="modal">Annuler</button>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <button type="submit" class="btn btn-danger m-3">Confirmer</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{!-- fin Modal Btn Modifier --}}
+    </div>
+</section>
+
+{{> ArticleSingle/Commentaire}}

@@ -14,10 +14,10 @@ const
     port = 3000;
     
 
-//mongoose
+//------------------------mongoose-------------------------------------
 
 //const db = require('./config/keys.js').mongoUrl
-const db = 'mongodb://localhost:27017/architecture';
+const db = 'mongodb://localhost:27017/vanessa';
 mongoose.connect(db, {
     useFindAndModify: false,
     useCreateIndex: true,
@@ -25,9 +25,9 @@ mongoose.connect(db, {
     useUnifiedTopology: true
     })
     .then(() => console.log('Connecter à MongoDB Cloud'))
-    .catch(err => console.log(err))
+    .catch((err) => console.log(err))
 
-// Handlebars
+// ------------------------Handlebars----------------------------------
 app.set('view engine', 'hbs');
 app.engine('hbs', hbs({
     extname: 'hbs',
@@ -41,8 +41,8 @@ app.engine('hbs', hbs({
 var MomentHandler = require("handlebars.moment");
 MomentHandler.registerHelpers(Handlebars);
 
+//------------------------Session-------------------------------------
 app.use(session({
-
     secret: 'securite',
     //keys: [keys.session.cookieKeys],
     name: 'biscuit',
@@ -50,11 +50,20 @@ app.use(session({
     resave: false,
     maxAge: 24 * 60 * 60 * 1000,
     store: new MongoStore({ mongooseConnection: mongoose.connection })
-
 }))
 
-
-
+app.use('*', (req, res, next) => {
+    if (res.locals.user = req.session.userId) {
+        if (req.session.status === 'user') {
+            if (req.session.isAdmin === true) {
+                res.locals.isAdmin = req.session.isAdmin
+            }
+            res.locals.user = req.session.status
+        }
+    }
+    // La function next permet qu'une fois la condition effectuer il reprenne son chemin
+    next()
+})
 
 
 // Connect-Flash (req.flash)
@@ -67,7 +76,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
    extended: false
 }));
-
 
 const Router = require('./api/router')
 app.use('/', Router)

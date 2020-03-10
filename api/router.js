@@ -3,10 +3,8 @@
  *********/
 const express = require('express'),
       router = express.Router(),
-      upload  = require('./config/multer') // image
+      upload  = require('../config/multer') // image
       
-
-
 /* Import Controller
  *******************/
 const   HomePage = require('./controllers/pages/HomePage'),
@@ -16,7 +14,11 @@ const   HomePage = require('./controllers/pages/HomePage'),
         LoginControllers = require('./controllers/LoginControllers'),
         Profil = require('./controllers/pages/Profil'),
         Contact = require('./controllers/pages/Contact'),
-        Agenda = require('./controllers/pages/Agenda')
+        Agenda = require('./controllers/pages/Agenda'),
+        Calcul = require('./controllers/pages/Calcul'),
+        InfoAsg = require('./controllers/pages/infoAsg'),
+        ArticleSingle = require('./controllers/pages/ArticleSingle')
+
 /*
  * Controllers
  *************/
@@ -24,17 +26,16 @@ const   HomePage = require('./controllers/pages/HomePage'),
 //  Controller Page
 router.route('/')
     .get(HomePage.getArticle)
-
 router.route('/Profil')
     .get(Profil.get)  
-
 router.route('/Contact')
     .get(Contact.get)  
-
 router.route('/Agenda')
     .get(Agenda.get)  
-  
-
+router.route('/Calcul')
+    .get(Calcul.get)
+router.route('/InfoAsg')
+    .get(InfoAsg.get)
 
 // ******************* CRUD User s'identifier modifier supprimer utilisateur *********************
 router.route('/User')
@@ -57,8 +58,22 @@ router.route('/Article')
     .get(ArticleCrud.getArticle)
     .post(upload.single('image'), ArticleCrud.createArticle)
 
-router.route('/Article/:id')
-    .delete(ArticleCrud.deleteOneArticle)
-    .put(upload.single('image'), ArticleCrud.updateArticle)
+// router.route('/ArticleCrud/:id')
+//     .delete(ArticleCrud.deleteOneArticle)
+//     .put(upload.single('image'), ArticleCrud.updateArticle)
+
+router.route('/ArticleSingle/:id')
+    .delete(ArticleSingle.deleteOneArticle)
+    .get(ArticleSingle.getArticle)
+    .put(upload.single('image'), ArticleSingle.updateArticle)   
+    .post(ArticleSingle.addCom)
+    .delete(ArticleSingle.DelCom)
+
+   
+router.route('/comment/:id')
+    .post(ArticleSingle.addCom)
+    .delete(ArticleSingle.DelCom)
+
+
 
 module.exports = router
