@@ -3207,29 +3207,6 @@ input[type="button"].btn-block {
     align-items: center;
     justify-content: space-between; }
 
-/* .navbar:hover{
-  transition: 1ms;
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.5rem 1rem; }
-  .navbar .container,
-  .navbar .container-fluid,
-  .navbar .container-sm,
-  .navbar .container-md,
-  .navbar .container-lg,
-  .navbar .container-xl {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    text-decoration-line: underline;
-  } */
-
-
-
 .navbar-brand {
   display: inline-block;
   padding-top: 0.3125rem;
@@ -3519,19 +3496,7 @@ input[type="button"].btn-block {
 .card-body {
   flex: 1 1 auto;
   min-height: 1px;
-  padding: 1.25rem;
-}
-.card {
-  border-color: rgb(48, 152, 217);
-  transition: 1s;
-  box-shadow: 10px 10px 5px rgba(48, 152, 217, 0.5) ;
-   
-}
-.card:hover {
-  box-shadow: 20px 20px 10px rgba(48, 152, 217, 0.3);
-  transition: 1s;
-  transform: scale(1.05, 1.05);
-}
+  padding: 1.25rem; }
 
 .card-title {
   margin-bottom: 0.75rem; }
@@ -7915,5 +7880,18 @@ a.text-lolo:hover, a.text-lolo:focus {
   .table .thead-dark th {
     color: inherit;
     border-color: #dee2e6; } }
+.Mycard {
+  border-color: #3098d9;
+  transition: 1s;
+  box-shadow: 10px 10px 5px rgba(48, 152, 217, 0.5); }
+
+.Mycard:hover {
+  box-shadow: 20px 20px 10px rgba(48, 152, 217, 0.3);
+  transition: 1s;
+  transform: scale(1.05, 1.05); }
+
+.Mycard-simple {
+  border-color: #3098d9;
+  box-shadow: 10px 10px 5px rgba(48, 152, 217, 0.5); }
 
 /*# sourceMappingURL=style.css.map */

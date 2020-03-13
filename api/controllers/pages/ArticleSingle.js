@@ -102,30 +102,23 @@ module.exports = {
         console.log('add com');
        
         Com.create({
-
             createDate: new Date(),
             produit_id: req.params.id,
             lastname: req.session.lastname,
             firstname: req.session.firstname,
-            //username: req.session.lastname + " " + req.session.firstname,
             content: req.body.content,
-            
-        })
+            })
         
         res.redirect('back')
-
     },
 
     DelCom: async (req, res) => {
-
             const dbCom = await Com.findById({ _id: req.params.id })
             dbCom.deleteOne({ _id: req.params.id })
-            res.redirect('/')
+            console.log('delete com');
 
-        console.log('delete com');
+            res.redirect('back')
 
-
+       
     }
-
-
 }

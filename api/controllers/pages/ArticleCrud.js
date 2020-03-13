@@ -32,6 +32,7 @@ module.exports = {
                 title: req.body.title,
                 image: `/assets/images/${req.file.filename}`,
                 name: req.file.filename,
+                content: req.body.content,
                 createDate: Date.now()
 
             })

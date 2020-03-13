@@ -1,0 +1,17 @@
+.Mycard {
+    border-color: rgb(48, 152, 217);
+    transition: 1s;
+    box-shadow: 10px 10px 5px rgba(48, 152, 217, 0.5) ;
+  
+}
+.Mycard:hover {
+    box-shadow: 20px 20px 10px rgba(48, 152, 217, 0.3);
+    transition: 1s;
+    transform: scale(1.05, 1.05);
+}
+
+.Mycard-simple {
+    border-color: rgb(48, 152, 217);
+    box-shadow: 10px 10px 5px rgba(48, 152, 217, 0.5) ;
+  
+}

@@ -1,15 +1,14 @@
-
 {{#if isAdmin}}
 
-<section>
-  <!-- Button trigger modal -->
+<section class="m-3">
+  <!-- Button trigger modal ajouter un article -->
   <div class="row d-flex justify-content-center ">
     <button type="button" class="btn btn-info  " data-toggle="modal" data-target="#exampleModal">
       Creer un article
     </button>
   </div>
 
-  <!-- Modal -->
+  <!-- Modal ajouter un article -->
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -22,14 +21,27 @@
         </div>
         <form action="/Article" method="post" enctype="multipart/form-data">
           <div class="modal-body">
+
             <div class="form-group">
               <label for="formGroupExampleInput">Titre :</label>
               <input type="text" class="form-control" name='title' id="formGroupExampleInput">
             </div>
+
+            <div class="control">
+              <textarea class="textarea" name="content"></textarea>
+              <script>CKEDITOR.replace('content');</script>
+            </div>
+
             <div class="form-group">
-              <label>Cover</label>
+              <label>Photo 1:</label>
               <input type="file" class="form-control" name='image'>
             </div>
+
+            {{!-- <div class="form-group">
+              <label>Photo 2:</label>
+              <input type="file" class="form-control" name='image1'>
+            </div> --}}
+
           </div>
           <div class="modal-footer ">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
@@ -43,17 +55,16 @@
 
 {{/if}}
 
-<section>
+<section class="m-5 p-3">
   <div class="container">
     <div class="row">
       {{#each dbArticle}}
       <div class="col-md-4 ">
-        <div class="card  p-3" style="width: 18rem;">
-          <img src="{{ image }}" class="card-img-top" alt="...">
+        <div class="card Mycard  m-3 p-3" style="width: 100%;">
+          <img src="{{ image }}" class="card-img-top" alt="..." style="width: 100%;">
           <div class="card-body">
             <h5 class="card-title"> {{ title }} </h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.
+            <p class="card-text"> {{ content }}
             </p>
             <p>Publié le {{ moment createDate format="DD-MM-YYYY"}}</p>
           </div>

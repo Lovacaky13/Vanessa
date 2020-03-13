@@ -58,22 +58,16 @@ router.route('/Article')
     .get(ArticleCrud.getArticle)
     .post(upload.single('image'), ArticleCrud.createArticle)
 
-// router.route('/ArticleCrud/:id')
-//     .delete(ArticleCrud.deleteOneArticle)
-//     .put(upload.single('image'), ArticleCrud.updateArticle)
-
 router.route('/ArticleSingle/:id')
     .delete(ArticleSingle.deleteOneArticle)
     .get(ArticleSingle.getArticle)
     .put(upload.single('image'), ArticleSingle.updateArticle)   
-    .post(ArticleSingle.addCom)
-    .delete(ArticleSingle.DelCom)
+      
 
-   
+// ******************* Commenatire*********************  
 router.route('/comment/:id')
     .post(ArticleSingle.addCom)
     .delete(ArticleSingle.DelCom)
-
-
+    
 
 module.exports = router

@@ -1,16 +1,23 @@
 <section class="m-3">
+
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <h1 class=" card-title text-center">Commentaires</h1>
-                    <p class="text-center font-italic">si vous souhaitez mettre un commentaire, Créer un compte !</p>
+            <div class="col-md-12 text-center">
+                <div class="card Mycard">
+                    <h1 class=" card-title ">Commentaires</h1>
+                    <div class="card-body">
+                        <p class="text-center font-italic">si vous souhaitez mettre un commentaire, Créer un compte !
+                        </p>
 
-                    <div class="col-md-4 mx-auto  ">
-                        <!-- Button trigger modal commentaire -->
-                        <button type="button" class="btn btn-info" data-toggle="modal"
-                            data-target="#Commentaire">Ajouter un
-                            Commentaire</button>
+                    </div>
+                    <div class="container p-3 d-flex justify-content-center">
+                        <div class="row  ">
+                            <div class="col-md-4d-flex justify-content-center ">
+                                <!-- Button trigger modal commentaire -->
+                                <button type="button" class="btn btn-info" data-toggle="modal"
+                                    data-target="#Commentaire">Ajouter un Commentaire</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -18,14 +25,20 @@
 
         {{#each dbCom}}
         <div class="card-body">
-            <div class="card">
+            <div class="card Mycard-simple">
                 <div class="row">
-                    <div class="col-md-4 text-center">
+                    <div class="col-md-2 text-center">
                         <h5> {{ lastname }} {{ firstname }} </h5>
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-7">
                         <p> {{ content }} </p>
                         <p>Publié le {{ moment createDate format="DD-MM-YYYY" }} </p>
+                    </div>
+
+                    <div class="col-md-3 d-flex align-items-center">
+                        <!-- Button trigger modal sup commentaire -->
+                        {{#if ../isAdmin}} <button type="button" class="btn btn-danger" data-toggle="modal"
+                            data-target="#supCommentaire">Supprimer un Commentaire</button>{{/if}}
                     </div>
                 </div>
             </div>
@@ -35,7 +48,7 @@
     </div>
 </section>
 
-<!-- Modal  Commentaire-->
+<!-- Modal ajout Commentaire-->
 <form action="/comment/{{dbArticle._id}}" method="post">
     <div class="modal fade" id="Commentaire" tabindex="-1" role="dialog" aria-labelledby="Commentaire"
         aria-hidden="true">
@@ -50,14 +63,12 @@
                 </div>
 
                 <div class="modal-body">
-
                     <div class="input-group">
                         <textarea class="form-control" placeholder="commentaire" name="content"
                             aria-label="With textarea"></textarea>
                     </div>
-
-
                 </div>
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
                     <button type="submit" class="btn btn-info">Poster le commentaire</button>
@@ -66,3 +77,31 @@
         </div>
     </div>
 </form>
+
+<!-- Modal supprimer Commentaire-->
+{{#each dbCom}}
+
+<form action="/comment/{{_id}}/?_method=DELETE" method="post">
+    <div class="modal fade" id="supCommentaire" tabindex="-1" role="dialog" aria-labelledby="supCommentaire"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">Etes-vous sûr de supprimer le commentaire de <span style="color:red">
+                            {{firstname}}</span> ?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Non</button>
+                    <button type="submit" class="btn btn-success">Oui</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+{{/each}}
