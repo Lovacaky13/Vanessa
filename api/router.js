@@ -2,22 +2,22 @@
  * Import
  *********/
 const express = require('express'),
-      router = express.Router(),
-      upload  = require('../config/multer') // image
-      
+    router = express.Router(),
+    upload = require('./config/multer') // image
+
 /* Import Controller
  *******************/
-const   HomePage = require('./controllers/pages/HomePage'),
-        ArticleCrud = require('./controllers/pages/ArticleCrud'),
-        RegisterControllers = require('./controllers/RegisterControllers'),
-        admin = require('./controllers/pages/Admin'),
-        LoginControllers = require('./controllers/LoginControllers'),
-        Profil = require('./controllers/pages/Profil'),
-        Contact = require('./controllers/pages/Contact'),
-        Agenda = require('./controllers/pages/Agenda'),
-        Calcul = require('./controllers/pages/Calcul'),
-        InfoAsg = require('./controllers/pages/infoAsg'),
-        ArticleSingle = require('./controllers/pages/ArticleSingle')
+const HomePage = require('./controllers/pages/HomePage'),
+    ArticleCrud = require('./controllers/pages/ArticleCrud'),
+    RegisterControllers = require('./controllers/RegisterControllers'),
+    admin = require('./controllers/pages/Admin'),
+    LoginControllers = require('./controllers/LoginControllers'),
+    Profil = require('./controllers/pages/Profil'),
+    Contact = require('./controllers/pages/Contact'),
+    Agenda = require('./controllers/pages/Agenda'),
+    Calcul = require('./controllers/pages/Calcul'),
+    InfoAsg = require('./controllers/pages/infoAsg'),
+    ArticleSingle = require('./controllers/pages/ArticleSingle')
 
 /*
  * Controllers
@@ -27,11 +27,11 @@ const   HomePage = require('./controllers/pages/HomePage'),
 router.route('/')
     .get(HomePage.getArticle)
 router.route('/Profil')
-    .get(Profil.get)  
+    .get(Profil.get)
 router.route('/Contact')
-    .get(Contact.get)  
+    .get(Contact.get)
 router.route('/Agenda')
-    .get(Agenda.get)  
+    .get(Agenda.get)
 router.route('/Calcul')
     .get(Calcul.get)
 router.route('/InfoAsg')
@@ -39,7 +39,7 @@ router.route('/InfoAsg')
 
 // ******************* CRUD User s'identifier modifier supprimer utilisateur *********************
 router.route('/User')
-    .post(RegisterControllers.userCreate)        
+    .post(RegisterControllers.userCreate)
 router.route('/admin')
     .get(admin.getUser)
 router.route('/adminUser/:id')
@@ -48,11 +48,11 @@ router.route('/adminUser/:id')
 
 // ******************* se loguer User  (express/session) *********************
 
-router.route('/register')                                  //router.route('/page dans laquelle on fait le post)
-    .post(LoginControllers.login)                          // .post(methode)(nom du controllers.nom du post donné)
+router.route('/register') //router.route('/page dans laquelle on fait le post)
+    .post(LoginControllers.login) // .post(methode)(nom du controllers.nom du post donné)
 router.route('/logout')
     .get(LoginControllers.logout)
-      
+
 // ******************* CRUD Article*********************
 router.route('/Article')
     .get(ArticleCrud.getArticle)
@@ -61,13 +61,13 @@ router.route('/Article')
 router.route('/ArticleSingle/:id')
     .delete(ArticleSingle.deleteOneArticle)
     .get(ArticleSingle.getArticle)
-    .put(upload.single('image'), ArticleSingle.updateArticle)   
-      
+    .put(upload.single('image'), ArticleSingle.updateArticle)
+
 
 // ******************* Commenatire*********************  
 router.route('/comment/:id')
     .post(ArticleSingle.addCom)
     .delete(ArticleSingle.DelCom)
-    
+
 
 module.exports = router

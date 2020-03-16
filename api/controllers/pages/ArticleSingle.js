@@ -1,24 +1,24 @@
-const   Com = require('../../db/models/Commentaire'),
-        Article = require("../../db/models/Article"),
-        path = require('path'),
-        fs = require('fs')
+const Com = require('../../db/models/Commentaire'),
+    Article = require("../../db/models/Article"),
+    path = require('path'),
+    fs = require('fs')
 
 module.exports = {
-    getArticle: async (req, res) => {
-        const   dbArticle = await Article.findById(req.params.id), // Transforme ton Model (consctructeur) en Json
-                sess = req.session,
-                dbCom = await Com.find({ produit_id: req.params.id })
+    getArticle: async(req, res) => {
+        const dbArticle = await Article.findById(req.params.id), // Transforme ton Model (consctructeur) en Json
+            sess = req.session,
+            dbCom = await Com.find({ produit_id: req.params.id })
 
-                //Coms = dbCom.reverse()
+        //Coms = dbCom.reverse()
 
         res.render('ArticleSingle', {
             dbArticle, // Renvoyer la DB dans la page       
-            sess,  
-            dbCom                  
+            sess,
+            dbCom
         })
     },
 
-    updateArticle: async (req, res) => {
+    updateArticle: async(req, res) => {
         const dbArticle = await Article.findById(req.params.id),
             query = {
                 _id: req.params.id
@@ -64,7 +64,7 @@ module.exports = {
         }
     },
 
-    deleteOneArticle: async (req, res) => {
+    deleteOneArticle: async(req, res) => {
 
         console.log('1')
 
@@ -98,27 +98,27 @@ module.exports = {
             })
     },
 
-    addCom: async (req, res) => {
+    addCom: async(req, res) => {
         console.log('add com');
-       
+
         Com.create({
             createDate: new Date(),
             produit_id: req.params.id,
             lastname: req.session.lastname,
             firstname: req.session.firstname,
             content: req.body.content,
-            })
-        
+        })
+
         res.redirect('back')
     },
 
-    DelCom: async (req, res) => {
-            const dbCom = await Com.findById({ _id: req.params.id })
-            dbCom.deleteOne({ _id: req.params.id })
-            console.log('delete com');
+    DelCom: async(req, res) => {
+        const dbCom = await Com.findById({ _id: req.params.id })
+        dbCom.deleteOne({ _id: req.params.id })
+        console.log('delete com');
 
-            res.redirect('back')
+        res.redirect('back')
 
-       
+
     }
 }

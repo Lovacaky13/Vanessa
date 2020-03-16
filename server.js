@@ -3,28 +3,28 @@ const
     app = express(),
     Handlebars = require('handlebars'),
     hbs = require('express-handlebars'),
-    bodyParser = require('body-parser'),          // pour requete en format json
+    bodyParser = require('body-parser'), // pour requete en format json
     methodOverride = require('method-override'),
     router = express.Router(),
     mongoose = require('mongoose'),
     session = require('express-session')
-    MongoStore = require('connect-mongo')(session),
-    sharp = require('sharp'),
+MongoStore = require('connect-mongo')(session),
+    //sharp = require('sharp'),
 
     // connectFlash = require('connect-flash'), //customize le message d'erreur
     //keys = require('./config/keys'),
     port = 3000;
-    
+
 
 //------------------------mongoose-------------------------------------
 
 //const db = require('./config/keys.js').mongoUrl
 const db = 'mongodb://localhost:27017/vanessa';
 mongoose.connect(db, {
-    useFindAndModify: false,
-    useCreateIndex: true,
-    useNewUrlParser: true,
-    useUnifiedTopology: true
+        useFindAndModify: false,
+        useCreateIndex: true,
+        useNewUrlParser: true,
+        useUnifiedTopology: true
     })
     .then(() => console.log('Connecter à MongoDB Cloud'))
     .catch((err) => console.log(err))
@@ -76,7 +76,7 @@ app.use('/assets', express.static('public'))
 app.use(methodOverride('_method'))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-   extended: false
+    extended: false
 }));
 
 const Router = require('./api/router')
