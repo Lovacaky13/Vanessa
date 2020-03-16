@@ -11,11 +11,10 @@
     <div class="row">
         <div class="accordion col-md-12 pt-3" id="accordionAdmin">
 
-
             <div class="card Mycard-simple bg-info">
                 <div class="card-header" id="headingUser">
                     <h2 class="mb-0">
-                        <button type="button" class="btn btn-outline-light"  data-toggle="collapse"
+                        <button type="button" class="btn btn-outline-light" data-toggle="collapse"
                             data-target="#collapseUser" aria-expanded="false" aria-controls="collapseUser">
                             Liste Des Utilisateurs
                         </button>
@@ -25,7 +24,22 @@
 
                     {{!-- Components Liste User Page Admin --}}
                     {{> admin/adminUser }}
-                    {{!-- Components Liste User Page Admin --}}
+
+                </div>
+            </div>
+
+            <div class="card Mycard-simple bg-info">
+                <div class="card-header" id="headingArticle">
+                    <h2 class="mb-0">
+                        <button type="button" class="btn btn-outline-light" data-toggle="collapse"
+                            data-target="#collapseArticle" aria-expanded="false" aria-controls="collapseArticle">
+                            Liste Des Articles
+                    </h2>
+                </div>
+                <div id="collapseArticle" class="collapse" aria-labelledby="headingArticle" data-parent="#accordionAdmin">
+
+                    {{!-- Components Liste Article Page Admin --}}
+                    {{> admin/adminArticle}}
 
                 </div>
             </div>
