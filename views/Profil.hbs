@@ -1,28 +1,117 @@
-<h1 class="text-center" >Votre Compte</h1>
+<h1 class="text-center">Votre Compte</h1>
 
 <section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Nom</th>
-      <th scope="col">Prenom</th>
-      <th scope="col">adresse mail</th>
-    </tr>
-  </thead>
-    
-  <tbody>
-    <tr>
-      <td> {{dbUserID.firstname}}</td>
-      <td>{{dbUserID.lastname}}</td>
-      <td>{{dbUserID.email}}</td>
-    </tr>
-    
-  </tbody>
-</table>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Prenom</th>
+                            <th scope="col">adresse mail</th>
+                            <th></th>
+                            <th></th>
+                            
+                        </tr>
+                    </thead>
 
+                    <tbody>
+                        <tr>
+                            <td> {{dbUserID.firstname}}</td>
+                            <td>{{dbUserID.lastname}}</td>
+                            <td>{{dbUserID.email}}</td>
+                            <!-- Button trigger modal modif compte-->
+                            <td> <button type="submit" class="btn btn-warning" data-toggle="modal"
+                                data-target="#modalModifCompte"> <i class="fas fa-pencil-alt"></i>
+                                Modifier votre compte</button> </td>
+                                <!-- Button trigger modal modif mot de passe-->
+                            <td> <button type="submit" class="btn btn-warning" data-toggle="modal"
+                                data-target="#modalModifmdp"> <i class="fas fa-pencil-alt"></i>
+                                Modifier votre mot de passe</button> </td>
+                        </tr>
 
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </section>
 
+{{!-- Modal Modifier votre compte --}}
+<div class="modal fade" id="modalModifCompte" tabindex="-1" role="dialog" aria-labelledby="modalModifCompte"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <form action="/Profil/{{sess.userId}}?_method=PUT" method="post" >
+                    <div class="modal-body">
+                        <label for="formGroupExampleInput">Prenom : </label>
+                        <input type="text" class="form-control" name='firstname' id="formGroupExampleInput"
+                            value="{{ dbUserID.firstname }}">
+
+                       <label for="formGroupExampleInput">Nom : </label>
+                        <input type="text" class="form-control" name='lastname' id="formGroupExampleInput"
+                            value="{{ dbUserID.lastname }}">
+
+                       <label for="formGroupExampleInput">Email : </label>
+                        <input type="text" class="form-control" name='email' id="formGroupExampleInput"
+                            value="{{ dbUserID.email }}">
+    
+                        
+                        <div class="modal-footer">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <button type="button" class="btn btn-warning m-3"
+                                        data-dismiss="modal">Annuler</button>
+                                </div>
+                                <div class="col-md-6">
+                                    <button type="submit" class="btn btn-danger m-3">Confirmer</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{!-- Modal Modifier votre mot de passe --}}
+<div class="modal fade" id="modalModifmdp" tabindex="-1" role="dialog" aria-labelledby="modalModifmdp"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <form action="/Profil/{{sess.UserID}}?_method=PUT" method="post" enctype="multipart/form-data">
+                    <div class="modal-body">
+
+                        <label for="formGroupExampleInput">Mot de passe : </label>
+                        <input type="text" class="form-control" name='password' id="formGroupExampleInput" >
 
 
+                        <label for="formGroupExampleInput">Nouveau mot de passe : </label>
+                        <input type="text" class="form-control" name='password' id="formGroupExampleInput" >
+
+                       <label for="formGroupExampleInput">Confirmer Nouveau mot de passe :</label>
+                        <input type="text" class="form-control" name='password' id="formGroupExampleInput" >
+
+                                               
+                        <div class="modal-footer">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <button type="button" class="btn btn-warning m-3"
+                                        data-dismiss="modal">Annuler</button>
+                                </div>
+                                <div class="col-md-6">
+                                    <button type="submit" class="btn btn-danger m-3">Confirmer</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

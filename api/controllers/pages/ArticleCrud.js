@@ -1,5 +1,4 @@
-
- // 
+// 
 /**
  * CRUD article
  * 
@@ -12,15 +11,16 @@ const Article = require("../../db/models/Article"),
 
 module.exports = {
 
-    getArticle: async (req, res) => {
-        const   dbArticle = await Article.find({}) // Transforme ton Model (consctructeur) en Json
- 
-        res.render('Article', {
-            dbArticle          // Renvoyer la DB dans la page                               
-        })
+    getArticle: async(req, res) => {
+        const dbArticle = await Article.find({}) // Transforme ton Model (consctructeur) en Json
+        sess = req.session,
+            res.render('Article', {
+                dbArticle, // Renvoyer la DB dans la page     
+                sess
+            })
     },
 
-    createArticle: async (req, res) => {
+    createArticle: async(req, res) => {
         const dbArticle = await Article.find({})
 
         if (!req.file) {
@@ -28,7 +28,7 @@ module.exports = {
             res.redirect('back')
 
         } else if (req.file) {
-            Article.create({                                  
+            Article.create({
                 title: req.body.title,
                 image: `/assets/images/${req.file.filename}`,
                 name: req.file.filename,
@@ -42,5 +42,5 @@ module.exports = {
             res.redirect('back')
 
         }
-    }    
+    }
 }

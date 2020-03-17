@@ -9,16 +9,18 @@ const User = require("../../db/models/User"),
 
 module.exports = {
     get: async(req, res) => {
-        const dbUser = await User.find({})
-        const dbArticle = await Article.find({})
-       
+        const dbUser = await User.find({}),
+            dbArticle = await Article.find({}),
+            sess = req.session
+
         res.render('admin', {
             dbUser,
-            dbArticle
+            dbArticle,
+            sess
         })
     },
-    
-  updateUser: async(req, res) => {
+
+    updateUser: async(req, res) => {
 
         query = {
             _id: req.params.id

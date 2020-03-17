@@ -19,6 +19,12 @@ const HomePage = require('./controllers/pages/HomePage'),
     InfoAsg = require('./controllers/pages/infoAsg'),
     ArticleSingle = require('./controllers/pages/ArticleSingle')
 
+/* Import middlewares
+ *******************/
+// const auth = require('./middleware/auth'),
+//     isAdmin = require('./middleware/isAdmin')
+
+
 /*
  * Controllers
  *************/
@@ -72,8 +78,7 @@ router.route('/comment/:id')
 
 router.route('/Profil/:id')
     .get(Profil.get)
-
-
+    .put(Profil.updateUser)
 
 
 module.exports = router

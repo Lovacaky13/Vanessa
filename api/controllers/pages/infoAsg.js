@@ -1,5 +1,9 @@
 module.exports = {
     get: (req, res) => {
-        res.render('InfoAsg')
-    },
+        sess = req.session,
+            res.render('InfoAsg', {
+
+                sess
+            })
+    }
 }

@@ -1,6 +1,9 @@
-
 module.exports = {
     get: (req, res) => {
-        res.render('Contact')
-    },
+        sess = req.session,
+            res.render('Contact', {
+
+                sess
+            })
+    }
 }
