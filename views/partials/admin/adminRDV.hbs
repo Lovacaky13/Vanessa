@@ -1,23 +1,23 @@
 <section>
-    <table class="table table-responsive">
+    <table class="table table-responsive ">
         <thead>
             <tr>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th >E-mail</th>
-                <th >adresse</th>
-                <th >Edit
+                <th scope="col">Nom</th>
+                <th scope="col">Prenom</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">adresse</th>
+                <th scope="col">Edit
                 <th>
             </tr>
         </thead>
-        {{#each dbUser}}
+        
         <tbody>
             <tr>
-                <td style="width: 13%">{{lastname}}</td>
-                <td style="width: 13%">{{firstname}}</td>
-                <td style="width: 25%">{{email}}</td>
-                <td style="width: 35%">{{adress}} {{zip}} {{city}} </td>
-                <td style="width: 13%">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td> </td>
+                <td>
 
                     <!-- Button trigger modal delete user -->
                     <button type="button" class="btn btn-danger" data-toggle="modal"
@@ -32,8 +32,7 @@
                 </td>
             </tr>
         </tbody>
-        {{/each}}
-    </table>
+       
 </section>
 
 <!-- Modal Btn Modifier -->

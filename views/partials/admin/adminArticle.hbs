@@ -1,107 +1,27 @@
 <section>
-    <table class="table ">
+    <table class="table table-responsive">
         <thead>
             <tr>
-                <th scope="col">Nom</th>
-                <th scope="col">Prenom</th>
-                <th scope="col">E-mail</th>
-                <th scope="col">adresse</th>
-                <th scope="col">Edit
+                <th >Titre</th>
+                <th >Image</th>
+                <th >Publié le</th>
+               
                 <th>
             </tr>
         </thead>
         {{#each dbArticle}}
         <tbody>
             <tr>
-                <td>{{title}}</td>
-                <td>{{image}}</td>
-                <td>{{email}}</td>
-                <td>{{adress}} {{zip}} {{city}} </td>
-                <td>
+                <td style="width: 25%">{{ title }}</td>
+                <td style="width: 25%"><img src="{{ image }}" class="card-img-top" alt="..." style="width: 50%;"></td>
+                <td style="width: 25%">{{ moment createDate format="DD-MM-YYYY"}}</td>
 
-                    <!-- Button trigger modal delete user -->
-                    <button type="button" class="btn btn-danger" data-toggle="modal"
-                        data-target="#modalDeleteArticle{{_id}}">
-                        <i class="fas fa-trash-alt"></i>
-                    </button>
-
-                    <!-- Button trigger modal edit user -->
-                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateUser{{_id}}">
-                        <i class="fas fa-pencil-alt"></i>
-                    </button>
+                <td style="width: 25%">
+                    <a class="btn btn-info" href="/ArticleSingle/{{_id}}" role="button">Voir l'article</a>
+                   
                 </td>
             </tr>
         </tbody>
         {{/each}}
     </table>
 </section>
-
-<!-- Modal Btn Modifier -->
-{{#each dbUser}}
-<div class="modal fade" id="updateUser{{_id}}" tabindex="-1" role="dialog" aria-labelledby="modalModifArticle"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-
-            <div class="modal-header">
-                <h5 class="modal-title">Modification Fiche Utilisateur</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-
-            <form action="/adminUser/{{_id}}?_method=PUT" method="post">
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1">Email</label>
-                        <input type="email" class="form-control" id="inputEmail" value="{{ email }}" name="email">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1">Nom</label>
-                        <input type="text" class="form-control" id="inputLastName" value="{{ lastname }}"
-                            name="lastname">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1"> Prénom</label>
-                        <input type="text" class="form-control" id="inputFirstName" value="{{ firstname }}"
-                            name="firstname">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-warning" data-dismiss="modal">Annuler</button>
-                    <button type="submit" class="btn btn-danger"> Confirmer</button>
-                </div>
-            </form>
-
-        </div>
-    </div>
-</div>
-{{/each}}
-
-<!-- Modal Btn Supprimer -->
-
-{{#each dbUser}}
-<div class="modal fade" id="modalDeleteArticle{{_id}}" tabindex="-1" role="dialog"
-    aria-labelledby="modalDeleteArticleLabel" aria-hidden="true">
-
-    <form action="/adminUser/{{_id}}/?_method=DELETE" method="post">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title h5admin" id="modalDeleteArticleLabel">Etes-vous sûr de supprimer le compte de
-                        <span style="color:red"> {{firstname}}</span> ?</h5>
-                    </h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-warning" data-dismiss="modal">Annuler</button>
-                    <button type="submit" class="btn btn-danger">Confirmer</button>
-                </div>
-            </div>
-        </div>
-    </form>
-</div>
-{{/each}}

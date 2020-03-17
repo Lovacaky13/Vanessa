@@ -1,5 +1,5 @@
 {{!-- 
-  Commenter ...
+  Page Admin
  --}}
 
 <div class="container">
@@ -40,6 +40,22 @@
 
                     {{!-- Components Liste Article Page Admin --}}
                     {{> admin/adminArticle}}
+
+                </div>
+            </div>
+
+            <div class="card Mycard-simple bg-info">
+                <div class="card-header" id="headingRDV">
+                    <h2 class="mb-0">
+                        <button type="button" class="btn btn-outline-light" data-toggle="collapse"
+                            data-target="#collapseRDV" aria-expanded="false" aria-controls="collapseRDV">
+                            Liste Des RDV
+                    </h2>
+                </div>
+                <div id="collapseRDV" class="collapse" aria-labelledby="headingRDV" data-parent="#accordionAdmin">
+
+                    {{!-- Components Liste Article Page Admin --}}
+                    {{> admin/adminRDV}}
 
                 </div>
             </div>

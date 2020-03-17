@@ -10,7 +10,7 @@ const express = require('express'),
 const HomePage = require('./controllers/pages/HomePage'),
     ArticleCrud = require('./controllers/pages/ArticleCrud'),
     RegisterControllers = require('./controllers/RegisterControllers'),
-    admin = require('./controllers/pages/Admin'),
+    Admin = require('./controllers/pages/Admin'),
     LoginControllers = require('./controllers/LoginControllers'),
     Profil = require('./controllers/pages/Profil'),
     Contact = require('./controllers/pages/Contact'),
@@ -26,8 +26,7 @@ const HomePage = require('./controllers/pages/HomePage'),
 //  Controller Page
 router.route('/')
     .get(HomePage.getArticle)
-router.route('/Profil')
-    .get(Profil.get)
+
 router.route('/Contact')
     .get(Contact.get)
 router.route('/Agenda')
@@ -37,14 +36,14 @@ router.route('/Calcul')
 router.route('/InfoAsg')
     .get(InfoAsg.get)
 
-// ******************* CRUD User s'identifier modifier supprimer utilisateur *********************
+// ******************* Page Admin CRUD User s'identifier modifier supprimer utilisateur *********************
 router.route('/User')
     .post(RegisterControllers.userCreate)
 router.route('/admin')
-    .get(admin.getUser)
+    .get(Admin.get)
 router.route('/adminUser/:id')
-    .put(admin.updateUser)
-    .delete(admin.deleteUser)
+    .put(Admin.updateUser)
+    .delete(Admin.deleteUser)
 
 // ******************* se loguer User  (express/session) *********************
 
@@ -64,10 +63,17 @@ router.route('/ArticleSingle/:id')
     .put(upload.single('image'), ArticleSingle.updateArticle)
 
 
-// ******************* Commenatire*********************  
+// ******************* Commentaire*********************  
 router.route('/comment/:id')
     .post(ArticleSingle.addCom)
     .delete(ArticleSingle.DelCom)
+
+// ******************* Mon Compte*********************  
+
+router.route('/Profil/:id')
+    .get(Profil.get)
+
+
 
 
 module.exports = router

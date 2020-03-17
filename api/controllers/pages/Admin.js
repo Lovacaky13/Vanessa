@@ -4,18 +4,21 @@
  * 
  */
 const User = require("../../db/models/User"),
+    Article = require("../../db/models/Article"),
     path = require('path')
 
 module.exports = {
-    getUser: async (req, res) => {
+    get: async(req, res) => {
         const dbUser = await User.find({})
-
+        const dbArticle = await Article.find({})
+       
         res.render('admin', {
-            dbUser
+            dbUser,
+            dbArticle
         })
     },
-
-    updateUser: async (req, res) => {
+    
+  updateUser: async(req, res) => {
 
         query = {
             _id: req.params.id
@@ -49,5 +52,5 @@ module.exports = {
                     res.send(console.log(err))
                 }
             })
-    }
+    },
 }
