@@ -80,5 +80,11 @@ router.route('/Profil/:id')
     .get(Profil.get)
     .put(Profil.updateUser)
 
+//  Lost Password *********************
+
+router.route('/updatePassword/:id')
+    .put(Profil.updatePassword)
+
+
 
 module.exports = router

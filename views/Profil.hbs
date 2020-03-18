@@ -1,4 +1,4 @@
-<h1 class="text-center">Votre Compte 1111</h1>
+<h1 class="text-center">Votre Compte</h1>
 
 <section>
     <div class="container">
@@ -84,19 +84,21 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <form action="/Profil/{{sess.UserID}}?_method=PUT" method="post" enctype="multipart/form-data">
+                <form action="/updatePassword/{{sess.userId}}?_method=PUT" method="post" enctype="application/x-www-form-urlencoded" >
                     <div class="modal-body">
 
                         <label for="formGroupExampleInput">Mot de passe : </label>
-                        <input type="text" class="form-control" name='password' id="formGroupExampleInput" >
-
+                        <input type="text" class="form-control" name='password'/>
+/
 
                         <label for="formGroupExampleInput">Nouveau mot de passe : </label>
-                        <input type="text" class="form-control" name='password' id="formGroupExampleInput" >
+                        <input type="text" class="form-control" name='newPassword' required />
 
                        <label for="formGroupExampleInput">Confirmer Nouveau mot de passe :</label>
-                        <input type="text" class="form-control" name='password' id="formGroupExampleInput" >
+                        <input type="text" class="form-control" name='confNewPassword' required />
 
+                        {{!-- Input hidden email --}}
+                        <input type="hidden" class="form-control" name='email'  value='{{sess.email}}' required />
                                                
                         <div class="modal-footer">
                             <div class="row">
