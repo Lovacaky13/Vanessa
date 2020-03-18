@@ -1,9 +1,14 @@
-module.exports = {
-    get: (req, res) => {
-        sess = req.session,
-            res.render('InfoAsg', {
+const Message = require('../../db/models/Message')
 
-                sess
-            })
+
+module.exports = {
+    get: async(req, res) => {
+        const sess = req.session,
+            dbMessage = await Message.find({})
+
+        res.render('InfoAsg', {
+            sess,
+            dbMessage
+        })
     }
 }

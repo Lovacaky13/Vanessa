@@ -7,17 +7,20 @@
 
 const Article = require("../../db/models/Article"),
     path = require('path'),
-    fs = require('fs')
+    fs = require('fs'),
+    Message = require('../../db/models/Message')
 
 module.exports = {
 
     getArticle: async(req, res) => {
-        const dbArticle = await Article.find({}) // Transforme ton Model (consctructeur) en Json
-        sess = req.session,
-            res.render('Article', {
-                dbArticle, // Renvoyer la DB dans la page     
-                sess
-            })
+        const dbArticle = await Article.find({}), // Transforme ton Model (consctructeur) en Json
+            dbMessage = await Message.find({}),
+            sess = req.session
+        res.render('Article', {
+            dbArticle, // Renvoyer la DB dans la page     
+            sess,
+            dbMessage
+        })
     },
 
     createArticle: async(req, res) => {

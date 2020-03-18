@@ -8,14 +8,16 @@
 
 const User = require("../../db/models/User"),
     path = require('path'),
-    bcrypt = require('bcrypt')
+    bcrypt = require('bcrypt'),
+    Message = require('../../db/models/Message')
 
 module.exports = {
     get: async(req, res) => {
         const
             sess = req.session,
             dbUserID = await User.findById(sess.userId),
-            emailProfile = await req.body.email
+            emailProfile = await req.body.email,
+            dbMessage = await Message.find({})
 
         console.log(sess);
         if (!req.session) {
@@ -27,7 +29,8 @@ module.exports = {
                 })
             res.render("Profil", {
                 sess,
-                dbUserID
+                dbUserID,
+                dbMessage
             })
         } else {
             res.redirect('/')

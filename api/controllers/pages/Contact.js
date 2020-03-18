@@ -2,12 +2,14 @@ const Message = require('../../db/models/Message')
 
 
 module.exports = {
-    get: (req, res) => {
-        sess = req.session,
+    get: async(req, res) => {
+        const sess = req.session,
+            dbMessage = await Message.find({})
 
-            res.render('Contact', {
-                sess
-            })
+        res.render('Contact', {
+            sess,
+            dbMessage
+        })
     },
 
     addMessage: async(req, res) => {

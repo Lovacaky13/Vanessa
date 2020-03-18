@@ -1,20 +1,23 @@
 const Com = require('../../db/models/Commentaire'),
     Article = require("../../db/models/Article"),
     path = require('path'),
-    fs = require('fs')
+    fs = require('fs'),
+    Message = require('../../db/models/Message')
 
 module.exports = {
     getArticle: async(req, res) => {
         const dbArticle = await Article.findById(req.params.id), // Transforme ton Model (consctructeur) en Json
             sess = req.session,
-            dbCom = await Com.find({ produit_id: req.params.id })
+            dbCom = await Com.find({ produit_id: req.params.id }),
+            dbMessage = await Message.find({})
 
         //Coms = dbCom.reverse()
 
         res.render('ArticleSingle', {
             dbArticle, // Renvoyer la DB dans la page       
             sess,
-            dbCom
+            dbCom,
+            dbMessage
         })
     },
 

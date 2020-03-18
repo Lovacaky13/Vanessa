@@ -4,13 +4,16 @@
  * 
  */
 
-const Article = require("../../db/models/Article")
+const Article = require("../../db/models/Article"),
+    Message = require('../../db/models/Message')
 
 
 module.exports = {
     getArticle: async(req, res) => {
         const dbArticle = await Article.find({}); // Transforme ton Model (consctructeur) en Json
         affdbarticle = dbArticle.reverse().slice(0, 3);
+        dbMessage = await Message.find({})
+
 
         sess = req.session,
 
@@ -18,6 +21,7 @@ module.exports = {
                 //layout: 'admin',
                 ArticleReverseLimited: affdbarticle, // Renvoyer la DB dans la page      
                 sess,
+                dbMessage
 
             })
     }
