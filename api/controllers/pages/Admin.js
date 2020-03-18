@@ -5,18 +5,22 @@
  */
 const User = require("../../db/models/User"),
     Article = require("../../db/models/Article"),
-    path = require('path')
+    path = require('path'),
+    Message = require('../../db/models/Message')
+
 
 module.exports = {
     get: async(req, res) => {
         const dbUser = await User.find({}),
             dbArticle = await Article.find({}),
-            sess = req.session
+            sess = req.session,
+            dbMessage = await Message.find({})
 
         res.render('admin', {
             dbUser,
             dbArticle,
-            sess
+            sess,
+            dbMessage
         })
     },
 

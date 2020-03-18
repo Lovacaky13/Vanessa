@@ -29,6 +29,23 @@
             </div>
 
             <div class="card Mycard-simple bg-info">
+                <div class="card-header" id="headingMessage">
+                    <h2 class="mb-0">
+                        <button type="button" class="btn btn-outline-light" data-toggle="collapse"
+                            data-target="#collapseMessage" aria-expanded="false" aria-controls="collapseMessage">
+                                {{ counter dbMessage }} Messages Reçus
+                    </h2>
+                </div>
+                <div id="collapseMessage" class="collapse" aria-labelledby="headingMessage"
+                    data-parent="#accordionAdmin">
+
+                    {{!-- Components Message Page Admin --}}
+                    {{> admin/adminMessage}}
+
+                </div>
+            </div>
+
+            <div class="card Mycard-simple bg-info">
                 <div class="card-header" id="headingArticle">
                     <h2 class="mb-0">
                         <button type="button" class="btn btn-outline-light" data-toggle="collapse"
@@ -36,13 +53,17 @@
                             Liste Des Articles
                     </h2>
                 </div>
-                <div id="collapseArticle" class="collapse" aria-labelledby="headingArticle" data-parent="#accordionAdmin">
+                <div id="collapseArticle" class="collapse" aria-labelledby="headingArticle"
+                    data-parent="#accordionAdmin">
 
                     {{!-- Components Liste Article Page Admin --}}
                     {{> admin/adminArticle}}
 
                 </div>
             </div>
+
+
+
 
             <div class="card Mycard-simple bg-info">
                 <div class="card-header" id="headingRDV">
@@ -54,7 +75,7 @@
                 </div>
                 <div id="collapseRDV" class="collapse" aria-labelledby="headingRDV" data-parent="#accordionAdmin">
 
-                    {{!-- Components Liste Article Page Admin --}}
+                    {{!-- Components Liste RDV Page Admin --}}
                     {{> admin/adminRDV}}
 
                 </div>

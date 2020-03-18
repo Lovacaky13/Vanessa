@@ -66,7 +66,6 @@ module.exports = {
 
     deleteOneArticle: async(req, res) => {
 
-        console.log('1')
 
         const dbArticle = await Article.findById(req.params.id),
             query = {

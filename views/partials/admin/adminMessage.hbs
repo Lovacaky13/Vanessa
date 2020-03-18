@@ -1,0 +1,60 @@
+<section >
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Message</th>
+                <th>Reçu le</th>
+                <th>  </tr>
+            </tr>
+        </thead>
+        {{#each dbMessage}}
+        <tbody>
+            <tr>
+                <td style="width: 30%">{{email}}</td>
+                <td style="width: 35%">{{message}}</td>
+                <td style="width: 20%">{{moment createDate format="DD-MM-YYYY, HH:mm"}}</td>
+                <td style="width: 15%">
+
+                    <!-- Button trigger modal delete user -->
+                    <button type="button" class="btn btn-danger" data-toggle="modal"
+                        data-target="#modalDeleteMessage{{_id}}">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+
+                </td>
+            </tr>
+        </tbody>
+        {{/each}}
+    </table>
+</section>
+
+
+
+<!-- Modal Btn Supprimer -->
+
+{{#each dbMessage}}
+<div class="modal fade" id="modalDeleteMessage{{_id}}" tabindex="-1" role="dialog"
+    aria-labelledby="modalDeleteMessageLabel" aria-hidden="true">
+
+    <form action="/Contact/{{_id}}/?_method=DELETE" method="post">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title h5admin" id="modalDeleteArticleLabel">Etes-vous sûr de supprimer le compte de
+                        <span style="color:red"> {{email}}</span> ?</h5>
+                    </h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">Annuler</button>
+                    <button type="submit" class="btn btn-danger">Confirmer</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div> 
+{{/each}}

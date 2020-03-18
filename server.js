@@ -7,8 +7,11 @@ const
     methodOverride = require('method-override'),
     router = express.Router(),
     mongoose = require('mongoose'),
-    session = require('express-session')
-MongoStore = require('connect-mongo')(session),
+    session = require('express-session'),
+    MongoStore = require('connect-mongo')(session),
+    helpers = require('handlebars-helpers'),
+
+
     //sharp = require('sharp'),
 
     // connectFlash = require('connect-flash'), //customize le message d'erreur
@@ -81,6 +84,12 @@ app.use(bodyParser.urlencoded({
 
 const Router = require('./api/router')
 app.use('/', Router)
+
+//compteur d'objets
+Handlebars.registerHelper("counter", function(db) {
+    if (!Array.isArray(db)) { return [] }
+    return db.length
+});
 
 
 app.listen(port, () => {

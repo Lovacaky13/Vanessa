@@ -13,10 +13,12 @@ module.exports = {
         affdbarticle = dbArticle.reverse().slice(0, 3);
 
         sess = req.session,
+
             res.render('index', {
                 //layout: 'admin',
                 ArticleReverseLimited: affdbarticle, // Renvoyer la DB dans la page      
                 sess,
+
             })
     }
 }

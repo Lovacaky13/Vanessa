@@ -33,8 +33,6 @@ const HomePage = require('./controllers/pages/HomePage'),
 router.route('/')
     .get(HomePage.getArticle)
 
-router.route('/Contact')
-    .get(Contact.get)
 router.route('/Agenda')
     .get(Agenda.get)
 router.route('/Calcul')
@@ -80,11 +78,17 @@ router.route('/Profil/:id')
     .get(Profil.get)
     .put(Profil.updateUser)
 
-//  Lost Password *********************
+// ******************* Modif Password *********************
 
 router.route('/updatePassword/:id')
     .put(Profil.updatePassword)
 
+// ******************* Message*********************  
+router.route('/Contact')
+    .get(Contact.get)
+    .post(Contact.addMessage)
 
+router.route('/Contact/:id')
+    .delete(Contact.delMessage)
 
 module.exports = router
