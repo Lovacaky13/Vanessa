@@ -2,18 +2,19 @@
     <table class="table table-responsive">
         <thead>
             <tr>
-                <th>Email</th>
-                <th>Message</th>
-                <th>Reçu le</th>
+                <th><h4>Email</h4></th>
+                <th><h4>Message</h4></th>
+                <th><h4>Reçu le</h4>
+                </th>
                 <th>  </tr>
             </tr>
         </thead>
         {{#each dbMessage}}
         <tbody>
             <tr>
-                <td style="width: 30%">{{email}}</td>
-                <td style="width: 35%">{{message}}</td>
-                <td style="width: 20%">{{moment createDate format="DD-MM-YYYY, HH:mm"}}</td>
+                <td style="width: 30%"><h5>{{email}}</h5></td>
+                <td style="width: 35%"><h5>{{message}}</h5></td>
+                <td style="width: 20%"><h5>{{moment createDate format="DD-MM-YYYY, HH:mm"}}</h5></td>
                 <td style="width: 15%">
 
                     <!-- Button trigger modal delete user -->

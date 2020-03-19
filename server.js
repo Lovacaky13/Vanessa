@@ -10,11 +10,8 @@ const
     session = require('express-session'),
     MongoStore = require('connect-mongo')(session),
     helpers = require('handlebars-helpers'),
-
-
     //sharp = require('sharp'),
-
-    // connectFlash = require('connect-flash'), //customize le message d'erreur
+    connectFlash = require('connect-flash'), //customize le message d'erreur
     //keys = require('./config/keys'),
     port = 3000;
 
@@ -71,8 +68,9 @@ app.use('*', (req, res, next) => {
 })
 
 
-// Connect-Flash (req.flash)
-// app.use(connectFlash())
+
+//connect - Flash(req.flash)
+app.use(connectFlash())
 
 //app.use
 app.use('/assets', express.static('public'))

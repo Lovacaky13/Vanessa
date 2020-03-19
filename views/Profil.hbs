@@ -1,39 +1,41 @@
-<h1 class="text-center">Votre Compte</h1>
-
 <section>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
+                <div class="card Mycard-simple">
+                    <div class="card-body">
+                        <h1 class="card-title text-center"><i class="far fa-user account "></i> Votre Compte</h1>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col"><h4>Nom</h4></th>
+                                    <th scope="col"><h4>Prenom</h4></th>
+                                    <th scope="col"><h4>adresse mail</h4></th>
+                                    <th></th>
+                                    <th></th>
 
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Nom</th>
-                            <th scope="col">Prenom</th>
-                            <th scope="col">adresse mail</th>
-                            <th></th>
-                            <th></th>
-                            
-                        </tr>
-                    </thead>
+                                </tr>
+                            </thead>
 
-                    <tbody>
-                        <tr>
-                            <td> {{dbUserID.firstname}}</td>
-                            <td>{{dbUserID.lastname}}</td>
-                            <td>{{dbUserID.email}}</td>
-                            <!-- Button trigger modal modif compte-->
-                            <td> <button type="submit" class="btn btn-warning" data-toggle="modal"
-                                data-target="#modalModifCompte"> <i class="fas fa-pencil-alt"></i>
-                                Modifier votre compte</button> </td>
-                                <!-- Button trigger modal modif mot de passe-->
-                            <td> <button type="submit" class="btn btn-warning" data-toggle="modal"
-                                data-target="#modalModifmdp"> <i class="fas fa-pencil-alt"></i>
-                                Modifier votre mot de passe</button> </td>
-                        </tr>
+                            <tbody>
+                                <tr>
+                                    <td> <h5>{{dbUserID.firstname}}</h5></td>
+                                    <td><h5>{{dbUserID.lastname}}</h5></td>
+                                    <td><h5>{{dbUserID.email}}</h5></td>
+                                    <!-- Button trigger modal modif compte-->
+                                    <td> <button type="submit" class="btn btn-warning" data-toggle="modal"
+                                            data-target="#modalModifCompte"> <i class="fas fa-pencil-alt"></i>
+                                            Modifier votre compte</button> </td>
+                                    <!-- Button trigger modal modif mot de passe-->
+                                    <td> <button type="submit" class="btn btn-warning" data-toggle="modal"
+                                            data-target="#modalModifmdp"> <i class="fas fa-pencil-alt"></i>
+                                            Modifier votre mot de passe</button> </td>
+                                </tr>
 
-                    </tbody>
-                </table>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -45,21 +47,21 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <form action="/Profil/{{sess.userId}}?_method=PUT" method="post" >
+                <form action="/Profil/{{sess.userId}}?_method=PUT" method="post">
                     <div class="modal-body">
                         <label for="formGroupExampleInput">Prenom : </label>
                         <input type="text" class="form-control" name='firstname' id="formGroupExampleInput"
                             value="{{ dbUserID.firstname }}">
 
-                       <label for="formGroupExampleInput">Nom : </label>
+                        <label for="formGroupExampleInput">Nom : </label>
                         <input type="text" class="form-control" name='lastname' id="formGroupExampleInput"
                             value="{{ dbUserID.lastname }}">
 
-                       <label for="formGroupExampleInput">Email : </label>
+                        <label for="formGroupExampleInput">Email : </label>
                         <input type="text" class="form-control" name='email' id="formGroupExampleInput"
                             value="{{ dbUserID.email }}">
-    
-                        
+
+
                         <div class="modal-footer">
                             <div class="row">
                                 <div class="col-md-6">
@@ -84,7 +86,8 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <form action="/updatePassword/{{sess.userId}}?_method=PUT" method="post" enctype="application/x-www-form-urlencoded" >
+                <form action="/updatePassword/{{sess.userId}}?_method=PUT" method="post"
+                    enctype="application/x-www-form-urlencoded">
                     <div class="modal-body">
 
                         <label for="formGroupExampleInput">Mot de passe : </label>
@@ -94,12 +97,12 @@
                         <label for="formGroupExampleInput">Nouveau mot de passe : </label>
                         <input type="text" class="form-control" name='newPassword' required />
 
-                       <label for="formGroupExampleInput">Confirmer Nouveau mot de passe :</label>
+                        <label for="formGroupExampleInput">Confirmer Nouveau mot de passe :</label>
                         <input type="text" class="form-control" name='confNewPassword' required />
 
                         {{!-- Input hidden email --}}
-                        <input type="hidden" class="form-control" name='email'  value='{{sess.email}}' required />
-                                               
+                        <input type="hidden" class="form-control" name='email' value='{{sess.email}}' required />
+
                         <div class="modal-footer">
                             <div class="row">
                                 <div class="col-md-6">

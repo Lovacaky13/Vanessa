@@ -2,9 +2,9 @@
     <table class="table table-responsive">
         <thead>
             <tr>
-                <th >Titre</th>
-                <th >Image</th>
-                <th >Publié le</th>
+                <th><h4>Titre</h4></th>
+                <th><h4>Image</h4></th>
+                <th><h4>Publié le</h4></th>
                
                 <th>
             </tr>
@@ -12,12 +12,12 @@
         {{#each dbArticle}}
         <tbody>
             <tr>
-                <td style="width: 25%">{{ title }}</td>
+                <td style="width: 25%"><h5>{{ title }}</h5></td>
                 <td style="width: 25%"><img src="{{ image }}" class="card-img-top" alt="..." style="width: 50%;"></td>
-                <td style="width: 25%">{{ moment createDate format="DD-MM-YYYY"}}</td>
+                <td style="width: 25%"><h5>{{ moment createDate format="DD-MM-YYYY"}}</h5></td>
 
                 <td style="width: 25%">
-                    <a class="btn btn-info" href="/ArticleSingle/{{_id}}" role="button">Voir l'article</a>
+                    <a class="btn btn-info" href="/ArticleSingle/{{_id}}" role="button"><h5>Voir l'article</h5></a>
                    
                 </td>
             </tr>

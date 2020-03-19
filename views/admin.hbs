@@ -3,20 +3,25 @@
  --}}
 
 <div class="container">
-    <div class="row d-flex justify-content-start ml-3 mt-3">
-        <a href="" class="text-dark mr-3 pt-1"><i class="far fa-user account"></i></a>
-        <h1> Administration</h1>
+    <div class="row d-flex justify-content-start mt-3">
+        <div class="col-md-12">
+            <div class="card Mycard-simple">
+                <div class="card-body">
+                    <h1 class="card-title text-center"><i class="far fa-user account "></i> Administration</h1>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="row">
         <div class="accordion col-md-12 pt-3" id="accordionAdmin">
 
-            <div class="card Mycard-simple bg-info">
+            <div class="card Mycard-simple bg-info" >
                 <div class="card-header" id="headingUser">
                     <h2 class="mb-0">
                         <button type="button" class="btn btn-outline-light" data-toggle="collapse"
                             data-target="#collapseUser" aria-expanded="false" aria-controls="collapseUser">
-                            Liste Des Utilisateurs
+                            <h3>Liste Des Utilisateurs</h3>
                         </button>
                     </h2>
                 </div>
@@ -33,7 +38,7 @@
                     <h2 class="mb-0">
                         <button type="button" class="btn btn-outline-light" data-toggle="collapse"
                             data-target="#collapseMessage" aria-expanded="false" aria-controls="collapseMessage">
-                                {{ counter dbMessage }} Messages Reçus
+                          <h3> {{ counter dbMessage }} Messages Reçus</h3> 
                     </h2>
                 </div>
                 <div id="collapseMessage" class="collapse" aria-labelledby="headingMessage"
@@ -50,7 +55,7 @@
                     <h2 class="mb-0">
                         <button type="button" class="btn btn-outline-light" data-toggle="collapse"
                             data-target="#collapseArticle" aria-expanded="false" aria-controls="collapseArticle">
-                            Liste Des Articles
+                            <h3>Liste Des Articles</h3>
                     </h2>
                 </div>
                 <div id="collapseArticle" class="collapse" aria-labelledby="headingArticle"
@@ -70,7 +75,7 @@
                     <h2 class="mb-0">
                         <button type="button" class="btn btn-outline-light" data-toggle="collapse"
                             data-target="#collapseRDV" aria-expanded="false" aria-controls="collapseRDV">
-                            Liste Des RDV
+                            <h3>Liste Des RDV</h3>
                     </h2>
                 </div>
                 <div id="collapseRDV" class="collapse" aria-labelledby="headingRDV" data-parent="#accordionAdmin">

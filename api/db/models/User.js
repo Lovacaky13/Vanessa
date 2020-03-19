@@ -1,12 +1,11 @@
 const mongoose = require('mongoose')
-const bcrypt = require('bcrypt')
-
-const UserSchema = new mongoose.Schema({
+bcrypt = require('bcrypt')
+UserSchema = new mongoose.Schema({
 
     // googleId:String,
 
     // username:String,
-   
+
     status: {
         type: String,
         default: 'user'
@@ -14,12 +13,12 @@ const UserSchema = new mongoose.Schema({
 
     lastname: {
         type: String,
-        // required: [true, 'le nom est obligatoire']
+        required: [true, 'le nom est obligatoire']
     },
 
     firstname: {
         type: String,
-        // required: [true, 'le prénom est obligatoire']
+        required: [true, 'le prénom est obligatoire']
     },
 
     adress: {
@@ -35,43 +34,39 @@ const UserSchema = new mongoose.Schema({
         type: String,
         // required: [true, 'la ville est obligatoire']
     },
-    
+
     email: {
         type: String,
-        // required: [true, 'l email est obligatoire'],
-        unique: true   //l'email ne doit pas etre identique aux autres utilisateurs
+        required: [true, 'l email est obligatoire'],
+        unique: true //l'email ne doit pas etre identique aux autres utilisateurs
     },
     password: {
         type: String,
-        // required: [true, 'mot de passe est obligatoire']
+        required: [true, 'mot de passe est obligatoire']
     },
 
     isAdmin: {
-    type: Boolean,
+        type: Boolean,
     },
 
     isBan: {
-    type: Boolean,
+        type: Boolean,
     },
 
     isVerified: {
-    type: Boolean,
-    },
-    
-    BankCard: {
-        type: String,
+        type: Boolean,
     },
 
 })
 
 // crypter le mot de passe
-UserSchema.pre('save', function (next) {
+UserSchema.pre('save', function(next) {
 
-    const user = this                                      //prends le mot de passe
+    const user = this //prends le mot de passe
 
-    bcrypt.hash(user.password, 10, (error, encrypted) => {  //crypte le (! il faut installer bcrypt : npm i bcrypt)
+    bcrypt.hash(user.password, 10, (error, encrypted) => { //crypte le (! il faut installer bcrypt : npm i bcrypt)
         user.password = encrypted
-        next()                                                //et ensuite continue
+        next() //et ensuite continue
     })
 })
 
