@@ -11,6 +11,15 @@ const MessageSchema = new mongoose.Schema({
         required: [true, "l'email est obligatoire"]
     },
 
+    subject: String,
+
+    author: String,
+
+    view: {
+        type: Boolean,
+        defaut: false
+    },
+
     createDate: {
         type: Date,
         defaut: new Date()

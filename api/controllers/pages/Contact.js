@@ -17,29 +17,45 @@ module.exports = {
 
         Message.create({
             createDate: new Date(),
+            subject: req.body.subject,
+            view: false,
+            author: req.body.author,
             email: req.body.email,
-            message: req.body.message,
+            message: req.body.message
         })
 
         res.redirect('back')
     },
 
     delMessage: async(req, res) => {
-        const dbMessage = await Message.findById(req.params.id)
-        query = { _id: req.params.id },
+        const dbMessage = await Message.findById(req.params.id),
+            query = { _id: req.params.id }
+        Message.deleteOne(query,
 
+            (err) => {
+                if (err) {
+                    console.log(err)
+                } else {
+                    console.log('Message Deleted.')
+                    res.redirect('back')
+                }
+            })
+    },
 
+    put: async(req, res) => {
+        const dbMessage = await Message.findById(req.params.id),
+            query = { _id: req.params.id }
+        Message.updateOne(query, {
+            view: true,
 
-            Message.deleteOne(query,
-
-                (err) => {
-                    if (err) {
-                        console.log(err)
-                    } else {
-                        console.log('Message Deleted.')
-                        res.redirect('back')
-                    }
-                })
-
+        }, (err) => {
+            if (err) {
+                console.log(err)
+            } else {
+                res.render('admin',
+                    dbMessage
+                )
+            }
+        })
     }
 }
