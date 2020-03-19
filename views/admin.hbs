@@ -14,9 +14,9 @@
     </div>
 
     <div class="row">
-        <div class="accordion col-md-12 pt-3" id="accordionAdmin">
+        <div class="accordion col-md-12 pt-2" id="accordionAdmin">
 
-            <div class="card Mycard-simple bg-info" >
+            <div class="card Mycard-simple bg-info">
                 <div class="card-header" id="headingUser">
                     <h2 class="mb-0">
                         <button type="button" class="btn btn-outline-light" data-toggle="collapse"
@@ -33,23 +33,72 @@
                 </div>
             </div>
 
-            <div class="card Mycard-simple bg-info">
-                <div class="card-header" id="headingMessage">
-                    <h2 class="mb-0">
-                        <button type="button" class="btn btn-outline-light" data-toggle="collapse"
-                            data-target="#collapseMessage" aria-expanded="false" aria-controls="collapseMessage">
-                          <h3> {{ counter dbMessage }} Messages Reçus</h3> 
-                    </h2>
-                </div>
-                <div id="collapseMessage" class="collapse" aria-labelledby="headingMessage"
-                    data-parent="#accordionAdmin">
 
-                    {{!-- Components Message Page Admin --}}
-                    {{> admin/adminMessage}}
+            {{!------------------- dropdown  Message  ------------ --}}
+            <div class="row">
+                <div class="accordion col-md-12 pt-2" id="accordionAdminMessage">
+                    <div class="card Mycard-simple bg-info">
+                        <div class="card-header" id="headingMessage">
+                            <h2 class="mb-0">
+                                <button type="button" class="btn btn-outline-light" data-toggle="collapse"
+                                    data-target="#collapseMessage" aria-expanded="false"
+                                    aria-controls="collapseMessage">
+                                    <h3> {{ counter dbMessage }} Messages</h3>
+                            </h2>
+                        </div>
 
+                        {{!------------------- dropdown  Message Non Lu ------------ --}}
+                        <div id="collapseMessage" class="collapse" aria-labelledby="headingMessageChecked"
+                            data-parent="#accordionAdmin">
+
+                            <div class="card Mycard-simple bg-info">
+                                <div class="card-header" id="headingMessage">
+                                    <h2 class="mb-0">
+                                        <button type="button" class="btn btn-outline-light" data-toggle="collapse"
+                                            data-target="#collapseMessageNotChecked" aria-expanded="false"
+                                            aria-controls="collapseMessageNotChecked">
+                                            <h3> Messages Non Lus</h3>
+                                    </h2>
+                                </div>
+                                <div id="collapseMessageNotChecked" class="collapse"
+                                    aria-labelledby="headingMessageNotChecked" data-parent="#accordionAdminMessage">
+
+                                    {{!-- Components Message Lu Page Admin --}}
+                                    {{> admin/adminMessageNotChecked}}
+                                </div>
+                            </div>
+                        </div>
+                        {{!------------------- dropdown  Message Lu ------------ --}}
+                        <div id="collapseMessage" class="collapse" aria-labelledby="headingMessageChecked"
+                            data-parent="#accordionAdmin">
+
+                            <div class="card Mycard-simple bg-info">
+                                <div class="card-header" id="headingMessage">
+                                    <h2 class="mb-0">
+                                        <button type="button" class="btn btn-outline-light" data-toggle="collapse"
+                                            data-target="#collapseMessageChecked" aria-expanded="false"
+                                            aria-controls="collapseMessageChecked">
+                                            <h3>Messages Lus</h3>
+                                    </h2>
+                                </div>
+                                <div id="collapseMessageChecked" class="collapse"
+                                    aria-labelledby="headingMessageChecked" data-parent="#accordionAdminMessage">
+
+                                    {{!-- Components Message Lu Page Admin --}}
+                                    {{> admin/adminMessageChecked}}
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
                 </div>
             </div>
+        </div>
+    </div>
 
+    <div class="row">
+        <div class="accordion col-md-12 pt-2" id="accordionAdmin">
             <div class="card Mycard-simple bg-info">
                 <div class="card-header" id="headingArticle">
                     <h2 class="mb-0">
@@ -66,10 +115,12 @@
 
                 </div>
             </div>
+        </div>
+    </div>
 
 
-
-
+    <div class="row">
+        <div class="accordion col-md-12 pt-2" id="accordionAdmin">
             <div class="card Mycard-simple bg-info">
                 <div class="card-header" id="headingRDV">
                     <h2 class="mb-0">
