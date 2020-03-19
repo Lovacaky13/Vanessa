@@ -15,7 +15,7 @@
             </tr>
             </tr>
         </thead>
-        {{#each dbMessage}}
+        {{#each dbMessageNotChecked }}
         <tbody>
             <tr>
                 <td style="width: 30%">
@@ -99,8 +99,8 @@
                         <span style="color:red"> {{ author }}</span> </h5>
                     </h4>
                     
-                    <form action="/Contact/{{_id}}?_method=PUT" method="post" enctype="multipart/form-data">
-                         <button type="submit" class="btn btn-warning" data-dismiss="modal">Lu</button>
+                    <form action="/Contact/{{_id}}?_method=PUT" method="post" enctype="text/plain">
+                         <button type="submit" class="btn btn-warning">Lu</button>
                     </form>
                 </div>
             </div>

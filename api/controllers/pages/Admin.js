@@ -14,13 +14,16 @@ module.exports = {
         const dbUser = await User.find({}),
             dbArticle = await Article.find({}),
             sess = req.session,
-            dbMessage = await Message.find({})
-
+            dbMessage = await Message.find({}),
+            dbMessageChecked = await Message.find({ view: true }),
+            dbMessageNotChecked = await Message.find({ view: false })
         res.render('admin', {
             dbUser,
             dbArticle,
             sess,
-            dbMessage
+            dbMessage,
+            dbMessageChecked,
+            dbMessageNotChecked
         })
     },
 

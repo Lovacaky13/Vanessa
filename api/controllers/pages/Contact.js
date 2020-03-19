@@ -52,9 +52,8 @@ module.exports = {
             if (err) {
                 console.log(err)
             } else {
-                res.render('admin',
-                    dbMessage
-                )
+                res.redirect('back')
+
             }
         })
     }
