@@ -10,6 +10,7 @@ const
     session = require('express-session'),
     MongoStore = require('connect-mongo')(session),
     helpers = require('handlebars-helpers'),
+    notifier = require('node-notifier'),
     //sharp = require('sharp'),
     connectFlash = require('connect-flash'), //customize le message d'erreur
     //keys = require('./config/keys'),

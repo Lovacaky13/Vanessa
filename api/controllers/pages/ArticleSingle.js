@@ -11,7 +11,7 @@ module.exports = {
             dbCom = await Com.find({ produit_id: req.params.id }),
             dbMessage = await Message.find({})
 
-        //Coms = dbCom.reverse()
+
 
         res.render('ArticleSingle', {
             dbArticle, // Renvoyer la DB dans la page       

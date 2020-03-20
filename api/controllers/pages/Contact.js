@@ -1,14 +1,15 @@
-const Message = require('../../db/models/Message')
-
+const Message = require('../../db/models/Message'),
+    notifier = require('node-notifier')
 
 module.exports = {
     get: async(req, res) => {
         const sess = req.session,
-            dbMessage = await Message.find({})
+            dbMessage = await Message.find({}),
+            dbMessageNotChecked = await Message.find({ view: false })
 
         res.render('Contact', {
             sess,
-            dbMessage
+            dbMessageNotChecked
         })
     },
 
@@ -21,9 +22,10 @@ module.exports = {
             view: false,
             author: req.body.author,
             email: req.body.email,
-            message: req.body.message
-        })
+            message: req.body.message,
 
+        })
+        notifier.notify('votre message a bien été envoyé');
         res.redirect('back')
     },
 
@@ -45,16 +47,32 @@ module.exports = {
     put: async(req, res) => {
         const dbMessage = await Message.findById(req.params.id),
             query = { _id: req.params.id }
-        Message.updateOne(query, {
-            view: true,
 
-        }, (err) => {
-            if (err) {
-                console.log(err)
-            } else {
-                res.redirect('back')
+        if (dbMessage.view == false) {
+            Message.updateOne(query, {
+                view: true,
 
-            }
-        })
+            }, (err) => {
+                if (err) {
+                    console.log(err)
+                } else {
+                    res.redirect('back')
+
+                }
+            })
+        } else {
+            (dbMessage.view == true)
+            Message.updateOne(query, {
+                view: false,
+
+            }, (err) => {
+                if (err) {
+                    console.log(err)
+                } else {
+                    res.redirect('back')
+
+                }
+            })
+        }
     }
 }

@@ -3,9 +3,9 @@
   * Controller pour se loguer
   * 
   */
+ const User = require('../db/models/User'),
+     bcrypt = require('bcrypt')
 
- const  User = require('../db/models/User'),
-        bcrypt = require('bcrypt')
 
  module.exports = {
 
@@ -15,12 +15,16 @@
              password
          } = req.body;
 
+
+
          User.findOne({
              email
          }, (error, user) => {
 
              if (user) {
+
                  bcrypt.compare(password, user.password, (error, same) => {
+
                      if (same) {
                          req.session.lastname = user.lastname
                          req.session.firstname = user.firstname
@@ -34,13 +38,16 @@
                          req.session.isBan = user.isBan
                          req.session.isAcheteur = user.isAcheteur
                          console.log(user._id);
-
+                         res.json({ noError: true });
                          res.redirect('back')
                      } else {
+                         res.json({ message: "Email ou mot de passe incorrect." });
                          res.redirect('/')
                      }
                  })
              } else {
+                 console.log('user pas dans la DB');
+                 res.json({ message: "Email ou mot de passe incorrect." });
                  return res.redirect('/')
              }
          })

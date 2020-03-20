@@ -27,8 +27,14 @@
                     <a class="nav-link  font-weight-bold" href="/Profil/{{sess.userId}}">Mon Compte</a>
                 </li>
 
-                <li class="nav-item active ">
+                {{!-- <li class="nav-item active ">
                     <a class="nav-link   font-weight-bold" href="/logout">Se Déconnecter</a>
+                </li> --}}
+
+                <!-- Button trigger modal logout-->
+                <li class="nav-item active ">
+                    <a class="nav-link  font-weight-bold" data-toggle="modal" data-target="#logout" href="#">Se
+                        deconnecter</a>
                 </li>
 
                 {{else}}
@@ -50,7 +56,8 @@
                 </li>
 
                 <li class="nav-item active">
-                    <h3 class="nav-link  font-weight-bold text-info"  >Vous avez {{counter dbMessage}} Messages</h3>
+                    <h3 class="nav-link  font-weight-bold text-info">Vous avez {{ counter dbMessageNotChecked }}
+                        Messages</h3>
                 </li>
 
                 {{else}}
@@ -65,3 +72,6 @@
 
 {{!-- Appel le modal de s'enregistrer/se connecter --}}
 {{> navbar/register }}
+
+{{!-- Appel le modal de se deconnecter --}}
+{{> navbar/logout }}

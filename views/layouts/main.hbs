@@ -17,6 +17,13 @@
 
     {{> navbar}}
 
+
+{{#if user }}
+{{else}}
+    {{> modalPopUp }}
+{{/if }}
+
+
     {{{body}}}
 
 

@@ -5,11 +5,11 @@
         <div class="modal-content">
 
               <div class="content">             
-            <ol type="1">
+            {{!-- <ol type="1">
                 {{#each errors}}
                 <li>{{this}}</li>
                 {{/each}}
-            </ol>
+            </ol> --}}
         </div>
 
             <div class="modal-header">
@@ -31,7 +31,6 @@
                             <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
                                 aria-controls="profile" aria-selected="false">Se connecter</a>
                         </li>
-
                     </ul>
 
                     <div class="tab-content" id="myTabContent">
@@ -50,14 +49,14 @@
                                 <div class="row register-form " style="width: 100%">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Nom :</label>
+                                            <label >Nom* :</label>
                                             <input type="text" class="form-control" name="lastname"
-                                                placeholder="votre Nom" />
+                                                placeholder="votre Nom" required/>
                                         </div>
                                         <div class="form-group">
-                                            <label>Prénom :</label>
+                                            <label>Prénom* :</label>
                                             <input type="text" class="form-control" name="firstname"
-                                                placeholder="votre prénom" />
+                                                placeholder="votre prénom" required/>
                                         </div>
                                     </div>
                                 </div>
@@ -90,9 +89,9 @@
                                 <div class="row register-form " style="width: 100%">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label>E-mail :</label>
+                                            <label>E-mail* :</label>
                                             <input type="email" class="form-control" name="email"
-                                                placeholder="votre email" value="">
+                                                placeholder="votre email" value=""required />
                                         </div>
                                     </div>
                                 </div>
@@ -100,17 +99,17 @@
                                 <div class="row register-form " style="width: 100%">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label>Mot de passe :</label>
+                                            <label>Mot de passe* :</label>
                                             <input type="password" class="form-control" name="password"
-                                                placeholder="Password" value="" />
+                                                placeholder="Password" value="" required/>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Confirmer votre mot de passe :</label>
+                                    <label>Confirmer votre mot de passe* :</label>
                                     <input type="password" class="form-control" name="password2"
-                                        placeholder="Confirm Password *" value="">
+                                        placeholder="Confirm Password *" value="" required/>
                                 </div>
                                 <input type="submit" class="btn btn-info" value="S'inscrire" />
                             </form>
@@ -121,24 +120,26 @@
 
                         <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                             <h3 class="register-heading">Se Connecter</h3>
-                            <form class="ui form" action="/register" method="post">
+                            {{!-- <form class="ui form" action="/register" method="post"> --}}
                                 <div class="row register-form">
                                     <div class="col-md-6">
+                                         <label id="messageErrorAuth" class="text-danger d-none"></label>
                                         <div class="form-group">
                                             <label>Email :</label>
-                                            <input type="email" name="email" class="form-control" placeholder="Email" />
+                                            <input type="email" name="email" class="form-control" placeholder="Email" required />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Mot de passe :</label>
                                             <input type="password" name="password" class="form-control"
-                                                placeholder="Password" />
+                                                placeholder="Password" required/>
                                         </div>
-                                        <input type="submit" class="btn btn-info" value="Connexion" />
+                                        <button type="submit" class="btn" onclick="connexionModal()">Me connecter</button>
+                                        {{!-- <input type="submit" class="btn btn-info"  value="Connexion" /> --}}
                                     </div>
                                 </div>
-                            </form>
+                            {{!-- </form> --}}
                         </div>
                     </div>
                 </div>
@@ -146,3 +147,28 @@
         </div>
     </div>
 </div>
+
+<script>
+    function connexionModal() {
+        console.log("test");
+        $.ajax({
+            url: '/register',
+            type: 'POST',
+            data: { email: $("input[name=email]").val(), password: $("input[name=password]").val() },
+            dataType: 'json',
+            success: function (json, statut) {
+                console.log(json.message);
+                
+                $("#messageErrorAuth").text(json.message);
+                if (json.noError) {
+                    window.location.replace("/");
+                }
+            },
+            error: function (resultat, statut, erreur) {
+                console.log(resultat);
+                console.log(statut);
+                console.log(erreur);
+            }
+        });
+    };
+</script>
