@@ -5,7 +5,7 @@ const ArticleSchema = new mongoose.Schema({
     title: String,
     content: String,
     image: String,
-    imageGallery: Array,
+    //imageGallery: Array,
     name: String,
     nameGallery: String,
     createDate: {

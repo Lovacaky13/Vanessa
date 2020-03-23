@@ -1,5 +1,5 @@
-const Message = require('../../db/models/Message'),
-    notifier = require('node-notifier')
+const Message = require('../../db/models/Message')
+
 
 module.exports = {
     get: async(req, res) => {
@@ -25,7 +25,6 @@ module.exports = {
             message: req.body.message,
 
         })
-        notifier.notify('votre message a bien été envoyé');
         res.redirect('back')
     },
 

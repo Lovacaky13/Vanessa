@@ -26,7 +26,6 @@
                      if (same) {
                          req.session.lastname = user.lastname
                          req.session.firstname = user.firstname
-                         req.session.firstname = user.firstname
                          req.session.lastname = user.lastname
                          req.session.userId = user._id
                          req.session.email = user.email
@@ -34,7 +33,6 @@
                          req.session.isAdmin = user.isAdmin
                          req.session.isVerified = user.isVerified
                          req.session.isBan = user.isBan
-                         req.session.isAcheteur = user.isAcheteur
                          console.log(user._id)
                          res.redirect('/')
 
