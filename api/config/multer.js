@@ -11,14 +11,14 @@ const storage = multer.diskStorage({
         const ext = file.originalname,
             date = Date.now()
         cb(null, date + '-' + ext)
-    }
+    },
 })
 
 const upload = multer({
     storage: storage,
     limits: {
         fileSize: 1 * 4098 * 4098,
-        files: 1
+        files: 5
     },
     fileFilter: (req, file, cb) => {
         if (

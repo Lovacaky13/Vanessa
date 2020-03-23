@@ -1,3 +1,4 @@
+
 {{#if isAdmin}}
 
 <section class="m-3">
@@ -39,12 +40,10 @@
             </div>
 
 
-            {{!-- <div class="form-group">
+            <div class="form-group">
               <label>Photos galleries:</label>
               <input type="file" class="form-control" name='imageGallery' multiple>
-            </div> --}}
-
-
+            </div>
 
           </div>
           <div class="modal-footer ">
@@ -70,21 +69,15 @@
               <img src="{{ image }}" class="card-img-top" alt="..." style="height: 200px;  width: 320px">
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-3">
-              <img src="{{ imageGallery }}" class="card-img-top" alt="..." style="height:60px; width: 60px;">
-            </div>
-            <div class="col-md-3">
-              <img src="{{ imageGallery }}" class="card-img-top" alt="..." style="height:60px; width: 60px;">
-            </div>
-            <div class="col-md-3">
-              <img src="{{ imageGallery }}" class="card-img-top" alt="..." style="height:60px; width: 60px;">
-            </div>
-            <div class="col-md-3">
-              <img src="{{ imageGallery }}" class="card-img-top" alt="..." style="height:60px; width: 60px;">
+          
+          <div class="container">
+            <div class="row">
+              {{#each imageGallery}}
+                <img src="{{ filename }}" class="card-img-top m-2" alt="{{ fieldname }}" style="height:60px; width: 60px;">
+              {{/each}}
             </div>
           </div>
-
+          
           <div class="card-body">
             <h5 class="card-title"> {{ title }} </h5>
             <p class="card-text"> {{ content }}

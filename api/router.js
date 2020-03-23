@@ -57,9 +57,10 @@ router.route('/logout')
     .get(LoginControllers.logout)
 
 // ******************* CRUD Article*********************
+const fields = upload.fields([{ name: 'image', maxCount: 1 }, { name: 'imageGallery', maxCount: 4 }])
 router.route('/Article')
     .get(ArticleCrud.getArticle)
-    .post(upload.single('image'), ArticleCrud.createArticle)
+    .post(fields, ArticleCrud.createArticle)
 
 router.route('/ArticleSingle/:id')
     .delete(ArticleSingle.deleteOneArticle)

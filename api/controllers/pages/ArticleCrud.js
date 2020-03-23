@@ -23,26 +23,43 @@ module.exports = {
     },
 
     createArticle: async(req, res) => {
-        const dbArticle = await Article.find({})
+        const dbArticle = await Article.find({}),
+            files = req.files.imageGallery,
+            image = req.files.image[0].filename,
+            arrayFiles = []
+        console.log('1')
+        console.log(req.body)
+        console.log('2')
+        console.log(image)
 
-        if (!req.file) {
+        for (let i = 0; i < files.length; i++) {
+            const dbFilename = files[i].filename
+            if (files) {
+                console.log(files[i].filename)
+                arrayFiles.push({
+                    name: files[i].fieldname,
+                    filename: `/assets/images/${files[i].filename}`,
+                    orifginalname: files[i].originalname
+                })
+            }
+        }
+        console.log('3')
+        console.log(arrayFiles)
+        if (!req.files) {
             console.log('pas de req.file')
             res.redirect('back')
-
-        } else if (req.file) {
+        } else if (req.files) {
             Article.create({
                 title: req.body.title,
-                image: `/assets/images/${req.file.filename}`,
-                name: req.file.filename,
+                image: `/assets/images/${image}`,
+                imageGallery: arrayFiles,
+                name: image,
                 content: req.body.content,
                 createDate: Date.now()
-
             })
             res.redirect('back')
-
         } else {
             res.redirect('back')
-
         }
     }
 }

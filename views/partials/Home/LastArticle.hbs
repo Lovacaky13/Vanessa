@@ -1,29 +1,49 @@
 {{!--------------- derniers articles postés -----------------------}}
 
 
-<section class="m-5 p-3" style="background-color:rgba(0, 250, 154, 0.75) ;">
-    <div class="container">
-        <div class="row  d-flex justify-content-around">
-            {{#each ArticleReverseLimited }}
-            <div class="col-md-4 p-3 ">
-                <div class="card Mycard " style="width: 100%;">
-                    <img src="{{ image }}" class="card-img-top" alt="..." style="height: 300px; width: 345px;">
-                    <div class="card-body">
-                        <h5 class="card-title"> {{ title }} </h5>
-                        <p class="card-text" id="demo"> {{content}}
-                        </p>
-                        <p>Publié le {{ moment createDate format="DD-MM-YYYY"}}</p>
-                        <div class="row">
-                            <div class="col-md-12 ">
-                                <a href="/ArticleSingle/{{_id}}" class="btn btn-info shadow">Voir l'article</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+<section class="m-5 p-3">
+  <div class="container">
+    <div class="row">
+      {{#each ArticleReverseLimited}}
+      <div class="col-md-4 ">
+        <div class="card Mycard  m-3 p-3" style="width: 100%;">
+          <div class="row">
+            <div class="col-md-12">
+              <img src="{{ image }}" class="card-img-top" alt="..." style="height: 200px;  width: 300px">
             </div>
-            {{/each }}
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              <img src="{{ imageGallery }}" class="card-img-top" alt="..." style="height:60px; width: 60px;">
+            </div>
+            <div class="col-md-3">
+              <img src="{{ imageGallery }}" class="card-img-top" alt="..." style="height:60px; width: 60px;">
+            </div>
+            <div class="col-md-3">
+              <img src="{{ imageGallery }}" class="card-img-top" alt="..." style="height:60px; width: 60px;">
+            </div>
+            <div class="col-md-3">
+              <img src="{{ imageGallery }}" class="card-img-top" alt="..." style="height:60px; width: 60px;">
+            </div>
+          </div>
+
+          <div class="card-body">
+            <h5 class="card-title"> {{ title }} </h5>
+            <p class="card-text"> {{ content }}
+            </p>
+            <p>Publié le {{ moment createDate format="DD-MM-YYYY"}}</p>
+          </div>
+          <div class="row mx-auto">
+            <div class="col-md-12">
+              <a href="/ArticleSingle/{{_id}}" class="btn btn-info shadow">Voir l'article</a>
+            </div>
+          </div>
         </div>
+      </div>
+      {{/each }}
     </div>
+  </div>
 </section>
 
 
