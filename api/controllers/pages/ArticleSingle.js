@@ -35,7 +35,8 @@ module.exports = {
                 console.log(dbArticle)
 
                 Article.updateOne(query, {
-                        title: req.body.title
+                        title: req.body.title,
+                        content: req.body.content
                     },
                     (err) => {
                         if (err) res.redirect('back')
@@ -70,13 +71,14 @@ module.exports = {
             query = {
                 _id: req.params.id
             },
-
             pathImg = path.resolve("public/images/" + dbArticle.name)
-
+        console.log('1');
         console.log(dbArticle);
+        console.log('2');
         console.log(query);
+        console.log('3');
         console.log(pathImg);
-
+        console.log('4');
         Article.deleteOne(query,
             (err) => {
                 if (!err) {
