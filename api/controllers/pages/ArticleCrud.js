@@ -4,7 +4,6 @@
  * 
  */
 
-
 const Article = require("../../db/models/Article"),
     path = require('path'),
     fs = require('fs'),
@@ -34,7 +33,9 @@ module.exports = {
             Article.create({
                 title: req.body.title,
                 image: `/assets/images/${req.file.filename}`,
+                imageGallery: `/assets/imageGallerys/${req.files.filename}`,
                 name: req.file.filename,
+                nameGallery: req.files.filename,
                 content: req.body.content,
                 createDate: Date.now()
 

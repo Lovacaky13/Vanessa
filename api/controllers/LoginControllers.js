@@ -15,8 +15,6 @@
              password
          } = req.body;
 
-
-
          User.findOne({
              email
          }, (error, user) => {
@@ -37,18 +35,18 @@
                          req.session.isVerified = user.isVerified
                          req.session.isBan = user.isBan
                          req.session.isAcheteur = user.isAcheteur
-                         console.log(user._id);
-                         res.json({ noError: true });
-                         res.redirect('back')
-                     } else {
-                         res.json({ message: "Email ou mot de passe incorrect." });
+                         console.log(user._id)
                          res.redirect('/')
+
+                     } else {
+                         return res.json({ message: "Email ou mot de passe incorrect." }),
+                             console.log(req.body)
                      }
                  })
              } else {
                  console.log('user pas dans la DB');
-                 res.json({ message: "Email ou mot de passe incorrect." });
-                 return res.redirect('/')
+                 return res.json({ message: "Email ou mot de passe incorrect." }),
+                     console.log(req.body)
              }
          })
      },

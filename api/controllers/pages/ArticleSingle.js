@@ -11,8 +11,6 @@ module.exports = {
             dbCom = await Com.find({ produit_id: req.params.id }),
             dbMessage = await Message.find({})
 
-
-
         res.render('ArticleSingle', {
             dbArticle, // Renvoyer la DB dans la page       
             sess,
@@ -68,13 +66,10 @@ module.exports = {
     },
 
     deleteOneArticle: async(req, res) => {
-
-
         const dbArticle = await Article.findById(req.params.id),
             query = {
                 _id: req.params.id
             },
-
 
             pathImg = path.resolve("public/images/" + dbArticle.name)
 
@@ -110,7 +105,6 @@ module.exports = {
             firstname: req.session.firstname,
             content: req.body.content,
         })
-
         res.redirect('back')
     },
 
@@ -120,7 +114,5 @@ module.exports = {
         console.log('delete com');
 
         res.redirect('back')
-
-
     }
 }

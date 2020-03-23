@@ -5,9 +5,9 @@ const ArticleSchema = new mongoose.Schema({
     title: String,
     content: String,
     image: String,
-    image1: String,
-    
+    imageGallery: Array,
     name: String,
+    nameGallery: String,
     createDate: {
         type: Date,
         defaut: new Date()

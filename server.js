@@ -10,12 +10,20 @@ const
     session = require('express-session'),
     MongoStore = require('connect-mongo')(session),
     helpers = require('handlebars-helpers'),
-    notifier = require('node-notifier'),
+    mailer = require("nodemailer"),
     //sharp = require('sharp'),
     connectFlash = require('connect-flash'), //customize le message d'erreur
     //keys = require('./config/keys'),
     port = 3000;
 
+
+//app.use
+app.use('/assets', express.static('public'))
+app.use(methodOverride('_method'))
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 
 //------------------------mongoose-------------------------------------
 
@@ -38,8 +46,6 @@ app.engine('hbs', hbs({
     layoutsDir: __dirname + '/views/layouts/',
     partialsDir: __dirname + '/views/partials/'
 }));
-
-
 
 var MomentHandler = require("handlebars.moment");
 MomentHandler.registerHelpers(Handlebars);
@@ -68,18 +74,9 @@ app.use('*', (req, res, next) => {
     next()
 })
 
-
-
 //connect - Flash(req.flash)
 app.use(connectFlash())
 
-//app.use
-app.use('/assets', express.static('public'))
-app.use(methodOverride('_method'))
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-    extended: false
-}));
 
 const Router = require('./api/router')
 app.use('/', Router)
@@ -89,7 +86,6 @@ Handlebars.registerHelper("counter", function(db) {
     if (!Array.isArray(db)) { return [] }
     return db.length
 });
-
 
 app.listen(port, () => {
     console.log("le serveur tourne sur le port: " + port);
