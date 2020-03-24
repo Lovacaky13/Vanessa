@@ -37,7 +37,7 @@ module.exports = {
             if (files) {
                 console.log(files[i].filename)
                 arrayFiles.push({
-                    name: files[i].fieldname,
+                    name: files[i].filename,
                     filename: `/assets/images/${files[i].filename}`,
                     orifginalname: files[i].originalname
                 })

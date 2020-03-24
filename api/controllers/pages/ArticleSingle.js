@@ -23,8 +23,8 @@ module.exports = {
         const dbArticle = await Article.findById(req.params.id),
             query = {
                 _id: req.params.id
-            }
-        pathImg = path.resolve("public/images/" + dbArticle.name)
+            },
+            pathImg = path.resolve("public/images/" + dbArticle.name)
         console.log(1)
         console.log(dbArticle.name)
         console.log(req.file)
@@ -66,32 +66,54 @@ module.exports = {
         }
     },
 
-    deleteOneArticle: async(req, res) => {
+    deleteOneArticle: async(req, res, next) => {
         const dbArticle = await Article.findById(req.params.id),
-            query = {
-                _id: req.params.id
-            },
-            pathImg = path.resolve("public/images/" + dbArticle.name)
-        console.log(dbArticle);
-        console.log(query);
-        console.log(pathImg);
+            dbCom = await Com.findById(req.params.id),
+            query = { _id: req.params.id },
+            queryCom = { produit_id: req.params.id },
+            pathImg = path.resolve("public/images/" + dbArticle.name),
+            files = dbArticle.imageGallery
+        console.log(dbArticle)
+        console.log(dbCom)
+        if (files && pathImg) {
+            Article.deleteOne(query,
+                (err) => {
+                    if (!err) {
 
-        Article.deleteOne(query,
-            (err) => {
-                if (!err) {
-                    fs.unlink(pathImg,
-                        (err) => {
-                            if (err) {
-                                console.log(err)
-                            } else {
-                                console.log('File Deleted.')
-                                res.redirect('/Article')
+                        for (let i = 0; i < files.length; i++) {
+                            const dbFilename = files[i].filename
+                            if (files) {
+                                fs.unlink(path.resolve('public/images/' + files[i].name),
+                                    (err) => {
+                                        if (err) console.log(err)
+                                        else console.log('imageGallery Supprimer') && next()
+                                    })
                             }
-                        })
-                } else {
-                    res.send(err)
+                        }
+                        if (pathImg) {
+                            fs.unlink(pathImg,
+                                (err) => {
+                                    if (err) console.log(err)
+                                    else console.log('imageSeul Supprimer') && next()
+                                })
+                        }
+                        if (queryCom) {
+                            Com.deleteMany(queryCom,
+                                (err) => {
+                                    if (err) console.log(err)
+                                    else console.log('Commentaire Supprimer') && next()
+                                }
+                            )
+                        } else next()
+                        return res.redirect('/')
+                    } else {
+                        console.log('Erreur de suppression Article')
+                        return res.send(err)
+                    }
+
                 }
-            })
+            )
+        }
     },
 
     addCom: async(req, res) => {

@@ -6,6 +6,16 @@
 
                 <h2>{{ dbArticle.title }}</h2>
                 <img src="{{ dbArticle.image }}" class="card-img-top" alt="..." style="width: 50%;">
+
+                <div class="container">
+                    <div class="row">
+                        {{#each imageGallery}}
+                        <img src="{{ filename }}" class="card-img-top m-2" alt="{{ fieldname }}"
+                            style="height:60px; width: 60px;">
+                        {{/each}}
+                    </div>
+                </div>
+
                 <h4 class="card-text"> {{dbArticle.content}}</h4>
 
                 <h3 class="p-2"> <u>Publié le {{ moment dbArticle.createDate format="DD-MM-YYYY" }}</u></h3>
@@ -56,6 +66,14 @@
                             <label>Photos :</label>
                             <input type="file" class="form-control" name='image'>
                         </div>
+
+
+
+                        <div class="form-group">
+                            <label>Photos galleries:</label>
+                            <input type="file" class="form-control" name='imageGallery' multiple>
+                        </div>
+
 
                         <div class="modal-footer">
                             <div class="row">
