@@ -13,12 +13,12 @@ module.exports = {
 
     getArticle: async(req, res) => {
         const dbArticle = await Article.find({}), // Transforme ton Model (consctructeur) en Json
-            dbMessage = await Message.find({}),
+            dbMessageNotChecked = await Message.find({ view: false }),
             sess = req.session
         res.render('Article', {
             dbArticle, // Renvoyer la DB dans la page     
             sess,
-            dbMessage
+            dbMessageNotChecked
         })
     },
 

@@ -17,7 +17,9 @@ const HomePage = require('./controllers/pages/HomePage'),
     Agenda = require('./controllers/pages/Agenda'),
     Calcul = require('./controllers/pages/Calcul'),
     InfoAsg = require('./controllers/pages/infoAsg'),
-    ArticleSingle = require('./controllers/pages/ArticleSingle')
+    ArticleSingle = require('./controllers/pages/ArticleSingle'),
+    Nodemailer = require('./controllers/Nodemailer'),
+    lostPassword = require('./controllers/pages/lostPassword')
 
 /* Import middlewares
  *******************/
@@ -32,13 +34,13 @@ const HomePage = require('./controllers/pages/HomePage'),
 //  Controller Page
 router.route('/')
     .get(HomePage.getArticle)
-
 router.route('/Agenda')
     .get(Agenda.get)
 router.route('/Calcul')
     .get(Calcul.get)
 router.route('/InfoAsg')
     .get(InfoAsg.get)
+
 
 // ******************* Page Admin CRUD User s'identifier modifier supprimer utilisateur *********************
 router.route('/User')
@@ -51,7 +53,7 @@ router.route('/adminUser/:id')
 
 // ******************* se loguer User  (express/session) *********************
 
-router.route('/register') //router.route('/page dans laquelle on fait le post)
+router.route('/login') //router.route('/page dans laquelle on fait le post)
     .post(LoginControllers.login) // .post(methode)(nom du controllers.nom du post donné)
 router.route('/logout')
     .get(LoginControllers.logout)
@@ -93,5 +95,23 @@ router.route('/Contact/:id')
     .delete(Contact.delMessage)
     .put(Contact.put)
 
+// ******************* Nodemailer*********************  
+router.route('/nodemailerTest')
+    .get(Nodemailer.test)
+
+router.route('/send')
+    .get(Nodemailer.sendVerif)
+
+router.route('/verify/:id')
+    .get(Nodemailer.verifMail)
+
+
+// ******************* Nodemailer mot de passe oublié*********************  
+router.route('/lostPassword')
+    .post(lostPassword.sendVerif)
+
+router.route('/lostPassword/:id')
+    .get(lostPassword.verifMail)
+    .put(lostPassword.updatePassword)
 
 module.exports = router

@@ -12,7 +12,7 @@ module.exports = {
     getArticle: async(req, res) => {
         const dbArticle = await Article.find({}); // Transforme ton Model (consctructeur) en Json
         affdbarticle = dbArticle.reverse().slice(0, 3);
-        dbMessage = await Message.find({})
+        dbMessageNotChecked = await Message.find({ view: false })
 
 
         sess = req.session,
@@ -21,7 +21,7 @@ module.exports = {
                 //layout: 'admin',
                 ArticleReverseLimited: affdbarticle, // Renvoyer la DB dans la page      
                 sess,
-                dbMessage
+                dbMessageNotChecked
 
             })
     }

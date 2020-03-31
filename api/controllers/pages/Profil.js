@@ -4,8 +4,6 @@
  * 
  */
 
-
-
 const User = require("../../db/models/User"),
     path = require('path'),
     bcrypt = require('bcrypt'),
@@ -17,7 +15,7 @@ module.exports = {
             sess = req.session,
             dbUserID = await User.findById(sess.userId),
             emailProfile = await req.body.email,
-            dbMessage = await Message.find({})
+            dbMessageNotChecked = await Message.find({ view: false })
 
         console.log(sess);
         if (!req.session) {
@@ -30,7 +28,7 @@ module.exports = {
             res.render("Profil", {
                 sess,
                 dbUserID,
-                dbMessage
+                dbMessageNotChecked
             })
         } else {
             res.redirect('/')
@@ -113,8 +111,3 @@ module.exports = {
         }
     }
 }
-
-
-// hash admin
-// $2b$10$m2RALX6eM3xavzI./oUu5upIwFxscD0yjGpz6AkXqS0AZ2XWasO0m
-// $2b$10$wYOtzW3s3OA8aIwwtmS2g.OGE8SOVQbBcGRHoqVwdIjKyIUa56HEy

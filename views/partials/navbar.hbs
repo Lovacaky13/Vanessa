@@ -19,17 +19,14 @@
                 <li class="nav-item active ">
                     <a class="nav-link  font-weight-bold" href="/Contact">Contact</a>
                 </li>
-
-
+ 
                 {{#if user}}
 
                 <li class="nav-item active">
                     <a class="nav-link  font-weight-bold" href="/Profil/{{sess.userId}}">Mon Compte</a>
                 </li>
 
-                {{!-- <li class="nav-item active ">
-                    <a class="nav-link   font-weight-bold" href="/logout">Se Déconnecter</a>
-                </li> --}}
+                
 
                 <!-- Button trigger modal logout-->
                 <li class="nav-item active ">
@@ -40,8 +37,13 @@
                 {{else}}
                 <!-- Button trigger modal register-->
                 <li class="nav-item active ">
-                    <a class="nav-link  font-weight-bold" data-toggle="modal" data-target="#register" href="#">Se
-                        connecter/S'inscrire</a>
+                    <a class="nav-link  font-weight-bold" data-toggle="modal" data-target="#register" href="#">S'inscrire</a>
+                </li>
+
+                 <!-- Button trigger modal register-->
+                <li class="nav-item active ">
+                    <a class="nav-link  font-weight-bold" data-toggle="modal" data-target="#login" href="#">Se
+                        connecter</a>
                 </li>
 
                 {{/if}}
@@ -73,5 +75,9 @@
 {{!-- Appel le modal de s'enregistrer/se connecter --}}
 {{> navbar/register }}
 
+{{!-- Appel le modal se connecter --}}
+{{> navbar/login }}
+
 {{!-- Appel le modal de se deconnecter --}}
 {{> navbar/logout }}
+

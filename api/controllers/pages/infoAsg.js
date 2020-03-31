@@ -4,11 +4,11 @@ const Message = require('../../db/models/Message')
 module.exports = {
     get: async(req, res) => {
         const sess = req.session,
-            dbMessage = await Message.find({})
+            dbMessageNotChecked = await Message.find({ view: false })
 
         res.render('InfoAsg', {
             sess,
-            dbMessage
+            dbMessageNotChecked
         })
     }
 }

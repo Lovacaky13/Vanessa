@@ -1,0 +1,106 @@
+<!-- Modal  login   -->
+<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Se Connecter</h5>
+            </div>
+
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label id="messageErrorAuth" class="text-danger"></label>
+                    </div>
+                </div>
+                <div id='formLogin' class="row register-form">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Email :</label>
+                            <input type="email" id='formEmail' name="email" class="form-control" placeholder="Email"
+                                required />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Mot de passe :</label>
+                            <input type="password" id='formPassword' name="password" class="form-control"
+                                placeholder="Password" required />
+                        </div>
+                    </div>
+                </div>
+                <input type="checkbox" aria-label="Checkbox for following text input" data-toggle="modal"
+                    data-target="#modalmdpOublié"> <p>mot de passe oublié</p>
+            </div>
+
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-info" onclick="connexionModal()">Me connecter</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{{!-- Modal mot de passe oublié --}}
+<div class="modal fade" id="modalmdpOublié" tabindex="-1" role="dialog" aria-labelledby="modalmdpOublié"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <form action="/lostPassword" method="post" enctype="application/x-www-form-urlencoded">
+                    <div class="modal-body">
+                        <label for="formGroupExampleInput">Email : </label>
+                        <input type="email" class="form-control" name='email' id="formGroupExampleInput">
+                        <div class="modal-footer">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <button type="button" class="btn btn-danger m-3"
+                                        data-dismiss="modal">Annuler</button>
+                                </div>
+                                <div class="col-md-6">
+                                    <button type="submit" class="btn btn-success m-3">Envoyer </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function connexionModal() {
+        const formEmail = document.getElementById('formEmail').value
+        const formPassword = document.getElementById('formPassword').value
+        console.log("test");
+        $.ajax({
+            url: '/login',
+            type: 'POST',
+            data: { email: formEmail, password: formPassword },
+            dataType: "json",
+            success: function (json, statut) {
+
+                console.log('error success sadazedea')
+                console.log(json.message);
+
+                $("#messageErrorAuth").text(json.message);
+                if (json.noError) {
+                    window.location.replace("/");
+                }
+            },
+            error: function (json, resultat, statut, erreur) {
+                console.log('erreur login modal')
+                console.log(json)
+                console.log(resultat);
+                console.log(statut);
+                console.log(erreur);
+                if (!json.noError) {
+                    alert('Bonjour, Vous etes connecté !')
+                    window.location.replace("/");
+
+                }
+            }
+        });
+    };
+</script>

@@ -1,45 +1,63 @@
+<h1 class="font-weight-bold text-center m-5">Vanessa Binet - ASG -</h1>
+
 <section>
     <div class="container">
         <div class="row">
-            <div class="col-md-12 ">
-                <h1 class="font-weight-bold text-center ">Vanessa Binet - ASG -</h1>
-
-                <h2>{{ dbArticle.title }}</h2>
-                <img src="{{ dbArticle.image }}" class="card-img-top" alt="..." style="width: 50%;">
-
-                <div class="container">
-                    <div class="row">
-                        {{#each imageGallery}}
-                        <img src="{{ filename }}" class="card-img-top m-2" alt="{{ fieldname }}"
-                            style="height:60px; width: 60px;">
-                        {{/each}}
-                    </div>
-                </div>
-
-                <h4 class="card-text"> {{dbArticle.content}}</h4>
-
-                <h3 class="p-2"> <u>Publié le {{ moment dbArticle.createDate format="DD-MM-YYYY" }}</u></h3>
-                {{#if isAdmin}}
-                <div class="container d-flex justify-content-center">
-                    <div class="row">
-                        <div class="col-md-5 ">
-                            {{!-- Button trigger modal modifier--}}
-                            <button type="submit" class="btn btn-warning" data-toggle="modal"
-                                data-target="#modalModifArticle{{_id}}"> <i class="fas fa-pencil-alt"></i>
-                                Modifier un article</button>
-                        </div>
-                        <div class="col-md-6">
-                            {{!-- Button trigger modal sup article --}}
-                            <button type="button" class="btn btn-danger " data-toggle="modal"
-                                data-target="#supArticle{{_id}}"><i class="fas fa-trash-alt"></i> Supprimer un article
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                {{/if}}
+            <div class="col-md-12">
+                <h1> <font face="URW Chancery L, cursive">{{ dbArticle.title }}</font></h1>
             </div>
         </div>
     </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 d-flex justify-content-center">
+                <a href="#"><img src="{{ dbArticle.image }}" data-lightbox="image-1" data-title="My caption"
+                        class="card-img-top" alt="..." style="height:530px; width: 550px; "></a>
+            </div>
+
+            <div class="col-md-3 ">
+                {{#each dbArticle.imageGallery}}
+                <a href="#"><img src="{{ filename }}" data-lightbox="roadtrip" class="card-img-top m-2 "
+                        alt="{{ fieldname }}" style="height:120px; width: 120px;"></a>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 ">
+                <h4 class="card-text"> {{dbArticle.content}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 ">
+                <h3 class="p-2"> <u>Publié le {{ moment dbArticle.createDate format="DD-MM-YYYY" }}</u></h3>
+                {{#if isAdmin}}
+            </div>
+        </div>
+    </div>
+    <div class="container d-flex justify-content-center">
+        <div class="row">
+            <div class="col-md-5 ">
+                {{!-- Button trigger modal modifier--}}
+                <button type="submit" class="btn btn-warning" data-toggle="modal"
+                    data-target="#modalModifArticle{{_id}}"> <i class="fas fa-pencil-alt"></i>
+                    Modifier un article</button>
+            </div>
+            <div class="col-md-6">
+                {{!-- Button trigger modal sup article --}}
+                <button type="button" class="btn btn-danger " data-toggle="modal" data-target="#supArticle{{_id}}"><i
+                        class="fas fa-trash-alt"></i> Supprimer un article
+                </button>
+            </div>
+        </div>
+    </div>
+    {{/if}}
 </section>
 
 {{> ArticleSingle/Commentaire}}
@@ -66,8 +84,6 @@
                             <label>Photos :</label>
                             <input type="file" class="form-control" name='image'>
                         </div>
-
-
 
                         <div class="form-group">
                             <label>Photos galleries:</label>
@@ -116,3 +132,12 @@
         </div>
     </div>
 </form>
+
+{{!-- <script>
+
+    lightbox.option({
+        'resizeDuration': 200,
+        'wrapAround': true
+    })
+
+</script> --}}

@@ -10,11 +10,11 @@ const
     session = require('express-session'),
     MongoStore = require('connect-mongo')(session),
     helpers = require('handlebars-helpers'),
-    mailer = require("nodemailer"),
     //sharp = require('sharp'),
     connectFlash = require('connect-flash'), //customize le message d'erreur
     //keys = require('./config/keys'),
     port = 3000;
+
 
 
 //app.use
