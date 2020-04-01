@@ -86,6 +86,7 @@ body {
     color: #212529;
     text-align: left;
     background: url("../images/personnesagees.jpeg");
+    background-attachment: fixed;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {

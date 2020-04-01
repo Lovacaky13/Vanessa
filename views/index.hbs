@@ -1,4 +1,4 @@
-
+{{!-- 
 <a href="/nodemailerTest">
     <button>test Nodemailer</button>
 </a>
@@ -6,7 +6,17 @@
 
 <a href="/send">
     <button>Send Verification Nodemailer</button>
-</a>
+</a> --}}
+
+{{#if user}}
+ {{else}}
+<h5 class="defileParent text-white">
+    <span class="defile"
+      data-text=" Pour profiter pleinenment du site (voir plus de photos, ajouter des commentaires... Inscrivez vous !) "  >
+         Pour profiter pleinenment du site (voir plus de photos, ajouter des commentaires... Inscrivez vous !
+    </span>
+</h5> {{/if}}
+
 
 {{> Home/Bonjour}}
 
@@ -16,4 +26,55 @@
 
 {{> Home/LienInfo}}
 
+<style>
+.defileParent {
+	display: block;
+	margin: 3em auto;
+	overflow: hidden;
+	position: relative;
+	table-layout: fixed;
+	width: 1500px;
+}
 
+
+   .defile {
+	display:block;
+	-webkit-animation:linear marqueelike 20s infinite ;
+	-moz-animation:linear marqueelike 20s infinite ;
+	-o-animation:linear marqueelike 20s infinite ;
+	-ms-animation:linear marqueelike 20s infinite ;
+	animation:linear marqueelike 20s infinite ;
+	margin-left:-100%;
+	padding:0 5px;
+	text-align:left;
+	height:125px;
+}
+
+.defile:after {
+	content:attr(data-text);
+	position:absolute;
+	white-space:nowrap;
+	padding-left:10px;
+}
+
+@-webkit-keyframes marqueelike {
+	0%, 100% {margin-left:0;}
+	99.99% {margin-left:-100%;}
+ }
+@-moz-keyframes marqueelike {
+	0%, 100% {margin-left:0;}
+	99.99% {margin-left:-100%;}
+ }
+@-o-keyframes marqueelike {
+	0%, 100% {margin-left:0;}
+	99.99% {margin-left:-100%;}
+ }
+@-ms-keyframes marqueelike {
+	0%, 100% {margin-left:0;}
+	99.99% {margin-left:-100%;}
+ }
+@keyframes marqueelike {
+	0%, 100% {margin-left:0;}
+	99.99% {margin-left:-100%;}
+ }
+</style>

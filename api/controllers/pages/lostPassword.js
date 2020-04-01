@@ -91,7 +91,7 @@ module.exports = {
         res.render('index')
     },
     verifMail: async(req, res) => {
-        //const handshakeEmail = await User.find({ email: mailOptions.to })
+
         const handshakeEmail = await User.findOne({
             email: mailOptions.to
         })
