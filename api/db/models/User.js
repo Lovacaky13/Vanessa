@@ -1,63 +1,61 @@
-const mongoose = require('mongoose')
-bcrypt = require('bcrypt')
-UserSchema = new mongoose.Schema({
+const mongoose = require('mongoose'),
+    bcrypt = require('bcrypt'),
+    UserSchema = new mongoose.Schema({
 
-    // googleId:String,
+        // googleId:String,
 
-    // username:String,
+        // username:String,
 
-    status: {
-        type: String,
-        default: 'user'
-    },
+        status: {
+            type: String,
+            default: 'user'
+        },
 
-    lastname: {
-        type: String,
-        required: [true, 'le nom est obligatoire']
-    },
+        lastname: {
+            type: String,
+        },
 
-    firstname: {
-        type: String,
-        required: [true, 'le prénom est obligatoire']
-    },
+        firstname: {
+            type: String,
+            //required: [true, 'le prénom est obligatoire']
+        },
 
-    adress: {
-        type: String,
-        // required: [true, 'l adresse est obligatoire']
-    },
+        adress: {
+            type: String,
+        },
 
-    zip: {
-        type: Number,
-        // required: [true, 'le code postal est obligatoire']
-    },
-    city: {
-        type: String,
-        // required: [true, 'la ville est obligatoire']
-    },
+        zip: {
+            type: Number,
+        },
 
-    email: {
-        type: String,
-        required: [true, 'l email est obligatoire'],
-        unique: true //l'email ne doit pas etre identique aux autres utilisateurs
-    },
-    password: {
-        type: String,
-        required: [true, 'mot de passe est obligatoire']
-    },
+        city: {
+            type: String,
+        },
 
-    isAdmin: {
-        type: Boolean,
-    },
+        email: {
+            type: String,
+            //required: [true, 'l email est obligatoire'],
+            unique: true //l'email ne doit pas etre identique aux autres utilisateurs
+        },
 
-    isBan: {
-        type: Boolean,
-    },
+        password: {
+            type: String,
+            //required: [true, 'mot de passe est obligatoire']
+        },
 
-    isVerified: {
-        type: Boolean,
-    },
+        isAdmin: {
+            type: Boolean,
+        },
 
-})
+        isBan: {
+            type: Boolean,
+        },
+
+        isVerified: {
+            type: Boolean,
+        },
+
+    })
 
 // crypter le mot de passe
 UserSchema.pre('save', function(next) {

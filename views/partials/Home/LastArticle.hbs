@@ -1,29 +1,25 @@
 {{!--------------- derniers articles postés -----------------------}}
 
 <section class="m-5 p-3">
-  <div class="container" style="background-color:aquamarine">
+  <div class="container">
     <div class="row">
       {{#each ArticleReverseLimited}}
       <div class="col-md-4 ">
-        <div class="card Mycard  m-3 p-3" style="width: auto;">
+        <div class="card Mycard  m-3 p-3" style="width: 100%;">
           <div class="row">
             <div class="col-md-12">
-              <img src="{{ image }}" class="card-img-top" alt="..."
-                style="max-width : 100%; max-heigth: 250px; display: block;">
+              <img src="{{ image }}" class="card-img-top" alt="..."  style="max-width : 100%; heigth: 50px; display: block;">
             </div>
           </div>
-
+          
           <div class="container">
             <div class="row">
-              <div class="card" style="width: 3rem;">
-                {{#each imageGallery}}
-                <img src="{{ filename }}" class="card-img-top m-2" alt="{{ fieldname }}"
-                  style="max-width : 100%; heigth: 200px; display: block;">
-                {{/each}}
-              </div>
+              {{#each imageGallery}}
+                <img src="{{ filename }}" class="card-img-top m-2" alt="{{ fieldname }}" style="height:60px; width: 60px;">
+              {{/each}}
             </div>
           </div>
-
+          
           <div class="card-body">
             <h5 class="card-title"> {{ title }} </h5>
             <p class="card-text"> {{ content }}
