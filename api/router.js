@@ -18,8 +18,9 @@ const HomePage = require('./controllers/pages/HomePage'),
     Calcul = require('./controllers/pages/Calcul'),
     InfoAsg = require('./controllers/pages/infoAsg'),
     ArticleSingle = require('./controllers/pages/ArticleSingle'),
-    Nodemailer = require('./controllers/Nodemailer'),
-    lostPassword = require('./controllers/pages/lostPassword')
+    lostPassword = require('./controllers/pages/lostPassword'),
+    VerifMail = require('./controllers/pages/VerifMail'),
+    SendMail = require('./controllers/pages/SendMail')
 
 /* Import middlewares
  *******************/
@@ -40,7 +41,10 @@ router.route('/Calcul')
     .get(Calcul.get)
 router.route('/InfoAsg')
     .get(InfoAsg.get)
-
+router.route('/SendMail')
+    .get(SendMail.get)
+router.route('/VerifMail')
+    .get(VerifMail.get)
 
 // ******************* Page Admin CRUD User s'identifier modifier supprimer utilisateur *********************
 router.route('/User')
@@ -95,17 +99,6 @@ router.route('/Contact/:id')
     .delete(Contact.delMessage)
     .put(Contact.put)
 
-// ******************* Nodemailer*********************  
-router.route('/nodemailerTest')
-    .get(Nodemailer.test)
-
-router.route('/send')
-    .get(Nodemailer.sendVerif)
-
-router.route('/verify/:id')
-    .get(Nodemailer.verifMail)
-
-
 // ******************* Nodemailer mot de passe oublié*********************  
 router.route('/lostPassword')
     .post(lostPassword.sendVerif)
@@ -113,5 +106,9 @@ router.route('/lostPassword')
 router.route('/lostPassword/:id')
     .get(lostPassword.verifMail)
     .put(lostPassword.updatePassword)
+
+// ******************* Nodemailer Verif Email*********************  
+router.route('/SendMail/:id')
+    .get(RegisterControllers.verifMail)
 
 module.exports = router

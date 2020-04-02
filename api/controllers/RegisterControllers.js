@@ -5,15 +5,43 @@
   */
  const User = require('../db/models/User'),
      path = require('path'),
-     fs = require('fs')
+     fs = require('fs'),
+     nodemailer = require('nodemailer'),
+     bcrypt = require('bcrypt')
+
+ transporter = nodemailer.createTransport({
+     host: "smtp.gmail.com",
+     service: 'gmail',
+     port: '587',
+     auth: {
+         user: "lovacaky13@gmail.com",
+         pass: "17051978"
+     }
+ })
+
+ var rand, mailOptions, host, link;
 
 
  module.exports = {
+
      userCreate: async(req, res) => {
          const handshakeEmail = await User.findOne({
              email: req.body.email
          })
+         rand = Math.floor((Math.random() * 100) + 54)
+         host = req.get('host')
+         link = "http://" + req.get('host') + "/SendMail/" + rand
 
+         console.log(req.body)
+         console.log(link)
+         mailOptions = {
+             from: 'lovacaky13@gmail.com',
+             to: req.body.email,
+             subject: "vérification de votre email",
+             rand: rand,
+             html: "Bonjour.<br> Merci de cliquer sur le lien ci-dessous pour verifier votre email : <br><a href=" + link + ">Cliquer ici pour pour verifier votre email</a>"
+         }
+         console.log(mailOptions)
          console.log(handshakeEmail);
          console.log(req.body);
 
@@ -32,7 +60,6 @@
                      isAdmin: false,
                      isBan: false,
                      isVerified: false,
-
                  },
 
                  (error, user) => {
@@ -41,17 +68,72 @@
                          res.redirect('/')
 
                      } else {
-                         console.log(req.body)
-                         res.redirect('/')
+                         transporter.sendMail(mailOptions, (err, res, next) => {
+                             if (err) {
+                                 console.log(err)
+                                 res.end("error")
+                             } else {
+                                 console.log("Message Envoyé")
+                                 next()
+                             }
+                         })
                      }
                  })
-
          } else {
              return res.json({
                      message: "Email deja utilisé"
                  }),
                  console.log('user dans la db ')
          }
+         res.redirect('/')
+     },
 
+     verifMail: async(req, res) => {
+
+         const handshakeEmail = await User.findOne({
+             email: mailOptions.to
+         })
+
+         console.log({
+             handshakeEmail
+         })
+         console.log('handshake email')
+         console.log(handshakeEmail)
+         console.log(req.protocol + "://" + req.get('host'))
+         console.log('Page verif' + mailOptions)
+         console.log(req.session)
+
+         if (!handshakeEmail) {
+             res.redirect('/')
+         } else {
+             if ((req.protocol + "://" + req.get('host')) == ("http://" + host)) {
+                 console.log("Domain is matched. Information is from Authentic email")
+
+                 if (req.params.id == mailOptions.rand) {
+
+                     User.updateOne(
+                         handshakeEmail, {
+                             isVerified: true,
+                         },
+                         (err) => {
+                             if (err) {
+                                 console.log(err)
+                             } else {
+                                 console.log("email is verified")
+                                 res.render('SendMail', {
+                                     handshakeEmail
+                                 })
+                             }
+                         }
+                     )
+
+                 } else {
+                     console.log("email is not verified")
+                     res.end("<h1>Bad Request</h1>")
+                 }
+             } else {
+                 res.redirect('/')
+             }
+         }
      }
  }
