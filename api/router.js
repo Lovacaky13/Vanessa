@@ -24,8 +24,7 @@ const HomePage = require('./controllers/pages/HomePage'),
 
 /* Import middlewares
  *******************/
-// const auth = require('./middleware/auth'),
-//     isAdmin = require('./middleware/isAdmin')
+//const isAdmin = require('./Middleware/isAdmin')
 
 
 /*

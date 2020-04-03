@@ -87,6 +87,12 @@ Handlebars.registerHelper("counter", function(db) {
     return db.length
 });
 
+
+//Page 404
+app.use((req, res) => {
+    res.render('Page 404')
+})
+
 app.listen(port, () => {
     console.log("le serveur tourne sur le port: " + port);
 });

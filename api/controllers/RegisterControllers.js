@@ -7,15 +7,16 @@
      path = require('path'),
      fs = require('fs'),
      nodemailer = require('nodemailer'),
-     bcrypt = require('bcrypt')
+     bcrypt = require('bcrypt'),
+     nodemailerKeys = require('../config/keys')
 
  transporter = nodemailer.createTransport({
      host: "smtp.gmail.com",
      service: 'gmail',
      port: '587',
      auth: {
-         user: "lovacaky13@gmail.com",
-         pass: "17051978"
+         user: nodemailerKeys.user,
+         pass: nodemailerKeys.pass
      }
  })
 
