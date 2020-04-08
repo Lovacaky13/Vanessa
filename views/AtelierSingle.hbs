@@ -1,0 +1,144 @@
+<h1 class="font-weight-bold text-center m-5 d-flex justify-content-end">Vanessa Binet - ASG -</h1>
+
+
+<section>
+  <div class="container-fluid ">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="text-center">
+          <font face="URW Chancery L, cursive">{{ dbAtelier.title }}</font>
+        </h1>
+
+        <div class="container p-5 d-flex justify-content-center">
+          <div class="row ">
+            <div class="col-md-12 ">
+              <a href="{{ dbAtelier.image }}"><img src="{{ dbAtelier.image }}" class="rounded-circle" alt="..."
+                  style="width: 150px; height: 150px;"></a>
+
+              {{#each dbAtelier.imageGallery}}
+              <a href="{{ filename }}"><img src="{{ filename }}" class="rounded-circle" alt="{{ fieldname }}"
+                  style="height:150px; width: 150px;"></a>
+              {{/each}}
+            </div>
+          </div>
+        </div>
+
+
+        <div class="container p-3">
+          <div class="row">
+            <div class="col-md-12">
+              <h4 class="card-text" style="text-align: justify;"> {{dbAtelier.content}}</h4>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="container p-3">
+          <div class="row">
+            <div class="col-md-4 ">
+              <h3 class="p-2"> <u>Publié le {{ moment dbAtelier.createDate format="DD-MM-YYYY" }}</u>
+              </h3>
+              {{#if isAdmin}}
+            </div>
+          </div>
+        </div>
+
+        <div class="container d-flex justify-content-center">
+          <div class="row">
+            <div class="col-md-5 ">
+              {{!-- Button trigger modal modifier Atelier--}}
+              <button type="submit" class="btn btn-warning" data-toggle="modal" data-target="#modalModifAtelier{{_id}}">
+                <i class="fas fa-pencil-alt"></i>
+                Modifier un Atelier</button>
+            </div>
+            <div class="col-md-6">
+              {{!-- Button trigger modal sup Atelier --}}
+              <button type="button" class="btn btn-danger " data-toggle="modal" data-target="#supAtelier{{_id}}"><i
+                  class="fas fa-trash-alt"></i> Supprimer un Atelier </button>
+            </div>
+          </div>
+        </div>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+{{> AtelierSingle/Commentaire}}
+
+{{!-- Modal Modifier un Atelier --}}
+<div class="modal fade" id="modalModifAtelier{{_id}}" tabindex="-1" role="dialog" aria-labelledby="modalModifAtelier"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modifier un Atelier</h5>
+      </div>
+      <form action="/AtelierSingle/{{dbAtelier.id}}?_method=PUT" method="post" enctype="multipart/form-data">
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Titre :</label>
+            <input type="text" class="form-control" name='title' id="formGroupExampleInput"
+              value="{{ dbAtelier.title }}">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">Contenu :</label>
+            <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" rows="10"
+              name="content"> {{ dbAtelier.content }} </textarea>
+            <script>CKEDITOR.replace('content');</script>
+          </div>
+
+          <div class="form-group">
+            <label>Photos :</label>
+            <input type="file" class="form-control" name='image'>
+          </div>
+
+          <div class="form-group">
+            <label>Photos galleries:</label>
+            <input type="file" class="form-control" name='imageGallery' multiple>
+          </div>
+
+
+          <div class="modal-footer">
+            <div class="row">
+              <div class="col-md-6">
+                <button type="button" class="btn btn-warning m-3" data-dismiss="modal">Annuler</button>
+              </div>
+              <div class="col-md-6">
+                <button type="submit" class="btn btn-danger m-3">Confirmer</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+{{!-- Modal supprimer Atelier --}}
+
+<form action="/AtelierSingle/{{dbAtelier.id}}/?_method=DELETE" method="post">
+  <div class="modal fade" id="supAtelier{{_id}}" tabindex="-1" role="dialog" aria-labelledby="supAtelier"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Etes-vous sûr de supprimer l'Atelier {{ title }} <span style="color:red">
+              {{dbAtelier.title}} </span> ?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Non</button>
+          <button type="submit" class="btn btn-success">Oui</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<script src="/assets/js/lightbox.js" type="module" defer></script>

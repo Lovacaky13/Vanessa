@@ -10,8 +10,6 @@ const
     session = require('express-session'),
     MongoStore = require('connect-mongo')(session),
     helpers = require('handlebars-helpers'),
-    //sharp = require('sharp'),
-    connectFlash = require('connect-flash'), //customize le message d'erreur
     //keys = require('./config/keys'),
     port = 3000;
 
@@ -74,10 +72,6 @@ app.use('*', (req, res, next) => {
     next()
 })
 
-//connect - Flash(req.flash)
-app.use(connectFlash())
-
-
 const Router = require('./api/router')
 app.use('/', Router)
 
@@ -86,7 +80,6 @@ Handlebars.registerHelper("counter", function(db) {
     if (!Array.isArray(db)) { return [] }
     return db.length
 });
-
 
 //Page 404
 app.use((req, res) => {

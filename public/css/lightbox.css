@@ -68,6 +68,8 @@
     width: 38px;
     height: 38px;
     opacity: .5;
+    background: url(/assets/images/loader.svg) center center no-repeat;
+    z-index: 11;
 }
 
 @keyframes lightboxIn {

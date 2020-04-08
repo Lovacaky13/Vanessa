@@ -3,7 +3,8 @@
  *********/
 const express = require('express'),
     router = express.Router(),
-    upload = require('./config/multer') // image
+    upload = require('./config/multer'), // image
+    uploadAtelier = require('./config/multerAtelier') // image
 
 /* Import Controller
  *******************/
@@ -20,12 +21,14 @@ const HomePage = require('./controllers/pages/HomePage'),
     ArticleSingle = require('./controllers/pages/ArticleSingle'),
     lostPassword = require('./controllers/pages/lostPassword'),
     VerifMail = require('./controllers/pages/VerifMail'),
-    SendMail = require('./controllers/pages/SendMail')
+    SendMail = require('./controllers/pages/SendMail'),
+    Atelier = require('./controllers/pages/Atelier'),
+    AtelierSingle = require('./controllers/pages/AtelierSingle')
 
 /* Import middlewares
  *******************/
-//const isAdmin = require('./Middleware/isAdmin')
-
+const isAdmin = require('./Middleware/isAdmin'),
+    auth = require('./Middleware/auth')
 
 /*
  * Controllers
@@ -35,7 +38,7 @@ const HomePage = require('./controllers/pages/HomePage'),
 router.route('/')
     .get(HomePage.getArticle)
 router.route('/Agenda')
-    .get(Agenda.get)
+    .get(isAdmin, Agenda.get)
 router.route('/Calcul')
     .get(Calcul.get)
 router.route('/InfoAsg')
@@ -49,10 +52,10 @@ router.route('/VerifMail')
 router.route('/User')
     .post(RegisterControllers.userCreate)
 router.route('/admin')
-    .get(Admin.get)
+    .get(isAdmin, Admin.get)
 router.route('/adminUser/:id')
-    .put(Admin.updateUser)
-    .delete(Admin.deleteUser)
+    .put(isAdmin, Admin.updateUser)
+    .delete(isAdmin, Admin.deleteUser)
 
 // ******************* se loguer User  (express/session) *********************
 
@@ -65,18 +68,28 @@ router.route('/logout')
 const fields = upload.fields([{ name: 'image', maxCount: 1 }, { name: 'imageGallery', maxCount: 4 }])
 router.route('/Article')
     .get(ArticleCrud.getArticle)
-    .post(fields, ArticleCrud.createArticle)
+    .post(fields, isAdmin, ArticleCrud.createArticle)
 
 router.route('/ArticleSingle/:id')
-    .delete(ArticleSingle.deleteOneArticle)
+    .delete(isAdmin, ArticleSingle.deleteOneArticle)
     .get(ArticleSingle.getArticle)
-    .put(upload.single('image'), ArticleSingle.updateArticle)
+    .put(isAdmin, upload.single('image'), ArticleSingle.updateArticle)
 
+// ******************* CRUD Atelier *********************
+const fieldsAtelier = uploadAtelier.fields([{ name: 'image', maxCount: 1 }, { name: 'imageGallery', maxCount: 4 }])
+router.route('/Atelier')
+    .get(Atelier.getAtelier)
+    .post(fieldsAtelier, isAdmin, Atelier.createAtelier)
+
+router.route('/AtelierSingle/:id')
+    .delete(isAdmin, AtelierSingle.deleteOneAtelier)
+    .get(AtelierSingle.getAtelier)
+    .put(isAdmin, uploadAtelier.single('image'), AtelierSingle.updateAtelier)
 
 // ******************* Commentaire*********************  
 router.route('/comment/:id')
     .post(ArticleSingle.addCom)
-    .delete(ArticleSingle.DelCom)
+    .delete(isAdmin, ArticleSingle.DelCom)
 
 // ******************* Mon Compte*********************  
 
@@ -95,8 +108,8 @@ router.route('/Contact')
     .post(Contact.addMessage)
 
 router.route('/Contact/:id')
-    .delete(Contact.delMessage)
-    .put(Contact.put)
+    .delete(isAdmin, Contact.delMessage)
+    .put(isAdmin, Contact.put)
 
 // ******************* Nodemailer mot de passe oublié*********************  
 router.route('/lostPassword')
