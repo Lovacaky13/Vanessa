@@ -25,8 +25,8 @@ app.use(bodyParser.urlencoded({
 
 //------------------------mongoose-------------------------------------
 
-//const db = require('./config/keys.js').mongoUrl
-const db = 'mongodb://localhost:27017/vanessa';
+const db = require('./api/config/keys.js').db.cloud
+    // const db = 'mongodb://localhost:27017/vanessa';
 mongoose.connect(db, {
         useFindAndModify: false,
         useCreateIndex: true,
