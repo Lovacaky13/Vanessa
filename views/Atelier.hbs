@@ -1,8 +1,13 @@
+
+<section class="position">
+     <h1><font face="URW Chancery L, cursive">Les ateliers proposés :</font></h1>
+</section>
+
 {{#if isAdmin}}
 
-<section class="m-3">
+<section class="m-3 position-btn ">
     <!-- Button trigger modal ajouter un Atelier -->
-    <div class="row d-flex justify-content-center ">
+    <div class="row ">
         <button type="button" class="btn btn-info  " data-toggle="modal" data-target="#Atelier">
             Créer un nouvel Atelier
         </button>
@@ -51,32 +56,47 @@
 
 {{/if}}
 
-<section>
-     <h1><font face="URW Chancery L, cursive">Les ateliers proposés :</font></h1>
-</section>
 
-<section>
+
+
+<section >
     <div class="container-fluid">
         <ul class='circle-container'>
             {{#each dbAtelier}}
             <a href="/AtelierSingle/{{_id}}" class="btn btn-info shadow"></a><img src="{{ image }}"
                 class="rounded-circle" alt="..." style=" width: 200px; height: 200px; display: block;">
-            Voir l'Atelier {{ title }}</a>
+            </a>
             {{/each }}
         </ul>
     </div>
 </section>
 
-<style>
-    .textLimit {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        line-height: 16px;
-        max-height: 320px;
+<section>
+<div>
+    <img class="fleche"  src="/assets/images/fleches.png" alt="">
+</div>
 
-        /* The number of lines to be displayed */
-        -webkit-line-clamp: 5;
-        -webkit-box-orient: vertical;
-    }
+</section>
+
+<style>
+.fleche{
+    position: absolute;
+    top: 50%;
+    right: 35%;
+    height: 350px;
+    width: 350px;
+}
+
+.position{
+ position: absolute;
+    left: 5%;
+    top: 10%;
+}
+
+.position-btn{
+ position: absolute;
+    left: 10%;
+    top: 20%;
+}
+
 </style>

@@ -1,10 +1,9 @@
 <!-- Modal register   -->
-<div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
+<div class="modal fade bd-example-modal-lg " id="register-modal-lg" tabindex="-1" role="dialog"
+    aria-labelledby="registerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             {{!-- <form action="/User" method="post" enctype="application/x-www-form-urlencoded"> --}}
-
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Créer un compte</h5>
             </div>
@@ -57,8 +56,11 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>E-mail* :</label>
-                            <input type="email" class="form-control" id='email' name="email" placeholder="votre email"
-                                value="" required />
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">@</span>
+                                <input type="email" class="form-control" id='email' name="email"
+                                    placeholder="votre email" value="" required />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -67,8 +69,11 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Mot de passe* :</label>
-                            <input type="password" class="form-control" id="password" name="password"
-                                placeholder="Password" value="" required />
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i class="fas fa-lock"></i></span>
+                                <input type="password" class="form-control" id="password" name="password"
+                                    placeholder="Password" value="" required />
+                            </div>
                         </div>
                     </div>
                 </div>

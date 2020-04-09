@@ -13,6 +13,7 @@ const mongoose = require('mongoose'),
 
         lastname: {
             type: String,
+            required: true
         },
 
         firstname: {
@@ -34,13 +35,13 @@ const mongoose = require('mongoose'),
 
         email: {
             type: String,
-            //required: [true, 'l email est obligatoire'],
+            required: true,
             unique: true //l'email ne doit pas etre identique aux autres utilisateurs
         },
 
         password: {
             type: String,
-            //required: [true, 'mot de passe est obligatoire']
+            required: true
         },
 
         isAdmin: {

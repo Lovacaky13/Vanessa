@@ -36,7 +36,7 @@ module.exports = {
                 console.log(files[i].filename)
                 arrayFiles.push({
                     name: files[i].filename,
-                    filename: `/assets/imagesAtelier/${files[i].filename}`,
+                    filename: `/assets/images/${files[i].filename}`,
                     orifginalname: files[i].originalname
                 })
             }
@@ -49,7 +49,7 @@ module.exports = {
         } else if (req.files) {
             Atelier.create({
                 title: req.body.title,
-                image: `/assets/imagesAtelier/${image}`,
+                image: `/assets/images/${image}`,
                 imageGallery: arrayFiles,
                 name: image,
                 content: req.body.content,

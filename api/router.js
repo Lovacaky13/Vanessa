@@ -3,8 +3,8 @@
  *********/
 const express = require('express'),
     router = express.Router(),
-    upload = require('./config/multer'), // image
-    uploadAtelier = require('./config/multerAtelier') // image
+    upload = require('./config/multer') // image
+
 
 /* Import Controller
  *******************/
@@ -76,15 +76,15 @@ router.route('/ArticleSingle/:id')
     .put(isAdmin, upload.single('image'), ArticleSingle.updateArticle)
 
 // ******************* CRUD Atelier *********************
-const fieldsAtelier = uploadAtelier.fields([{ name: 'image', maxCount: 1 }, { name: 'imageGallery', maxCount: 4 }])
+
 router.route('/Atelier')
     .get(Atelier.getAtelier)
-    .post(fieldsAtelier, isAdmin, Atelier.createAtelier)
+    .post(fields, isAdmin, Atelier.createAtelier)
 
 router.route('/AtelierSingle/:id')
     .delete(isAdmin, AtelierSingle.deleteOneAtelier)
     .get(AtelierSingle.getAtelier)
-    .put(isAdmin, uploadAtelier.single('image'), AtelierSingle.updateAtelier)
+    .put(isAdmin, upload.single('image'), AtelierSingle.updateAtelier)
 
 // ******************* Commentaire*********************  
 router.route('/comment/:id')

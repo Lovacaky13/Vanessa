@@ -24,7 +24,7 @@ module.exports = {
             query = {
                 _id: req.params.id
             },
-            pathImg = path.resolve("public/imagesAtelier/" + dbAtelier.name),
+            pathImg = path.resolve("public/images/" + dbAtelier.name),
             files = dbAtelier.imageGallery
         console.log(1)
         console.log(dbAtelier.name)
@@ -48,7 +48,7 @@ module.exports = {
 
                         if (files) {
                             (error, post) => {
-                                fs.unlink(path.resolve('public/imagesAtelier/' + files[i].name),
+                                fs.unlink(path.resolve('public/images/' + files[i].name),
                                     (err) => {
                                         if (err) {
                                             console.log(err)
@@ -85,7 +85,7 @@ module.exports = {
             dbCom = await Com.findById(req.params.id),
             query = { _id: req.params.id },
             queryCom = { produit_id: req.params.id },
-            pathImg = path.resolve("public/imagesAtelier/" + dbAtelier.name),
+            pathImg = path.resolve("public/images/" + dbAtelier.name),
             files = dbAtelier.imageGallery
         console.log(dbAtelier)
         console.log(dbCom)
@@ -97,7 +97,7 @@ module.exports = {
                         for (let i = 0; i < files.length; i++) {
                             const dbFilename = files[i].filename
                             if (files) {
-                                fs.unlink(path.resolve('public/imagesAtelier/' + files[i].name),
+                                fs.unlink(path.resolve('public/images/' + files[i].name),
                                     (err) => {
                                         if (err) console.log(err)
                                         else console.log('imageGallery Supprimée') && next()
@@ -119,7 +119,7 @@ module.exports = {
                                 }
                             )
                         } else next()
-                        return res.redirect('/')
+                        return res.redirect('/Atelier')
                     } else {
                         console.log('Erreur de suppression Atelier')
                         return res.send(err)

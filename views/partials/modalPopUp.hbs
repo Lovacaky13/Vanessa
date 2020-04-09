@@ -1,102 +1,162 @@
 <!-- Modal register   -->
-<div class="modal fade" id="modalPopUp" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
+<div class="modal fade bd-example-modal-lg " id="modalPopUp" tabindex="-1" role="dialog"
+    aria-labelledby="registerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             {{!-- <form action="/User" method="post" enctype="application/x-www-form-urlencoded"> --}}
-
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Pour profiter pleinement du site, Inscrivez vous</h5>
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Créer un compte</h5>
+            </div>
+            <div class="col-md-12">
+                <label id="messageErrorRegister" class="text-danger"></label>
+            </div>
+            <div id='formRegister' class="modal-body">
+                <div class="row register-form " style="width: 100%">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Nom* :</label>
+                            <input type="text" class="form-control" id="lastname" name="lastname"
+                                placeholder="votre Nom" required />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Prénom* :</label>
+                            <input type="text" class="form-control" id="firstname" name="firstname"
+                                placeholder="votre prénom" required />
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-12">
-                    <label id="messageErrorAuth" class="text-danger"></label>
+
+                <div class="row register-form " style="width: 100%">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Adresse :</label>
+                            <input type="text" class="form-control" id="adress" name="adress"
+                                placeholder=" votre adresse" />
+                        </div>
+                    </div>
                 </div>
-                <div id='formRegister' class="modal-body">
-                    <div class="row register-form " style="width: 100%">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Nom* :</label>
-                                <input type="text" class="form-control" name="lastname" placeholder="votre Nom"
-                                    required />
-                            </div>
-                            <div class="form-group">
-                                <label>Prénom* :</label>
-                                <input type="text" class="form-control" name="firstname" placeholder="votre prénom"
-                                    required />
-                            </div>
+
+                <div class="row register-form " style="width: 100%">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Code Postal :</label>
+                            <input type="text" class="form-control" id="zip" name="zip"
+                                placeholder="votre Code Postal" />
+                        </div>
+                        <div class="form-group">
+                            <label>Ville :</label>
+                            <input type="text" class="form-control" id="city" name="city" placeholder="votre ville" />
                         </div>
                     </div>
+                </div>
 
-                    <div class="row register-form " style="width: 100%">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label>Adresse :</label>
-                                <input type="text" class="form-control" name="adress" placeholder=" votre adresse" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row register-form " style="width: 100%">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Code Postal :</label>
-                                <input type="text" class="form-control" name="zip" placeholder="votre Code Postal" />
-                            </div>
-                            <div class="form-group">
-                                <label>Ville :</label>
-                                <input type="text" class="form-control" name="city" placeholder="votre ville" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row register-form " style="width: 100%">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label>E-mail* :</label>
-                                <input type="email" class="form-control" id='formeEmail' name="email"
+                <div class="row register-form " style="width: 100%">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>E-mail* :</label>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">@</span>
+                                <input type="email" class="form-control" id='email' name="email"
                                     placeholder="votre email" value="" required />
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="row register-form " style="width: 100%">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label>Mot de passe* :</label>
-                                <input type="password" class="form-control" name="password" placeholder="Password"
-                                    value="" required />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row register-form " style="width: 100%">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label>Confirmer votre mot de passe* :</label>
-                                <input type="password" class="form-control" name="password2"
-                                    placeholder="Confirm Password *" value="" required />
+                <div class="row register-form " style="width: 100%">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Mot de passe* :</label>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i class="fas fa-lock"></i></span>
+                                <input type="password" class="form-control" id="password" name="password"
+                                    placeholder="Password" value="" required />
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="modal-footer">
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-info" onclick="connexionModalRegister()" value="">S'inscrire</button>
+                <div class="row register-form " style="width: 100%">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Confirmer votre mot de passe* :</label>
+                            <input type="password" class="form-control" name="password2"
+                                placeholder="Confirm Password *" value="" required />
+                        </div>
                     </div>
                 </div>
+            </div>
+
+            <div class="modal-footer">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-info" onclick="connexionModalRegister()"
+                        value="">S'inscrire</button>
+                </div>
+            </div>
 
             {{!-- </form> --}}
         </div>
     </div>
 </div>
 
-
-<!-- / Modal -->
 <script>
-  setTimeout(() => {
+setTimeout(() => {
     $('#modalPopUp').modal({
       show: true
     })
     console.log('setTimeout')
-  }, 50000)
+  }, 5000)
+
+
+
+    function connexionModalRegister() {
+
+        const formlastname = document.getElementById('lastname').value,
+            formfirstname = document.getElementById('firstname').value,
+            formadress = document.getElementById('adress').value,
+            formzip = document.getElementById('zip').value,
+            formcity = document.getElementById('city').value,
+            formeEmail = document.getElementById('email').value,
+            formpassword = document.getElementById('password').value
+
+        console.log("test");
+        $.ajax({
+            url: '/User',
+            type: 'POST',
+            data: {
+                lastname: formlastname,
+                firstname: formfirstname,
+                adress: formadress,
+                zip: formzip,
+                city: formcity,
+                email: formeEmail,
+                password: formpassword,
+            },
+            enctype: 'application/x-www-form-urlencoded',
+            dataType: "json",
+            success: function (json, statut) {
+
+                console.log('error success sadazedea')
+                console.log(json.message);
+
+                $("#messageErrorRegister").text(json.message);
+                if (json.noError) {
+                    window.location.replace("/");
+                }
+            },
+            error: function (json, resultat, statut, erreur) {
+                console.log('erreur register modal')
+                console.log(json)
+                console.log(resultat);
+                console.log(statut);
+                console.log(erreur);
+                if (!json.noError) {
+                    window.location.replace("/VerifMail");
+                }
+            }
+        });
+    };
 </script>
+
+

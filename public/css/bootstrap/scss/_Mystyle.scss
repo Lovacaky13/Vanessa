@@ -78,7 +78,7 @@
 }
 
 .circle-container {
-    @include distribute-on-circle(8, 60em, 6em, false); // (8 (nombre d'articles, 40em (dimension cercle , 6em (dimension card), false)
+    @include distribute-on-circle(8, 50em, 6em, false); // (8 (nombre d'articles, 40em (dimension cercle , 6em (dimension card), false)
     margin: 5em auto 0;
 }
 
