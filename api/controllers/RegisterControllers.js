@@ -27,26 +27,32 @@
 
      userCreate: async(req, res) => {
          const handshakeEmail = await User.findOne({
-             email: req.body.email
-         })
-         rand = Math.floor((Math.random() * 100) + 54)
-         host = req.get('host')
-         link = "http://" + req.get('host') + "/SendMail/" + rand
+                 email: req.body.email
+             }),
+             handshakePassword = (req.body.password === req.body.passConf),
+             rand = Math.floor((Math.random() * 100) + 54),
+             host = req.get('host'),
+             link = "http://" + req.get('host') + "/SendMail/" + rand
 
-         console.log(req.body)
-         console.log(link)
+         console.log(req.body);
+         console.log(link);
          mailOptions = {
              from: 'lovacaky13@gmail.com',
              to: req.body.email,
              subject: "vérification de votre email",
              rand: rand,
              html: "Bonjour.<br> Merci de cliquer sur le lien ci-dessous pour verifier votre email : <br><a href=" + link + ">Cliquer ici pour pour verifier votre email</a>"
-         }
-         console.log(mailOptions)
+         };
+         console.log(mailOptions);
          console.log(handshakeEmail);
          console.log(req.body);
 
-         if (!handshakeEmail) {
+         if (!handshakePassword) {
+             return res.json({
+                     message: "mot passe different"
+                 }),
+                 res.end("error password")
+         } else if (!handshakeEmail) {
              console.log('user pas dans la db')
 
              User.create({

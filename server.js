@@ -10,7 +10,6 @@ const
     session = require('express-session'),
     MongoStore = require('connect-mongo')(session),
     helpers = require('handlebars-helpers'),
-    //keys = require('./config/keys'),
     port = 3000;
 
 
@@ -33,7 +32,7 @@ mongoose.connect(db, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     })
-    .then(() => console.log('Connecter à MongoDB Cloud'))
+    .then(() => console.log('Connecté à MongoDB Cloud'))
     .catch((err) => console.log(err))
 
 // ------------------------Handlebars----------------------------------

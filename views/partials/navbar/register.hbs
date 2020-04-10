@@ -3,7 +3,7 @@
     aria-labelledby="registerModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            {{!-- <form action="/User" method="post" enctype="application/x-www-form-urlencoded"> --}}
+
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Créer un compte</h5>
             </div>
@@ -57,7 +57,7 @@
                         <div class="form-group">
                             <label>E-mail* :</label>
                             <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">@</span>
+                                <span class="input-group-text">@</span>
                                 <input type="email" class="form-control" id='email' name="email"
                                     placeholder="votre email" value="" required />
                             </div>
@@ -70,19 +70,25 @@
                         <div class="form-group">
                             <label>Mot de passe* :</label>
                             <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1"><i class="fas fa-lock"></i></span>
+                                <span class="input-group-text"><i class="fas fa-lock"></i></span>
                                 <input type="password" class="form-control" id="password" name="password"
-                                    placeholder="Password" value="" required />
+                                    placeholder="Password" value="" required /><button class="unmask" type="button"
+                                    title="Mask/Unmask password to check content"><i class="fas fa-eye"></i></button>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="row register-form " style="width: 100%">
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Confirmer votre mot de passe* :</label>
-                            <input type="password" class="form-control" name="password2"
-                                placeholder="Confirm Password *" value="" required />
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                <input type="password" class="form-control" id="passConf" name="passConf"
+                                    placeholder="Confirm Password *" value="" required /><button class="unmask" type="button"
+                                    title="Mask/Unmask password to check content"><i class="fas fa-eye"></i></button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -94,8 +100,6 @@
                         value="">S'inscrire</button>
                 </div>
             </div>
-
-            {{!-- </form> --}}
         </div>
     </div>
 </div>
@@ -108,8 +112,9 @@
             formadress = document.getElementById('adress').value,
             formzip = document.getElementById('zip').value,
             formcity = document.getElementById('city').value,
-            formeEmail = document.getElementById('email').value,
-            formpassword = document.getElementById('password').value
+            formEmail = document.getElementById('email').value,
+            formpassword = document.getElementById('password').value,
+            formpassConf = document.getElementById('passConf').value
 
         console.log("test");
         $.ajax({
@@ -121,8 +126,9 @@
                 adress: formadress,
                 zip: formzip,
                 city: formcity,
-                email: formeEmail,
+                email: formEmail,
                 password: formpassword,
+                passConf: formpassConf
             },
             enctype: 'application/x-www-form-urlencoded',
             dataType: "json",
@@ -148,4 +154,54 @@
             }
         });
     };
+
+
+    //function décache mot de passe
+    $('.unmask').on('click', function () {
+
+        if ($(this).prev('input').attr('type') == 'password')
+            changeType($(this).prev('input'), 'text');
+
+        else
+            changeType($(this).prev('input'), 'password');
+
+        return false;
+    });
+
+    // x = élément du DOM, type = nouveau type à attribuer
+    function changeType(x, type) {
+        if (x.prop('type') == type)
+            return x; // ça serait facile.
+        try {
+            // Une sécurité d'IE empêche ceci
+            return x.prop('type', type);
+        }
+        catch (e) {
+            // On tente de recréer l'élément
+            // En créant d'abord une div
+            var html = $("<div>").append(x.clone()).html();
+            var regex = /type=(\")?([^\"\s]+)(\")?/;
+            // la regex trouve type=text ou type="text"
+            // si on ne trouve rien, on ajoute le type à la fin, sinon on le remplace
+            var tmp = $(html.match(regex) == null ?
+                html.replace(">", ' type="' + type + '">') :
+                html.replace(regex, 'type="' + type + '"'));
+
+            // on rajoute les vieilles données de l'élément
+            tmp.data('type', x.data('type'));
+            var events = x.data('events');
+            var cb = function (events) {
+                return function () {
+                    //Bind all prior events
+                    for (i in events) {
+                        var y = events[i];
+                        for (j in y) tmp.bind(i, y[j].handler);
+                    }
+                }
+            }(events);
+            x.replaceWith(tmp);
+            setTimeout(cb, 10); // On attend un peu avant d'appeler la fonction
+            return tmp;
+        }
+    }
 </script>

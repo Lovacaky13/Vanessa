@@ -10,11 +10,18 @@ module.exports = (req, res, next) => {
 
     User.findById(req.session.userId, (error, user) => {
 
-        if (user === true && !error) {
+
+
+        if (user.isVerified === true && !error) {
 
             next()
         } else {
+
+            function showAlert() {
+                alert("Bonjour tout le monde!");
+            }
             console.log(error);
+            showAlert
             return res.redirect('/')
         }
     })

@@ -72,7 +72,7 @@ router.route('/Article')
 
 router.route('/ArticleSingle/:id')
     .delete(isAdmin, ArticleSingle.deleteOneArticle)
-    .get(ArticleSingle.getArticle)
+    .get(auth, ArticleSingle.getArticle)
     .put(isAdmin, upload.single('image'), ArticleSingle.updateArticle)
 
 // ******************* CRUD Atelier *********************
