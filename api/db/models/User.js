@@ -2,10 +2,6 @@ const mongoose = require('mongoose'),
     bcrypt = require('bcrypt'),
     UserSchema = new mongoose.Schema({
 
-        // googleId:String,
-
-        // username:String,
-
         status: {
             type: String,
             default: 'user'

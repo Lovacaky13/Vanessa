@@ -7,7 +7,6 @@
      path = require('path'),
      fs = require('fs'),
      nodemailer = require('nodemailer'),
-     bcrypt = require('bcrypt'),
      nodemailerKeys = require('../config/keys')
 
  transporter = nodemailer.createTransport({

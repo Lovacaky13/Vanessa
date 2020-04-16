@@ -14,11 +14,31 @@
             <div class="col-md-12 ">
               <a href="{{ dbAtelier.image }}"><img src="{{ dbAtelier.image }}" class="rounded-circle" alt="..."
                   style="width: 150px; height: 150px;"></a>
-
+            </div>
+          </div>
+          <div class="row ">
+            <div class="col-md-12 ">
               {{#each dbAtelier.imageGallery}}
               <a href="{{ filename }}"><img src="{{ filename }}" class="rounded-circle" alt="{{ fieldname }}"
                   style="height:150px; width: 150px;"></a>
+
+              {{!-- Formulaire Delete une image --}}
+              <form action="/AtelierSingle/{{../dbAtelier.id}}?_method=PUT" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="deleteImg" value='{{ name }}'>
+                <button type="submit">Supprimer Image</button>
+              </form>
+
               {{/each}}
+
+              {{#if isAdmin}}
+              {{!-- Formulaire Ajouter une image --}}
+              <form class="bg-white m-2" action="/AtelierSingle/{{dbAtelier.id}}?_method=PUT" method="post"
+                enctype="multipart/form-data">
+                <input type="hidden" name="addImg" value='{{ name }}'>
+                <input type="file" name="imageGallery">
+                <button type="submit">Ajouter une Image</button>
+              </form>
+              {{/if}}
             </div>
           </div>
         </div>
@@ -62,7 +82,6 @@
       </div>
     </div>
   </div>
-  
 </section>
 
 {{> AtelierSingle/Commentaire}}

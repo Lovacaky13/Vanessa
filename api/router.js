@@ -72,11 +72,10 @@ router.route('/Article')
 
 router.route('/ArticleSingle/:id')
     .delete(isAdmin, ArticleSingle.deleteOneArticle)
-    .get(auth, ArticleSingle.getArticle)
-    .put(isAdmin, upload.single('image'), ArticleSingle.updateArticle)
+    .get(ArticleSingle.getArticle)
+    .put(fields, isAdmin, ArticleSingle.updateArticle)
 
 // ******************* CRUD Atelier *********************
-
 router.route('/Atelier')
     .get(Atelier.getAtelier)
     .post(fields, isAdmin, Atelier.createAtelier)
@@ -84,7 +83,7 @@ router.route('/Atelier')
 router.route('/AtelierSingle/:id')
     .delete(isAdmin, AtelierSingle.deleteOneAtelier)
     .get(AtelierSingle.getAtelier)
-    .put(isAdmin, upload.single('image'), AtelierSingle.updateAtelier)
+    .put(fields, isAdmin, AtelierSingle.updateAtelier)
 
 // ******************* Commentaire*********************  
 router.route('/comment/:id')

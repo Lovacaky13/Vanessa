@@ -14,13 +14,7 @@ const
 
 
 
-//app.use
-app.use('/assets', express.static('public'))
-app.use(methodOverride('_method'))
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
+
 
 //------------------------mongoose-------------------------------------
 
@@ -34,6 +28,16 @@ mongoose.connect(db, {
     })
     .then(() => console.log('Connecté à MongoDB Cloud'))
     .catch((err) => console.log(err))
+
+
+//app.use
+app.use('/assets', express.static('public'))
+app.use(methodOverride('_method'))
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
 
 // ------------------------Handlebars----------------------------------
 app.set('view engine', 'hbs');
