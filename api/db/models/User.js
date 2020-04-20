@@ -51,7 +51,9 @@ const mongoose = require('mongoose'),
         isVerified: {
             type: Boolean,
         },
-
+        cookieNotAccept: {
+            type: Boolean,
+        },
     })
 
 // crypter le mot de passe

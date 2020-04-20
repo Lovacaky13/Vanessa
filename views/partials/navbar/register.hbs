@@ -72,7 +72,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-lock"></i></span>
                                 <input type="password" class="form-control" id="password" name="password"
-                                    placeholder="Password" value="" required /><button class="unmask" type="button"
+                                    placeholder="Password" value="" required /><button class="unmaskRegister" type="button"
                                     title="Mask/Unmask password to check content"><i class="fas fa-eye"></i></button>
                             </div>
                         </div>
@@ -157,7 +157,7 @@
 
 
     //function décache mot de passe
-    $('.unmask').on('click', function () {
+    $('.unmaskRegister').on('click', function () {
 
         if ($(this).prev('input').attr('type') == 'password')
             changeType($(this).prev('input'), 'text');

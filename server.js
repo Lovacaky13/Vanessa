@@ -10,11 +10,8 @@ const
     session = require('express-session'),
     MongoStore = require('connect-mongo')(session),
     helpers = require('handlebars-helpers'),
+    cookieparser = require('cookie-parser'),
     port = 3000;
-
-
-
-
 
 //------------------------mongoose-------------------------------------
 
@@ -31,13 +28,13 @@ mongoose.connect(db, {
 
 
 //app.use
+app.use(cookieparser())
 app.use('/assets', express.static('public'))
 app.use(methodOverride('_method'))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
-
 
 // ------------------------Handlebars----------------------------------
 app.set('view engine', 'hbs');
@@ -54,8 +51,7 @@ MomentHandler.registerHelpers(Handlebars);
 //------------------------Session-------------------------------------
 app.use(session({
     secret: 'securite',
-    //keys: [keys.session.cookieKeys],
-    name: 'biscuit',
+    name: 'Session',
     saveUninitialized: true,
     resave: false,
     maxAge: 24 * 60 * 60 * 1000,
@@ -67,6 +63,9 @@ app.use('*', (req, res, next) => {
         if (req.session.status === 'user') {
             if (req.session.isAdmin === true) {
                 res.locals.isAdmin = req.session.isAdmin
+            }
+            if (req.session.cookieNotAccept === true) {
+                res.locals.cookieNotAccept = req.session.cookieNotAccept
             }
             res.locals.user = req.session.status
         }

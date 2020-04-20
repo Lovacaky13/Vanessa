@@ -66,6 +66,7 @@
                      isAdmin: false,
                      isBan: false,
                      isVerified: false,
+                     cookieNotAccept: true,
                  },
 
                  (error, user) => {

@@ -29,7 +29,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1"><i class="fas fa-lock"></i></span>
                                 <input type="password" id='formPassword' name="password" class="form-control"
-                                    placeholder="Password" required /><button class="unmask" type="button"
+                                    placeholder="Password" required /><button class="unmasklogin" type="button"
                                     title="Mask/Unmask password to check content"><i class="fas fa-eye"></i></button>
                             </div>
                         </div>
@@ -107,16 +107,15 @@
                 console.log(statut);
                 console.log(erreur);
                 if (!json.noError) {
-                    // alert('Bonjour, Vous etes connecté !')
+                    // alert('Bonjour, Vous etes connecté !'
                     window.location.replace("/");
-
-                }
+               }
             }
         });
     };
 
  //function décache mot de passe
-    $('.unmask').on('click', function () {
+    $('.unmasklogin').on('click', function () {
 
         if ($(this).prev('input').attr('type') == 'password')
             changeType($(this).prev('input'), 'text');

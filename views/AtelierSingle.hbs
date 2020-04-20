@@ -1,80 +1,87 @@
 <h1 class="font-weight-bold text-center m-5 d-flex justify-content-end">Vanessa Binet - ASG -</h1>
 
-
 <section>
-  <div class="container-fluid ">
+  <div class="container ">
     <div class="row">
       <div class="col-md-12">
         <h1 class="text-center">
           <font face="URW Chancery L, cursive">{{ dbAtelier.title }}</font>
         </h1>
 
-        <div class="container p-5 d-flex justify-content-center">
-          <div class="row ">
-            <div class="col-md-12 ">
-              <a href="{{ dbAtelier.image }}"><img src="{{ dbAtelier.image }}" class="rounded-circle" alt="..."
-                  style="width: 150px; height: 150px;"></a>
-            </div>
+        <div class="row ">
+          <div class="col-md-12 d-flex align-items-center">
+            <a class="displayed" href="{{ dbAtelier.image }}"><img src="{{ dbAtelier.image }}" class="rounded-circle"
+                alt="..." style="width: 150px; height: 150px;"></a>
           </div>
-          <div class="row ">
-            <div class="col-md-12 ">
-              {{#each dbAtelier.imageGallery}}
-              <a href="{{ filename }}"><img src="{{ filename }}" class="rounded-circle" alt="{{ fieldname }}"
-                  style="height:150px; width: 150px;"></a>
+        </div>
 
-              {{!-- Formulaire Delete une image --}}
-              <form action="/AtelierSingle/{{../dbAtelier.id}}?_method=PUT" method="post" enctype="multipart/form-data">
-                <input type="hidden" name="deleteImg" value='{{ name }}'>
-                <button type="submit">Supprimer Image</button>
-              </form>
+        {{#each dbAtelier.imageGallery}}
+        <div class="row ">
+          <div class="col-md-12 ">
+            <a href="{{ filename }}"><img src="{{ filename }}" class="rounded-circle alignImage" alt="{{ fieldname }}"
+                style="height:150px; width: 150px;"></a>
+          </div>
+        </div>
 
-              {{/each}}
+        {{!-- Formulaire Delete une image --}}
+        <div class="row">
+          <div class="col-md-12">
+            {{#if isAdmin}}
+            <form action="/AtelierSingle/{{../dbAtelier.id}}?_method=PUT" method="post" enctype="multipart/form-data">
+              <input type="hidden" name="deleteImg" value='{{ name }}'>
+              <button class="btn btn-danger" type="submit">Supprimer 1 Image</button>
+            </form>
+            {{/if}}
+          </div>
+        </div>
+        {{/each}}
 
-              {{#if isAdmin}}
+        <div class="row bg-white">
+          <div class="col-md-12">
+            <h4 style="text-align: justify;"> {{dbAtelier.content}}</h4>
+          </div>
+        </div>
+
+        <div class="row bg-white">
+          <div class="col-md-12">
+            <h3 class="p-2"> <u>Publié le {{ moment dbAtelier.createDate format="DD-MM-YYYY" }}</u>
+            </h3>
+          </div>
+        </div>
+
+        {{!-- zone de modification d'article --}}
+        {{#if isAdmin}}
+        <div class="container ">
+          <div class="row">
+            <div class="col-md-5">
+
               {{!-- Formulaire Ajouter une image --}}
-              <form class="bg-white m-2" action="/AtelierSingle/{{dbAtelier.id}}?_method=PUT" method="post"
+              <form class=" m-2" action="/AtelierSingle/{{dbAtelier.id}}?_method=PUT" method="post"
                 enctype="multipart/form-data">
                 <input type="hidden" name="addImg" value='{{ name }}'>
                 <input type="file" name="imageGallery">
-                <button type="submit">Ajouter une Image</button>
+                <button class="btn btn-success" type="submit">Ajouter une Image</button>
               </form>
-              {{/if}}
+
+              {{!-- Formulaire éditer toutes les images--}}
+              <form class="m-2" action="/ArticleSingle/{{dbArticle.id}}?_method=PUT" method="post"
+                enctype="multipart/form-data">
+                <input type="file" name="imageGallery" multiple>
+                <button class="btn btn-warning" type="submit">Editer toutes les images</button>
+              </form>
             </div>
-          </div>
-        </div>
 
-
-        <div class="container p-3 bg-white">
-          <div class="row">
-            <div class="col-md-12">
-              <h4 class="card-text" style="text-align: justify;"> {{dbAtelier.content}}</h4>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="container bg-white">
-          <div class="row">
-            <div class="col-md-4 ">
-              <h3 class="p-2"> <u>Publié le {{ moment dbAtelier.createDate format="DD-MM-YYYY" }}</u>
-              </h3>
-              {{#if isAdmin}}
-            </div>
-          </div>
-        </div>
-
-        <div class="container d-flex justify-content-center">
-          <div class="row">
-            <div class="col-md-5 ">
-              {{!-- Button trigger modal modifier Atelier--}}
+            {{!-- Button trigger modal modifier Atelier--}}
+            <div class="col-md-3 m-2 p-5 ">
               <button type="submit" class="btn btn-warning" data-toggle="modal" data-target="#modalModifAtelier{{_id}}">
                 <i class="fas fa-pencil-alt"></i>
-                Modifier un Atelier</button>
+                Modifier 1 Atelier</button>
             </div>
-            <div class="col-md-6">
-              {{!-- Button trigger modal sup Atelier --}}
+
+            {{!-- Button trigger modal sup Atelier --}}
+            <div class="col-md-3 m-2 p-5">
               <button type="button" class="btn btn-danger " data-toggle="modal" data-target="#supAtelier{{_id}}"><i
-                  class="fas fa-trash-alt"></i> Supprimer un Atelier </button>
+                  class="fas fa-trash-alt"></i> Supprimer 1 Atelier </button>
             </div>
           </div>
         </div>
@@ -161,3 +168,19 @@
 </form>
 
 <script src="/assets/js/lightbox.js" type="module" defer></script>
+
+
+<style>
+  .displayed {
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+  }
+
+  .alignImage {
+    display: inline-block;
+    padding: 1px;
+    border: 1px solid blue;
+    background-color: yellow;
+  }
+</style>

@@ -1,0 +1,14 @@
+{{!-- 
+   accept cookie
+--}}
+
+<div class="bg-info">
+  <div class="inner">
+    <p>coucou qui veut des cookies ?</p>
+
+    <form action="/cookie/?_method=PUT" method="post" enctype="multipart/form-data">
+      {{!-- <input type="hidden" name="Cookie" value='{{ name }}'> --}}
+      <button class="btn btn-success" type="submit">Moi j'en veux !</button>
+    </form>
+  </div>
+</div>

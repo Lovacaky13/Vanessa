@@ -109,7 +109,9 @@ module.exports = {
              *  Ajouter Une Image
              **********************/
             const dbArticle = await Article.findById(req.params.id),
-                query = { _id: req.params.id },
+                query = {
+                    _id: req.params.id
+                },
                 // Gallery Existante
                 dbFiles = dbArticle.imageGallery,
                 // req.files
@@ -167,9 +169,58 @@ module.exports = {
                         return res.send(err)
                     }
                 })
+        } else if (multiple) {
+            /*
+             *  Éditer toutes les images
+             ****************************/
+            const dbArticle = await Article.findById(req.params.id),
+                files = req.files,
+                existImg = dbArticle.imageGallery,
+                arrayFiles = []
+
+            console.log('1')
+            console.log(req.body)
+            console.log('2')
+            console.log(req.files)
+
+            for (let i = 0; i < files.length; i++) {
+                const dbFilename = files[i].filename
+                if (files) {
+                    console.log(files[i].filename)
+                    arrayFiles.push({
+                        name: files[i].filename,
+                        filename: `/assets/images/${files[i].filename}`,
+                        orifginalname: files[i].originalname
+                    })
+                }
+            }
+            console.log('Array Files')
+            console.log(arrayFiles)
+            console.log('ExistFiles')
+            console.log(existImg)
+
+            Article.updateOne(query, {
+                    ...req.body,
+                    imageGallery: arrayFiles
+                },
+                (err) => {
+                    if (!err) {
+                        for (let i = 0; i < existImg.length; i++) {
+                            const dbFilename = existImg[i].filename
+                            if (existImg) {
+                                fs.unlink(path.resolve('public/images/' + existImg[i].name),
+                                    (err) => {
+                                        if (err) throw err
+                                    })
+                            }
+                        }
+                        res.redirect('back')
+                    } else {
+                        return res.send(err)
+                    }
+                })
         }
     },
-
 
     deleteOneArticle: async(req, res, next) => {
         const dbArticle = await Article.findById(req.params.id),

@@ -23,7 +23,8 @@ const HomePage = require('./controllers/pages/HomePage'),
     VerifMail = require('./controllers/pages/VerifMail'),
     SendMail = require('./controllers/pages/SendMail'),
     Atelier = require('./controllers/pages/Atelier'),
-    AtelierSingle = require('./controllers/pages/AtelierSingle')
+    AtelierSingle = require('./controllers/pages/AtelierSingle'),
+    CookieControllers = require('./controllers/CookieControllers')
 
 /* Import middlewares
  *******************/
@@ -65,7 +66,13 @@ router.route('/logout')
     .get(LoginControllers.logout)
 
 // ******************* CRUD Article*********************
-const fields = upload.fields([{ name: 'image', maxCount: 1 }, { name: 'imageGallery', maxCount: 4 }])
+const fields = upload.fields([{
+    name: 'image',
+    maxCount: 1
+}, {
+    name: 'imageGallery',
+    maxCount: 4
+}])
 router.route('/Article')
     .get(ArticleCrud.getArticle)
     .post(fields, isAdmin, ArticleCrud.createArticle)
@@ -121,5 +128,11 @@ router.route('/lostPassword/:id')
 // ******************* Nodemailer Verif Email*********************  
 router.route('/SendMail/:id')
     .get(RegisterControllers.verifMail)
+
+
+// ******************* Cookie********************* 
+router.route('/cookie')
+    .put(CookieControllers.acceptCookie)
+
 
 module.exports = router
