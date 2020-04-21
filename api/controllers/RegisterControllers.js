@@ -98,17 +98,21 @@
      verifMail: async(req, res) => {
 
          const handshakeEmail = await User.findOne({
-             email: mailOptions.to
-         })
+                 email: mailOptions.to
+             }),
+             host = req.get('host')
 
          console.log({
              handshakeEmail
          })
-         console.log('handshake email')
+         console.log('handshake email :')
          console.log(handshakeEmail)
+         console.log('req protocol :')
          console.log(req.protocol + "://" + req.get('host'))
-         console.log('Page verif' + mailOptions)
-         console.log(req.session)
+         console.log('host :')
+         console.log("http://" + host)
+         console.log(req.get('host'))
+
 
          if (!handshakeEmail) {
              res.redirect('/')

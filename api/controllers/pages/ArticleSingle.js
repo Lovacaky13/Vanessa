@@ -4,7 +4,9 @@ const Com = require('../../db/models/Commentaire'),
     fs = require('fs'),
     Message = require('../../db/models/Message')
 
+
 module.exports = {
+
     getArticle: async(req, res) => {
         const dbArticle = await Article.findById(req.params.id), // Transforme ton Model (consctructeur) en Json
             sess = req.session,

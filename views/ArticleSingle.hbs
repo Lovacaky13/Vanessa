@@ -12,36 +12,31 @@
 
     <div class="row">
       <div class="col-md-12 d-flex align-items-center ">
-         <a class="displayed" href="{{ dbArticle.image }}"><img src="{{ dbArticle.image }}" class="card-img-top"
-              alt="..." style="max-width: 650px; max-height: 550px; display: block;"></a>
+        <a class="displayed" href="{{ dbArticle.image }}"><img src="{{ dbArticle.image }}" class="card-img-top"
+            alt="..." style="max-width: 650px; max-height: 550px; display: block;"></a>
       </div>
     </div>
 
-    {{#each dbArticle.imageGallery}}
-    <div class="row">
-      <div class="col-md-12 ">
-        <a href="{{ filename }}"><img src="{{ filename }}" class="alignImage" alt="{{ fieldname }}"
-            style="width: 140px; height:140px "></a>
-      </div>
-    </div>
 
-    {{!-- Formulaire Delete une image --}}
-    <div class="row">
-      <div class="col-md-12">
-        {{#if isAdmin}}
-        <form action="/ArticleSingle/{{../dbArticle.id}}?_method=PUT" method="post" enctype="multipart/form-data">
-          <input type="hidden" name="deleteImg" value='{{ name }}'>
-          <button class="btn btn-danger" type="submit">Sup 1 Image</button>
-        </form>
-        {{/if}}
-      </div>
+    <div class="row m-2 d-flex justify-content-center">
+      {{#each dbArticle.imageGallery}}
+      <a class="m-2" href="{{ filename }}"><img src="{{ filename }}" alt="{{ fieldname }}"
+          style="width: 140px; height:140px "></a>
+      {{/each}}
     </div>
-    {{/each}}
-
+    <div class="row m-2 d-flex justify-content-center">
+      {{!-- Formulaire Delete une image --}}
+      {{#each dbArticle.imageGallery}}
+      <form action="/ArticleSingle/{{../dbArticle.id}}?_method=PUT" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="deleteImg" value='{{ name }}'>
+        <button class="btn btn-danger m-2" style="width: 140px;" type="submit">Sup 1 Image</button>
+      </form>
+      {{/each}}
+    </div>
 
     <div class="row bg-white">
       <div class="col-md-12">
-        <h4 style="text-align: justify;"> {{dbArticle.content}}</h4>
+        <h4> {{dbArticle.content}}</h4>
       </div>
     </div>
 
@@ -78,13 +73,13 @@
         <div class="col-md-3 m-2 p-5">
           <button type="submit" class="btn btn-warning" data-toggle="modal" data-target="#modalModifArticle{{_id}}">
             <i class="fas fa-pencil-alt"></i>
-            Modifier 1 article</button>
+            Modifier cet article</button>
         </div>
 
         {{!-- Button trigger modal sup article --}}
         <div class="col-md-3 m-2 p-5">
           <button type="button" class="btn btn-danger " data-toggle="modal" data-target="#supArticle{{_id}}"><i
-              class="fas fa-trash-alt"></i> Supprimer 1 article
+              class="fas fa-trash-alt"></i> Supprimer cet article
           </button>
         </div>
       </div>
@@ -116,16 +111,6 @@
             <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" rows="10"
               name="content"> {{ dbArticle.content }} </textarea>
             <script>CKEDITOR.replace('content');</script>
-          </div>
-
-          <div class="form-group">
-            <label>Photos :</label>
-            <input type="file" class="form-control" name='image'>
-          </div>
-
-          <div class="form-group">
-            <label>Photos galleries:</label>
-            <input type="file" class="form-control" name='imageGallery' multiple>
           </div>
 
           <div class="modal-footer">
@@ -175,13 +160,5 @@
     display: block;
     margin-left: auto;
     margin-right: auto
-  }
-
-  .alignImage {
-    display: inline;
-
-    padding: 1px;
-    border: 1px solid blue;
-    background-color: yellow;
   }
 </style>

@@ -21,7 +21,7 @@ module.exports = {
                 } else {
                     console.log("cookie accepté");
                     req.session.cookieNotAccept = false;
-                    res.redirect('/')
+                    res.redirect('back')
                 }
             })
     }
