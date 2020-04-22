@@ -26,12 +26,14 @@
     </div>
     <div class="row m-2 d-flex justify-content-center">
       {{!-- Formulaire Delete une image --}}
+      {{#if isAdmin}}
       {{#each dbArticle.imageGallery}}
       <form action="/ArticleSingle/{{../dbArticle.id}}?_method=PUT" method="post" enctype="multipart/form-data">
         <input type="hidden" name="deleteImg" value='{{ name }}'>
         <button class="btn btn-danger m-2" style="width: 140px;" type="submit">Sup 1 Image</button>
       </form>
       {{/each}}
+       {{/if}}
     </div>
 
     <div class="row bg-white">
