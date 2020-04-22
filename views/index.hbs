@@ -5,8 +5,8 @@
  {{else}}
 <h5 class="defileParent">
     <span class="defile"
-      data-text=" Pour profiter pleinenment du site (voir plus de photos, ajouter des commentaires... Inscrivez vous !) "  >
-         Pour profiter pleinenment du site (voir plus de photos, ajouter des commentaires... Inscrivez vous !
+      data-text=" Pour profiter pleinenment du site, Inscrivez vous !) "  >
+         Pour profiter pleinenment du site, Inscrivez vous !
     </span>
 </h5> 
 {{/if}}
@@ -18,7 +18,6 @@
 {{> Home/LastArticle}}
 
 {{> Home/LienInfo}}
-
 
 
 <style>
@@ -71,76 +70,3 @@
 	0%, 100% {margin-left:0;}
 	99.99% {margin-left:-100%;}
  }
-
-
-  #{{ idAllCookie }} {
-    transition: all 3s;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-  }
-  .bienvenu {
-    color: blue;
-  }
-</style>
-
-{{!-- Background Cookie --}}
-{{#if allCookie }}
-<style>body { background-color: purple; }</style>
-{{else if CCookie }}
-<style>body { background-color: green; }</style>
-{{else if CSession }}
-<style>body { background-color: gray; }</style>
-{{else }} {{/if }}
-
-{{!-- 
-    1) Flash Clear Cookie
---}}
-{{#if clearCookie }}
-<h4 id='flashClearCookie'> {{ clearCookie }} </h4>
-<script>
-setTimeout(() => {
-  $('#flashClearCookie').hide()
-}, 2000)
-</script>
-{{/if}}
-
-{{!-- 
-    Flash New Cookie
---}}
-{{#if newCookie }}
-<h4 id='flashNewCookie'> {{ newCookie }} </h4>
-<script>
-setTimeout(() => {
-  $('#flashNewCookie').hide()
-}, 2000)
-</script>
-{{/if}}
-
-{{!-- 
-     Flash Kill Cookie 
---}}
-
-{{#if clearCookieCookie }}
-<h4 id='flashClearCookieCookie'> {{ clearCookieCookie }} </h4>
-<script>
-setTimeout(() => {
-  $('#flashClearCookieCookie').hide()
-}, 2000)
-</script>
-{{/if}}
-
-
-<div class='{{idAllCookie}} text-center'></div>
-
-
-{{!-- 
-    Appelle des json (render)
- --}}
-<h3> {{ allCookie }} </h3> </br>
-<h4> {{ CSession }}  {{ CCookie }} </h4>
-
-{{!-- ID à injecter --}}
-<div id="{{ idAllCookie }}"></div>
-
-

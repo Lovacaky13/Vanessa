@@ -50,7 +50,7 @@
                              res.cookie('cookie', '', {
                                      domain: 'localhost',
                                      path: '/',
-                                     maxAge: 2000000000
+                                     maxAge: 86400000
                                  }),
                                  console.log(user._id)
                              res.redirect('/')
