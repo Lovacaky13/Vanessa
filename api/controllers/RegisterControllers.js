@@ -32,7 +32,7 @@
              handshakePassword = (req.body.password === req.body.passConf),
              rand = Math.floor((Math.random() * 100) + 54),
              host = nodemailerKeys.url,
-             link = "http://" + host + "/SendMail/" + rand
+             link = "http://" + nodemailerKeys.url + "/SendMail/" + rand
 
          mailOptions = {
              from: nodemailerKeys.user,
@@ -114,7 +114,7 @@
          console.log('handshake email :')
          console.log(handshakeEmail)
          console.log('req protocol :')
-         console.log(req.protocol + "://" + host)
+         console.log(req.protocol + "://" + nodemailerKeys.url)
          console.log('host :')
          console.log("http://" + host)
          console.log(req.get('host'))
@@ -123,7 +123,7 @@
          if (!handshakeEmail) {
              res.redirect('/')
          } else {
-             if ((req.protocol + "://" + host) == ("https://" + host)) {
+             if ((req.protocol + "://" + nodemailerKeys.url) == ("http://" + nodemailerKeys.url)) {
                  console.log("Domain is matched. Information is from Authentic email")
 
                  if (req.params.id == mailOptions.rand) {
