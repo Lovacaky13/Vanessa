@@ -69,10 +69,15 @@ module.exports = {
     sendVerif: (req, res) => {
         rand = Math.floor((Math.random() * 100) + 54)
         host = req.get('host')
-        link = "http://" + req.get('host') + "/lostPassword/" + rand
+        link = "https://" + req.get('host') + "/lostPassword/" + rand
 
+        console.log('req.body')
         console.log(req.body)
+        console.log('link')
         console.log(link)
+        console.log('host')
+        console.log(host)
+
         mailOptions = {
             from: 'lovacaky13@gmail.com',
             to: req.body.email,

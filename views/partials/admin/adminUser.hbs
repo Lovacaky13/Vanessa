@@ -2,21 +2,21 @@
     <table class="table table-responsive">
         <thead>
             <tr>
-                <th><h4>Nom</h4></th>
-                <th><h4>Prenom</h4></th>
-                <th><h4>E-mail</h4></th>
-                <th><h4>adresse</h4></th>
-                <th> <th>
+                <th scope="col">Nom</th>
+                <th scope="col">Prenom</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">adresse</th>
+                <th scope="col"><th>
             </tr>
         </thead>
         {{#each dbUser}}
         <tbody>
             <tr>
-                <td style="width: 13%"><h5>{{lastname}}</h5></td>
-                <td style="width: 13%"><h5>{{firstname}}</h5></td>
-                <td style="width: 25%"><h5>{{email}}</h5></td>
-                <td style="width: 35%"><h5>{{adress}} {{zip}} {{city}}</h5> </td>
-                <td style="width: 14%">
+                <td >{{lastname}}</td>
+                <td >{{firstname}}</td>
+                <td >{{email}}</td>
+                <td >{{adress}} {{zip}} {{city}}</td>
+                <td >
 
                     <!-- Button trigger modal delete user -->
                     <button type="button" class="btn btn-danger" data-toggle="modal"

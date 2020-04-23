@@ -56,12 +56,9 @@
 
 {{/if}}
 
-
-
-
 <section >
     <div class="container-fluid">
-        <ul class='circle-container'>
+        <ul class='circle-container bg-atelier '>
             {{#each dbAtelier}}
             <a href="/AtelierSingle/{{_id}}" class="btn btn-info shadow"></a><img src="{{ image }}"
                 class="rounded-circle" alt="..." style=" width: 200px; height: 200px; display: block;">
@@ -71,32 +68,8 @@
     </div>
 </section>
 
-<section>
-<div>
-    <img class="fleche"  src="/assets/images/fleches.png" alt="">
-</div>
-
-</section>
-
 <style>
-.fleche{
-    position: absolute;
-    top: 50%;
-    right: 35%;
-    height: 350px;
-    width: 350px;
-}
-
-.position{
- position: absolute;
-    left: 5%;
-    top: 10%;
-}
-
-.position-btn{
- position: absolute;
-    left: 10%;
-    top: 20%;
-}
-
+.bg-atelier{
+background-color: rgba(0, 0, 0, 0.5);
+    }
 </style>
