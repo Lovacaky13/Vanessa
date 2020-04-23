@@ -68,8 +68,8 @@ module.exports = {
 
     sendVerif: (req, res) => {
         rand = Math.floor((Math.random() * 100) + 54)
-        host = req.get('host')
-        link = "https://" + req.get('host') + "/lostPassword/" + rand
+        host = nodemailerKeys.url
+        link = "http://" + nodemailerKeys.url + "/lostPassword/" + rand
 
         console.log('req.body')
         console.log(req.body)
@@ -79,7 +79,7 @@ module.exports = {
         console.log(host)
 
         mailOptions = {
-            from: 'lovacaky13@gmail.com',
+            from: nodemailerKeys.url,
             to: req.body.email,
             subject: "Merci de modifier votre mot de passe",
             rand: rand,
@@ -108,14 +108,14 @@ module.exports = {
         })
         console.log('handshake email')
         console.log(handshakeEmail)
-        console.log(req.protocol + "://" + req.get('host'))
+        console.log(req.protocol + "://" + host)
         console.log('Page verif' + mailOptions)
         console.log(req.session)
 
         if (!handshakeEmail) {
             res.redirect('/')
         } else {
-            if ((req.protocol + "://" + req.get('host')) == ("http://" + host)) {
+            if ((req.protocol + "://" + host) == ("http://" + host)) {
                 console.log("Domain is matched. Information is from Authentic email")
                 if (req.params.id == mailOptions.rand) {
                     console.log("email is verified")
