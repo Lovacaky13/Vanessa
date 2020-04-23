@@ -3,6 +3,7 @@
   * Controller d'enregistrement des utilisateurs
   * 
   */
+ //coucou
  const User = require('../db/models/User'),
      path = require('path'),
      fs = require('fs'),
