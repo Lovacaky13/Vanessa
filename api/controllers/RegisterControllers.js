@@ -32,7 +32,7 @@
              handshakePassword = (req.body.password === req.body.passConf),
              rand = Math.floor((Math.random() * 100) + 54),
              host = nodemailerKeys.url,
-             link = "http://" + nodemailerKeys.url + "/SendMail/" + rand
+             link = "http://www.vanessa-binet-asg.fr/SendMail/" + rand
 
          mailOptions = {
              from: nodemailerKeys.user,
