@@ -34,8 +34,8 @@ class Lightbox {
         const image = new Image();
         const container = this.element.querySelector('.lightbox__container')
         const loader = document.createElement('div')
-        loader.classList.add('lightbox__loader')
-        container.appendChild(loader)
+            // loader.classList.add('lightbox__loader')
+            // container.appendChild(loader)
         image.onload = function() {
             console.log('chargé')
         }

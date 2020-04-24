@@ -5,7 +5,7 @@ module.exports = {
         const acceptCookie = await User.findOne({
             email: req.body.email
         })
-        console.log(User.cookieAccept);
+        console.log(User.cookieNotAccept);
         User.updateOne(
             acceptCookie, {
                 cookieNotAccept: false,

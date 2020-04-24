@@ -64,6 +64,9 @@ app.use('*', (req, res, next) => {
             if (req.session.isAdmin === true) {
                 res.locals.isAdmin = req.session.isAdmin
             }
+            if (req.session.isVerified === true) {
+                res.locals.isVerified = req.session.isVerified
+            }
             if (req.session.cookieNotAccept === true) {
                 res.locals.cookieNotAccept = req.session.cookieNotAccept
             }
