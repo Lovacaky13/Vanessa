@@ -3,22 +3,27 @@
   * Controller d'enregistrement des utilisateurs
   * 
   */
- //coucou
+
  const User = require('../db/models/User'),
      path = require('path'),
      fs = require('fs'),
      nodemailer = require('nodemailer'),
-     nodemailerKeys = require('../config/keys')
+     nodemailerKeys = require('../config/keys'),
 
- transporter = nodemailer.createTransport({
-     host: "smtp.gmail.com",
-     service: 'gmail',
-     port: '587',
-     auth: {
-         user: nodemailerKeys.user,
-         pass: nodemailerKeys.pass
-     }
- })
+     transporter = nodemailer.createTransport({
+         host: "smtp.gmail.com",
+         service: 'gmail',
+         port: '587',
+         auth: {
+             user: nodemailerKeys.nodemailerKeys.user,
+             pass: nodemailerKeys.nodemailerKeys.pass
+         }
+     })
+
+ console.log(nodemailerKeys.nodemailerKeys.user)
+ console.log(nodemailerKeys.nodemailerKeys.pass)
+ console.log(nodemailerKeys.nodemailerKeys.url)
+
 
  var rand, mailOptions, host, link;
 
@@ -31,11 +36,11 @@
              }),
              handshakePassword = (req.body.password === req.body.passConf),
              rand = Math.floor((Math.random() * 100) + 54),
-             host = nodemailerKeys.url,
-             link = "http://" + nodemailerKeys.url + "/SendMail/" + rand
+             host = nodemailerKeys.nodemailerKeys.url,
+             link = "http://" + nodemailerKeys.nodemailerKeys.url + "/SendMail/" + rand
 
          mailOptions = {
-             from: nodemailerKeys.user,
+             from: nodemailerKeys.nodemailerKeys.user,
              to: req.body.email,
              subject: "vérification de votre email",
              rand: rand,
@@ -114,7 +119,7 @@
          console.log('handshake email :')
          console.log(handshakeEmail)
          console.log('req protocol :')
-         console.log(req.protocol + "://" + nodemailerKeys.url)
+         console.log(req.protocol + "://" + nodemailerKeys.nodemailerKeys.url)
          console.log('host :')
          console.log("http://" + host)
          console.log(req.get('host'))
@@ -123,7 +128,7 @@
          if (!handshakeEmail) {
              res.redirect('/')
          } else {
-             if ((req.protocol + "://" + nodemailerKeys.url) == ("http://" + nodemailerKeys.url)) {
+             if ((req.protocol + "://" + nodemailerKeys.nodemailerKeys.url) == ("http://" + nodemailerKeys.nodemailerKeys.url)) {
                  console.log("Domain is matched. Information is from Authentic email")
 
                  if (req.params.id == mailOptions.rand) {
