@@ -1,7 +1,7 @@
 const nodemailer = require('nodemailer'),
     User = require('../../db/models/User'),
     bcrypt = require('bcrypt'),
-    keys = require('../../config/keys')
+nodemailerKeys = require('../../config/keys'),
 
 transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
@@ -9,8 +9,8 @@ transporter = nodemailer.createTransport({
     port: '587',
     auth: {
 
-        user: keys.nodemailerKeys.user,
-        pass: keys.nodemailerKeys.pass
+        user: nodemailerKeys.user,
+        pass: nodemailerKeys.pass
     }
 })
 
