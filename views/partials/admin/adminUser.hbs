@@ -20,7 +20,7 @@
 
                     <!-- Button trigger modal delete user -->
                     <button type="button" class="btn btn-danger" data-toggle="modal"
-                        data-target="#modalDeleteArticle{{_id}}">
+                        data-target="#modalDeleteUser{{_id}}">
                         <i class="fas fa-trash-alt"></i>
                     </button>
 
@@ -80,14 +80,14 @@
 <!-- Modal Btn Supprimer -->
 
 {{#each dbUser}}
-<div class="modal fade" id="modalDeleteArticle{{_id}}" tabindex="-1" role="dialog"
-    aria-labelledby="modalDeleteArticleLabel" aria-hidden="true">
+<div class="modal fade" id="modalDeleteUser{{_id}}" tabindex="-1" role="dialog"
+    aria-labelledby="modalDeleteUserLabel" aria-hidden="true">
 
     <form action="/adminUser/{{_id}}/?_method=DELETE" method="post">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title h5admin" id="modalDeleteArticleLabel">Etes-vous sûr de supprimer le compte de
+                    <h4 class="modal-title h5admin" id="modalDeleteUserLabel">Etes-vous sûr de supprimer le compte de
                         <span style="color:red"> {{firstname}}</span> ?</h5>
                     </h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">

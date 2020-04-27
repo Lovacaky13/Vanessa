@@ -102,6 +102,7 @@ router.route('/comment/:id')
 router.route('/Profil/:id')
     .get(Profil.get)
     .put(Profil.updateUser)
+    .delete(Profil.deleteUser)
 
 // ******************* Modif Password *********************
 

@@ -20,10 +20,6 @@
          }
      })
 
- console.log(nodemailerKeys.nodemailerKeys.user)
- console.log(nodemailerKeys.nodemailerKeys.pass)
- console.log(nodemailerKeys.nodemailerKeys.url)
-
 
  var rand, mailOptions, host, link;
 
