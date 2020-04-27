@@ -20,10 +20,6 @@
          }
      })
 
- console.log(nodemailerKeys.nodemailerKeys.user)
- console.log(nodemailerKeys.nodemailerKeys.pass)
- console.log(nodemailerKeys.nodemailerKeys.url)
-
 
  var rand, mailOptions, host, link;
 
@@ -59,7 +55,7 @@
 
          if (!handshakePassword) {
              return res.json({
-                     message: "mot passe different"
+                     message: "mot de passe different"
                  }),
                  res.end("error password")
          } else if (!handshakeEmail) {

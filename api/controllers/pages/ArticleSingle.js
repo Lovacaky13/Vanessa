@@ -4,7 +4,6 @@ const Com = require('../../db/models/Commentaire'),
     fs = require('fs'),
     Message = require('../../db/models/Message')
 
-
 module.exports = {
 
     getArticle: async(req, res) => {
@@ -35,19 +34,6 @@ module.exports = {
             addImg = req.body.imageGallery = 1,
             multiple = req.body.imageGallery > 1
 
-        console.log('Req.Body :')
-        console.log(req.body)
-        console.log('Req.Files :')
-        console.log(req.files)
-        console.log('req.file.imagegallery :')
-        console.log(req.files.imageGallery)
-        console.log('ImgGallery :')
-        console.log(ImgGallery)
-        console.log('req.body.deleteImg :')
-        console.log(req.body.deleteImg)
-        console.log('req.body.addImg :')
-        console.log(addImg)
-
         if (req.body && !ImgGallery && !supImg) {
             /*
              *  Changer Texte
@@ -70,11 +56,6 @@ module.exports = {
             const dbArticle = await Article.findById(req.params.id),
                 files = dbArticle.imageGallery
             arrayFiles = []
-
-            console.log('?? req.body')
-            console.log(req.body)
-            console.log('?? dbArticle')
-            console.log(dbArticle)
 
             for (let i = 0; i < files.length; i++) {
                 const dbFilename = files[i].name

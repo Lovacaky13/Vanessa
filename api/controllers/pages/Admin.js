@@ -28,7 +28,6 @@ module.exports = {
     },
 
     updateUser: async(req, res) => {
-
         query = {
             _id: req.params.id
         }

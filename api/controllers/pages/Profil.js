@@ -109,5 +109,19 @@ module.exports = {
             console.log('error update password profile')
 
         }
-    }
+    },
+
+    deleteUser: (req, res) => {
+        User.deleteOne({
+                _id: req.params.id
+            },
+
+            (err) => {
+                if (!err) {
+                    res.redirect('/logout')
+                } else {
+                    res.send(console.log(err))
+                }
+            })
+    },
 }
