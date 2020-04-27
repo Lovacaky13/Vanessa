@@ -8,31 +8,30 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th ><h4>Nom</h4></th>
-                                    <th ><h4>Prenom</h4></th>
-                                    <th ><h4>adresse mail</h4></th>
+                                    <th>
+                                        <h4>Nom</h4>
+                                    </th>
+                                    <th>
+                                        <h4>Prenom</h4>
+                                    </th>
+                                    <th>
+                                        <h4>adresse mail</h4>
+                                    </th>
                                     <th></th>
                                     <th></th>
                                 </tr>
                             </thead>
-
                             <tbody>
                                 <tr>
-                                    <td style="width: 15%"> <h5>{{dbUserID.lastname}}</h5></td>
-                                    <td style="width: 15%"><h5>{{dbUserID.firstname}}</h5></td>
-                                    <td style="width: 30%"><h5>{{dbUserID.email}}</h5></td>
-                                    <!-- Button trigger modal modif compte-->
-                                    <td style="width: 15%"> <button type="submit" class="btn btn-warning" data-toggle="modal"
-                                            data-target="#modalModifCompte"> <i class="fas fa-pencil-alt"></i>
-                                            Modifier votre compte</button> </td>
-                                    <!-- Button trigger modal modif mot de passe-->
-                                    <td style="width: 15%"> <button type="submit" class="btn btn-warning" data-toggle="modal"
-                                            data-target="#modalModifmdp"> <i class="fas fa-pencil-alt"></i>
-                                            Modifier votre mot de passe</button> </td>
-                                             <!-- Button trigger modal supprimer compte-->
-                                    <td style="width: 15%"> <button type="submit" class="btn btn-danger" data-toggle="modal"
-                                            data-target="#modalDeleteUser">  <i class="fas fa-trash-alt"></i>
-                                            Supprimer mon compte</button> </td>
+                                    <td style="width: 15%">
+                                        <h5>{{dbUserID.lastname}}</h5>
+                                    </td>
+                                    <td style="width: 15%">
+                                        <h5>{{dbUserID.firstname}}</h5>
+                                    </td>
+                                    <td style="width: 30%">
+                                        <h5>{{dbUserID.email}}</h5>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -41,7 +40,29 @@
             </div>
         </div>
     </div>
-</section>
+    <div class="container ">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-3 m-2">
+                <!-- Button trigger modal modif compte-->
+                <button type="submit" class="btn btn-warning" data-toggle="modal" data-target="#modalModifCompte"> <i
+                        class="fas fa-pencil-alt"></i>
+                    Modifier mon compte</button>
+            </div>
+            <div class="col-md-3 m-2">
+                <!-- Button trigger modal modif mot de passe-->
+                <button type="submit" class="btn btn-warning" data-toggle="modal" data-target="#modalModifmdp"> <i
+                        class="fas fa-pencil-alt"></i>
+                    Modifier mon mot de passe</button>
+            </div>
+            <div class="col-md-3 m-2">
+                <!-- Button trigger modal supprimer compte-->
+                <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#modalDeleteUser"> <i
+                        class="fas fa-trash-alt"></i>
+                    Supprimer mon compte</button>
+            </div>
+        </div>
+    </div>
+   </section>
 
 {{!-- Modal Modifier votre compte --}}
 <div class="modal fade" id="modalModifCompte" tabindex="-1" role="dialog" aria-labelledby="modalModifCompte"
@@ -125,14 +146,15 @@
 
 <!-- Modal Btn Supprimer -->
 
-<div class="modal fade" id="modalDeleteUser{{_id}}" tabindex="-1" role="dialog"
-    aria-labelledby="modalDeleteUserLabel" aria-hidden="true">
+<div class="modal fade" id="modalDeleteUser{{_id}}" tabindex="-1" role="dialog" aria-labelledby="modalDeleteUserLabel"
+    aria-hidden="true">
 
     <form action="/Profil/{{sess.userId}}/?_method=DELETE" method="post">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title h5admin" id="modalDeleteUserLabel">Etes-vous sûr de vouloir supprimer votre compte ?</h5>
+                    <h4 class="modal-title h5admin" id="modalDeleteUserLabel">Etes-vous sûr de vouloir supprimer votre
+                        compte ?</h5>
                     </h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>

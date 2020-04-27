@@ -3,28 +3,29 @@
 --}}
 
 <section>
-  <div class="card bg-banner d-flex align-items-center">
-    <div class="card-header">
-      <img src="assets/images/cookie.png" style="width: 175px; height:100px  " class="card-img-top" alt="...">
-    </div>
+  <div class="container  ">
+    <div class="col-md-12">
+      <div class="card bg-banner d-flex align-items-center">
+        <div class="card-header">
+          <img src="assets/images/cookie.png" class="card-img-top" alt="cookie">
+        </div>
 
-    <div class="card-body text-center ">
-      <p class="card-text text-white">Nous utilisons des cookies pour nous permettre de mieux comprendre comment le site
-        est utilisé.<br>
-        En cliquant sur ”J’accepte”, vous acceptez l’utilisation des cookies. Vous pourrez toujours les
-        désactiver
-        ultérieurement. Si vous supprimez ou désactivez nos cookies, vous pourriez rencontrer des interruptions
-        ou
-        des
-        problèmes d’accès au site.</p>
-    </div>
+        <div class="card-body text-center ">
+          <p class="card-text text-white">Nous utilisons des cookies pour nous permettre de mieux comprendre comment le
+            site est utilisé.<br>
+            En cliquant sur ”J’accepte”, vous acceptez l’utilisation des cookies. Vous pourrez toujours les
+            désactiver ultérieurement. Si vous supprimez ou désactivez nos cookies, vous pourriez rencontrer des
+            interruptions
+            ou des problèmes d’accès au site.</p>
+        </div>
 
-    <div class="card-footer d-flex jusify-content-center">
-      <form action="/cookie/?_method=PUT" method="post" enctype="multipart/form-data">
-        <button class="btn btn-light " type="submit">J'accepte</button>
-      </form>
+        <div class="card-footer d-flex jusify-content-center">
+          <form action="/cookie/?_method=PUT" method="post" enctype="multipart/form-data">
+            <button class="btn btn-light " type="submit">J'accepte</button>
+          </form>
+        </div>
+      </div>
     </div>
-
   </div>
 </section>
 
@@ -32,12 +33,11 @@
   .bg-banner {
     background-color: black;
     border-radius: 10px;
-    position: fixed;
     z-index: 1;
-    left: 475px;
-    top: 450px;
-    height: 300px;
-    width: 1000px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
   }
 </style>
