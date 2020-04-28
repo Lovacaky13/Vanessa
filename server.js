@@ -55,7 +55,9 @@ app.use(session({
     saveUninitialized: true,
     resave: false,
     maxAge: 24 * 60 * 60 * 1000,
-    store: new MongoStore({ mongooseConnection: mongoose.connection })
+    store: new MongoStore({
+        mongooseConnection: mongoose.connection
+    })
 }))
 
 app.use('*', (req, res, next) => {
@@ -64,9 +66,7 @@ app.use('*', (req, res, next) => {
             if (req.session.isAdmin === true) {
                 res.locals.isAdmin = req.session.isAdmin
             }
-            if (req.session.isVerified === true) {
-                res.locals.isVerified = req.session.isVerified
-            }
+
             if (req.session.cookieNotAccept === true) {
                 res.locals.cookieNotAccept = req.session.cookieNotAccept
             }
@@ -82,7 +82,9 @@ app.use('/', Router)
 
 //compteur d'objets
 Handlebars.registerHelper("counter", function(db) {
-    if (!Array.isArray(db)) { return [] }
+    if (!Array.isArray(db)) {
+        return []
+    }
     return db.length
 });
 
