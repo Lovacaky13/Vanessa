@@ -1,0 +1,214 @@
+<!-- Modal register   -->
+<div class="modal fade bd-example-modal-lg " id="modalPopUp" tabindex="-1" role="dialog"
+    aria-labelledby="registerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Créer un compte</h5>
+            </div>
+            <div class="col-md-12">
+                <label id="messageErrorModalPopup" class="text-danger"></label>
+            </div>
+            <div  class="modal-body">
+                <div class="row register-form " style="width: 100%">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Nom* :</label>
+                            <input type="text" class="form-control" id="lastname1" name="lastname"
+                                placeholder="votre Nom" required />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Prénom* :</label>
+                            <input type="text" class="form-control" id="firstname1" name="firstname"
+                                placeholder="votre prénom" required />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row register-form " style="width: 100%">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Adresse :</label>
+                            <input type="text" class="form-control" id="adress1" name="adress"
+                                placeholder=" votre adresse" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row register-form " style="width: 100%">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Code Postal :</label>
+                            <input type="text" class="form-control" id="zip1" name="zip"
+                                placeholder="votre Code Postal" />
+                        </div>
+                        <div class="form-group">
+                            <label>Ville :</label>
+                            <input type="text" class="form-control" id="city1" name="city" placeholder="votre ville" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row register-form " style="width: 100%">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>E-mail* :</label>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">@</span>
+                                <input type="email" class="form-control" id="email1" name="email"
+                                    placeholder="votre email" value="" required />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row register-form " style="width: 100%">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Mot de passe* :</label>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                <input type="password" class="form-control" id="password1" name="password"
+                                    placeholder="Password" value="" required /><button class="unmask" type="button"
+                                    title="Mask/Unmask password to check content"><i class="fas fa-eye"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row register-form " style="width: 100%">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Confirmer votre mot de passe* :</label>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                <input type="password" class="form-control" id="passConf1" name="passConf"
+                                    placeholder="Confirm Password *" value="" required /><button class="unmask"
+                                    type="button" title="Mask/Unmask password to check content"><i
+                                        class="fas fa-eye"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-info" onclick=connexionModalPopup()
+                        value="">S'inscrire</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    function connexionModalPopup() {
+
+        const formlastname = document.getElementById('lastname1').value,
+            formfirstname = document.getElementById('firstname1').value,
+            formadress = document.getElementById('adress1').value,
+            formzip = document.getElementById('zip1').value,
+            formcity = document.getElementById('city1').value,
+            formemail = document.getElementById('email1').value,
+            formpassword = document.getElementById('password1').value,
+            formpassConf = document.getElementById('passConf1').value
+
+        console.log("test");
+        $.ajax({
+            url: '/User',
+            type: 'POST',
+            data: {
+                lastname: formlastname,
+                firstname: formfirstname,
+                adress: formadress,
+                zip: formzip,
+                city: formcity,
+                email: formemail,
+                password: formpassword,
+                passConf: formpassConf
+            },
+            enctype: 'application/x-www-form-urlencoded',
+            dataType: "json",
+            success: function (json, statut) {
+                console.log('error success sadazedea')
+                console.log(json.message);
+                $("#messageErrorModalPopup").text(json.message);
+                if (json.noError) {
+                    window.location.replace("/");
+                }
+            },
+            error: function (json, resultat, statut, erreur) {
+                console.log('erreur register modal')
+                console.log(json)
+                console.log(resultat);
+                console.log(statut);
+                console.log(erreur);
+                if (!json.noError) {
+                    window.location.replace("/VerifMail");
+                }
+            }
+        });
+    };
+
+
+    setTimeout(() => {
+        $('#modalPopUp').modal({
+            show: true
+        })
+        console.log('setTimeout')
+    }, 2000000);
+
+ //function décache mot de passe
+    $('.unmask').on('click', function () {
+
+        if ($(this).prev('input').attr('type') == 'password')
+            changeType($(this).prev('input'), 'text');
+
+        else
+            changeType($(this).prev('input'), 'password');
+
+        return false;
+    });
+
+    // x = élément du DOM, type = nouveau type à attribuer
+    function changeType(x, type) {
+        if (x.prop('type') == type)
+            return x; // ça serait facile.
+        try {
+            // Une sécurité d'IE empêche ceci
+            return x.prop('type', type);
+        }
+        catch (e) {
+            // On tente de recréer l'élément
+            // En créant d'abord une div
+            var html = $("<div>").append(x.clone()).html();
+            var regex = /type=(\")?([^\"\s]+)(\")?/;
+            // la regex trouve type=text ou type="text"
+            // si on ne trouve rien, on ajoute le type à la fin, sinon on le remplace
+            var tmp = $(html.match(regex) == null ?
+                html.replace(">", ' type="' + type + '">') :
+                html.replace(regex, 'type="' + type + '"'));
+
+            // on rajoute les vieilles données de l'élément
+            tmp.data('type', x.data('type'));
+            var events = x.data('events');
+            var cb = function (events) {
+                return function () {
+                    //Bind all prior events
+                    for (i in events) {
+                        var y = events[i];
+                        for (j in y) tmp.bind(i, y[j].handler);
+                    }
+                }
+            }(events);
+            x.replaceWith(tmp);
+            setTimeout(cb, 10); // On attend un peu avant d'appeler la fonction
+            return tmp;
+        }
+    }
+
+</script>
