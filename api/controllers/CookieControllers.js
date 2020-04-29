@@ -8,7 +8,7 @@ module.exports = {
             email: req.session.email
         })
 
-        console.log(acceptCookie);
+        console.log(acceptCookie.email);
         console.log(nodemailerKeys.nodemailerKeys.url);
 
 
