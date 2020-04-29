@@ -1,18 +1,15 @@
-const User = require('../db/models/User'),
-    nodemailerKeys = require('../config/keys')
+const User = require('../db/models/User')
 
 
 module.exports = {
     acceptCookie: async(req, res) => {
         const acceptCookie = await User.findOne({
-            email: req.body.email
+            email: req.session.email
         })
-
-        console.log(req.hostname)
 
         User.updateOne(
             acceptCookie, {
-                cookieNotAccept: false,
+                cookieNotAccept: false
             },
             res.cookie('cookie', '', {
                 domain: req.hostname,

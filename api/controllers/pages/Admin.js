@@ -28,7 +28,7 @@ module.exports = {
     },
 
     updateUser: async(req, res) => {
-        query = {
+        const query = {
             _id: req.params.id
         }
 
