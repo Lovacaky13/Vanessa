@@ -7,6 +7,10 @@ module.exports = {
             email: req.session.email
         })
 
+        console.log(acceptCookie);
+        console.log(req.hostname);
+
+
         User.updateOne(
             acceptCookie, {
                 cookieNotAccept: false
