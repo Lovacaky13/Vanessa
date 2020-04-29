@@ -8,8 +8,8 @@ module.exports = {
             email: req.session.email
         })
 
-        console.log(acceptCookie);
-        console.log(req.hostname);
+        console.log(acceptCookie.email);
+        console.log(nodemailerKeys.nodemailerKeys.url);
 
         User.updateOne(
             acceptCookie, {
