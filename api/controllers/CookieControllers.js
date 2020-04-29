@@ -1,4 +1,5 @@
-const User = require('../db/models/User')
+const User = require('../db/models/User'),
+    nodemailerKeys = require('../config/keys')
 
 
 module.exports = {
@@ -8,7 +9,7 @@ module.exports = {
         })
 
         console.log(acceptCookie);
-        console.log(req.hostname);
+        console.log(nodemailerKeys.nodemailerKeys.url);
 
 
         User.updateOne(
@@ -16,7 +17,7 @@ module.exports = {
                 cookieNotAccept: false
             },
             res.cookie('cookie', '', {
-                domain: req.hostname,
+                domain: nodemailerKeys.nodemailerKeys.url,
                 path: '/',
                 maxAge: 86400000
             }),
