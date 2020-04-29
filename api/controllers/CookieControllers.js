@@ -1,4 +1,6 @@
-const User = require('../db/models/User')
+const User = require('../db/models/User'),
+    nodemailerKeys = require('../config/keys')
+
 
 module.exports = {
     acceptCookie: async(req, res) => {
@@ -6,12 +8,14 @@ module.exports = {
             email: req.body.email
         })
 
+        console.log(req.hostname)
+
         User.updateOne(
             acceptCookie, {
                 cookieNotAccept: false,
             },
             res.cookie('cookie', '', {
-                domain: 'localhost',
+                domain: req.hostname,
                 path: '/',
                 maxAge: 86400000
             }),
