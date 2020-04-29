@@ -24,7 +24,7 @@
         <div class="row m-2 d-flex justify-content-center">
           {{!-- Formulaire Delete une image --}}
           {{#if isAdmin}}
-          {{#each dbArticle.imageGallery}}
+          {{#each dbAtelier.imageGallery}}
           <form action="/AtelierSingle/{{../dbAtelier.id}}?_method=PUT" method="post" enctype="multipart/form-data">
             <input type="hidden" name="deleteImg" value='{{ name }}'>
             <button class="btn btn-danger m-2" type="submit">Supprimer 1 Image</button>
