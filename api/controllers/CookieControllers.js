@@ -9,8 +9,7 @@ module.exports = {
         })
 
         console.log(acceptCookie);
-        console.log(nodemailerKeys.nodemailerKeys.url);
-
+        console.log(req.hostname);
 
         User.updateOne(
             acceptCookie, {
