@@ -25,7 +25,7 @@
          console.log('check');
          console.log(check);
          console.log('1');
-         console.log(req.hostname);
+         console.log(nodemailerKeys.nodemailerKeys.url);
 
 
          if (check === false) {
@@ -51,7 +51,7 @@
                              req.session.isBan = user.isBan
                              req.session.cookieNotAccept = user.cookieNotAccept
                              res.cookie('cookie', '', {
-                                     domain: req.hostname,
+                                     domain: nodemailerKeys.nodemailerKeys.url,
                                      path: '/',
                                      maxAge: 86400000
                                  }),
