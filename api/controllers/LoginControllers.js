@@ -4,7 +4,8 @@
   * 
   */
  const User = require('../db/models/User'),
-     bcrypt = require('bcrypt')
+     bcrypt = require('bcrypt'),
+     nodemailerKeys = require('../config/keys')
 
 
  module.exports = {
@@ -24,6 +25,8 @@
          console.log('check');
          console.log(check);
          console.log('1');
+         console.log(req.hostname);
+
 
          if (check === false) {
              console.log('2')
@@ -48,7 +51,7 @@
                              req.session.isBan = user.isBan
                              req.session.cookieNotAccept = user.cookieNotAccept
                              res.cookie('cookie', '', {
-                                     domain: 'localhost',
+                                     domain: req.hostname,
                                      path: '/',
                                      maxAge: 86400000
                                  }),
