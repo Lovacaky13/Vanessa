@@ -5,10 +5,13 @@
         <div class="modal-content">
 
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Créer un compte</h5>
+                <h5 class="modal-title">Créer un compte</h5>
             </div>
             <div class="col-md-12">
                 <label id="messageErrorRegister" class="text-danger"></label>
+            </div>
+            <div class="col-md-12">
+                <label>Les champs indiqués par une * sont obligatoires</label>
             </div>
             <div id='formRegister' class="modal-body">
                 <div class="row register-form " style="width: 100%">
@@ -16,14 +19,14 @@
                         <div class="form-group">
                             <label>Nom* :</label>
                             <input type="text" class="form-control" id="lastname" name="lastname"
-                                placeholder="votre Nom" required />
+                                placeholder="votre Nom" required/>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Prénom* :</label>
                             <input type="text" class="form-control" id="firstname" name="firstname"
-                                placeholder="votre prénom" required />
+                                placeholder="votre prénom"   required/>
                         </div>
                     </div>
                 </div>
@@ -59,7 +62,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">@</span>
                                 <input type="email" class="form-control" id='email' name="email"
-                                    placeholder="votre email" value="" required />
+                                    placeholder="votre email" value=""  required/>
                             </div>
                         </div>
                     </div>
@@ -72,7 +75,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-lock"></i></span>
                                 <input type="password" class="form-control" id="password" name="password"
-                                    placeholder="Password" value="" required /><button class="unmaskRegister" type="button"
+                                    placeholder="Password" value=""  required/><button class="unmaskRegister" type="button"
                                     title="Mask/Unmask password to check content"><i class="fas fa-eye"></i></button>
                             </div>
                         </div>
@@ -86,7 +89,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-lock"></i></span>
                                 <input type="password" class="form-control" id="passConf" name="passConf"
-                                    placeholder="Confirm Password *" value="" required /><button class="unmask" type="button"
+                                    placeholder="Confirm Password *" value="" /><button class="unmask" type="button"
                                     title="Mask/Unmask password to check content"><i class="fas fa-eye"></i></button>
                             </div>
                         </div>
