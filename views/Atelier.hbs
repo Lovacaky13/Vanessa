@@ -1,6 +1,10 @@
-
 <section class="position">
-     <h1><font face="URW Chancery L, cursive">Les ateliers proposés :</font></h1>
+    <h1>
+        <font face="URW Chancery L, cursive">Les ateliers proposés :</font>
+    </h1>
+    <h5>
+        <font face="URW Chancery L, cursive">cliquez sur chaque coin bleu pour voir la description des articles</font>
+    </h5>
 </section>
 
 {{#if isAdmin}}
@@ -56,20 +60,24 @@
 
 {{/if}}
 
-<section >
-    <div class="container-fluid">
-        <ul class='circle-container bg-atelier '>
+<section>
+    <div class="container p-5">
+        <ul class='circle-container'>
             {{#each dbAtelier}}
-            <a href="/AtelierSingle/{{_id}}" class="btn btn-info shadow"></a><img src="{{ image }}"
-                class="rounded-circle" alt="..." style=" width: 200px; height: 200px; display: block;">
-            </a>
-            {{/each }}
+            <div class="row text-center">
+                <a href="/AtelierSingle/{{_id}}" class="btn "><img src="{{image}}"
+                        class="rounded-circle" alt="..."
+                        style=" width: 200px; height: 200px; display: block; z-index: 1;">
+                </a>
+                <h5> <b>{{title}}</b></h5>
+            </div>
+            {{/each}}
         </ul>
     </div>
 </section>
 
 <style>
-.bg-atelier{
-background-color: rgba(0, 0, 0, 0.5);
+    .bg-atelier {
+        background-color: rgba(27, 196, 173, 0.5);
     }
 </style>
