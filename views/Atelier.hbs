@@ -1,15 +1,15 @@
-<section class="position">
+<section>
     <h1>
         <font face="URW Chancery L, cursive">Les ateliers proposés :</font>
     </h1>
     <h5>
-        <font face="URW Chancery L, cursive">cliquez sur chaque coin bleu pour voir la description des articles</font>
+        <font face="URW Chancery L, cursive">cliquez sur l'image pour voir la description des articles</font>
     </h5>
 </section>
 
 {{#if isAdmin}}
 
-<section class="m-3 position-btn ">
+<section class="m-2 position-btn ">
     <!-- Button trigger modal ajouter un Atelier -->
     <div class="row ">
         <button type="button" class="btn btn-info  " data-toggle="modal" data-target="#Atelier">
@@ -60,24 +60,21 @@
 
 {{/if}}
 
-<section>
-    <div class="container p-5">
-        <ul class='circle-container'>
-            {{#each dbAtelier}}
-            <div class="row text-center">
-                <a href="/AtelierSingle/{{_id}}" class="btn "><img src="{{image}}"
-                        class="rounded-circle" alt="..."
-                        style=" width: 200px; height: 200px; display: block; z-index: 1;">
-                </a>
-                <h5> <b>{{title}}</b></h5>
-            </div>
-            {{/each}}
-        </ul>
-    </div>
-</section>
 
-<style>
-    .bg-atelier {
-        background-color: rgba(27, 196, 173, 0.5);
-    }
-</style>
+<div class="container ">
+    <div class="row">
+        <div class="col-md-8">
+            <ul>
+                {{#each dbAtelier}}
+                <div class="row text-center ">
+                    <a href="/AtelierSingle/{{_id}}" class="btn "><img src= '{{ image }}'
+                            class="rounded-circle circle-img" alt="..." style=" width: 220px; height: 220px; display: block;">
+                    </a>
+                    <h5> <b>{{title}}</b></h5>
+                </div>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</div>
+
