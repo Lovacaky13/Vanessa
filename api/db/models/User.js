@@ -8,7 +8,7 @@ const mongoose = require('mongoose'),
         },
         lastname: {
             type: String,
-
+            required: true
         },
         firstname: {
             type: String,
@@ -25,12 +25,12 @@ const mongoose = require('mongoose'),
         },
         email: {
             type: String,
-
+            required: true,
             unique: true //l'email ne doit pas etre identique aux autres utilisateurs
         },
         password: {
             type: String,
-
+            required: true
         },
         isAdmin: {
             type: Boolean,
