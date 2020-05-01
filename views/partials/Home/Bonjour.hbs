@@ -10,8 +10,8 @@
       {{#if user}}
      
       <div class="col-md-7  ">
-        <h3 class="font-italic font-weight-bold text-right " id="test" >Bonjour {{ sess.firstname }}</h4>
-        <h4 class="font-italic text-right" id="test" >Bienvenu sur mon site</h4>
+        <h3 class="font-italic font-weight-bold text-right " id="clignotant" >Bonjour {{ sess.firstname }}</h4>
+        <h4 class="font-italic text-right" id="clignotant" >Bienvenu sur mon site</h4>
       </div>
     </div>
   </div>
@@ -20,10 +20,10 @@
 </section>
 
 <style>
-  #test{
-    animation: Test 2s infinite;
+  #clignotant{
+    animation: clignotant 2s infinite;
 }
-@keyframes Test{
+@keyframes clignotant{
     0%{opacity: 1;}
     50%{opacity: 0;}
     100%{opacity: 1;}

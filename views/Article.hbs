@@ -20,7 +20,6 @@
 
         <form action="/Article" method="post" enctype="multipart/form-data">
           <div class="modal-body">
-
             <div class="form-group">
               <label for="formGroupExampleInput">Titre :</label>
               <input type="text" class="form-control" name='title' id="formGroupExampleInput">
@@ -38,7 +37,7 @@
               <input type="file" class="form-control" name='imageGallery' multiple>
             </div>
           </div>
-          
+
           <div class="modal-footer ">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
             <button type="submit" class="btn btn-primary">Enregistrer</button>
@@ -91,16 +90,67 @@
   </div>
 </section>
 
-<style> 
-        .textLimit{ 
-            overflow: hidden; 
-            text-overflow: ellipsis; 
-            display: -webkit-box; 
-            line-height: 16px;  
-            max-height: 320px;      
-              
-            /* The number of lines to be displayed */ 
-            -webkit-line-clamp: 5;  
-            -webkit-box-orient: vertical; 
-        } 
-    </style> 
+<section>
+  <div class="container text-center ">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 style="background-color: white;">ici prochainement, les moments partagés</h1>
+      </div>
+    </div>
+  </div>
+  <div class="container d-flex justify-content-center ">
+    <div class="row" >
+      <div class=" col-xs-2">
+        <h1 class="display-1" id="clignotant-1">.</h1>
+      </div>
+      <div class=" col-xs-2">
+        <h1 class="display-1" id="clignotant-3">.</h1>
+      </div>
+      <div class="col-xs-2">
+        <h1 class="display-1" id="clignotant-2">.</h1>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<style>
+  .textLimit {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-height: 16px;
+    max-height: 320px;
+
+    /* The number of lines to be displayed */
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+  }
+
+
+  #clignotant-1 {
+    animation: clignotant 2s infinite;
+  }
+
+  #clignotant-2 {
+    animation: clignotant 1s infinite;
+  }
+
+  #clignotant-3 {
+    animation: clignotant 3s infinite;
+  }
+
+  @keyframes clignotant {
+    0% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+</style>
