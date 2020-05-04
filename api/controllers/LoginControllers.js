@@ -10,23 +10,29 @@
 
  module.exports = {
 
-     login: async(req, res) => {
+     login: async(req, res, next) => {
          const {
              email,
              password
          } = req.body;
-         cookieNotAccept = await User.findOne({
-                 email: req.body.email
-             }),
-             check = cookieNotAccept.cookieNotAccept
+         cookieUser = await User.findOne({
+             email: req.body.email
+         })
 
-         console.log('cookieNotAccept');
-         console.log(cookieNotAccept);
-         console.log('check');
-         console.log(check);
-         console.log('1');
-         console.log(nodemailerKeys.nodemailerKeys.url);
+         if (cookieUser === null) {
+             console.log('cookieUser null')
 
+             return res.json({
+                     message: "Email ou mot de passe incorrect."
+                 }),
+                 res.end("error Email ou mot de passe incorrect")
+
+         } else if (cookieUser === !null) {
+             check = cookieUser.cookieNotAccept
+         }
+         next
+
+         check = cookieUser.cookieNotAccept
 
          if (check === false) {
              console.log('2')
@@ -62,7 +68,8 @@
                              return res.json({
                                      message: "Email ou mot de passe incorrect."
                                  }),
-                                 console.log(req.body)
+                                 console.log(req.body),
+                                 console.log('Email ou mot de passe incorrect')
                          }
                      })
                  } else {
@@ -74,7 +81,7 @@
                  }
              })
 
-         } else {
+         } else if (check === true) {
 
              console.log('3')
 
