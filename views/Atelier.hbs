@@ -63,18 +63,18 @@
 
 <div class="container ">
     <div class="row">
-        <div class="col-md-8">
+        {{#each dbAtelier}}
+        <div class="col-md-4">
             <ul>
-                {{#each dbAtelier}}
                 <div class="row text-center ">
-                    <a href="/AtelierSingle/{{_id}}" class="btn "><img src= '{{ image }}'
-                            class="rounded-circle circle-img" alt="..." style=" width: 220px; height: 220px; display: block;">
+                    <a href="/AtelierSingle/{{_id}}" class="btn "><img src='{{ image }}'
+                            class="rounded-circle circle-img" alt="..."
+                            style=" width: 220px; height: 220px; display: block;">
                     </a>
                     <h5> <b>{{title}}</b></h5>
                 </div>
-                {{/each}}
             </ul>
         </div>
+        {{/each}}
     </div>
 </div>
-
