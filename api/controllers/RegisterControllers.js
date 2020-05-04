@@ -13,6 +13,7 @@
          service: 'gmail',
          port: '587',
          auth: {
+
              user: nodemailerKeys.nodemailerKeys.user,
              pass: nodemailerKeys.nodemailerKeys.pass
          }
@@ -28,18 +29,18 @@
          const handshakeEmail = await User.findOne({
                  email: req.body.email
              }),
-             handshakePassword = (req.body.password === req.body.passConf),
-             rand = Math.floor((Math.random() * 100) + 54),
-             host = nodemailerKeys.nodemailerKeys.url,
-             link = "http://" + nodemailerKeys.nodemailerKeys.url + "/SendMail/" + rand,
+             handshakePassword = (req.body.password === req.body.passConf)
+         rand = Math.floor((Math.random() * 100) + 54)
+         host = nodemailerKeys.nodemailerKeys.url
+         link = "http://" + nodemailerKeys.nodemailerKeys.url + "/SendMail/" + rand
 
-             mailOptions = {
-                 from: nodemailerKeys.nodemailerKeys.user,
-                 to: req.body.email,
-                 subject: "vérification de votre email",
-                 rand: rand,
-                 html: "Bonjour.<br> Merci de cliquer sur le lien ci-dessous pour verifier votre email : <br><a href=" + link + ">Cliquer ici pour pour verifier votre email</a>"
-             };
+         mailOptions = {
+             from: nodemailerKeys.nodemailerKeys.user,
+             to: req.body.email,
+             subject: "vérification de votre email",
+             rand: rand,
+             html: "Bonjour.<br> Merci de cliquer sur le lien ci-dessous pour verifier votre email : <br><a href=" + link + ">Cliquer ici pour pour verifier votre email</a>"
+         };
          checkChamps = req.body.firstname && req.body.firstname && req.body.email && req.body.password
 
          console.log('checkChamps');
@@ -98,7 +99,7 @@
                                  res.end("error")
                              } else {
                                  console.log("Message Envoyé")
-                                 next()
+                                 res.redirect('/')
                              }
                          })
                      }
@@ -113,6 +114,10 @@
      },
 
      verifMail: async(req, res) => {
+         console.log('mailOptions');
+         console.log(mailOptions);
+         console.log('mailOptions.to');
+         console.log(mailOptions.to);
 
          const handshakeEmail = await User.findOne({
                  email: mailOptions.to
