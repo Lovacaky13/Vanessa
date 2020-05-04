@@ -5,8 +5,6 @@
   */
 
  const User = require('../db/models/User'),
-     path = require('path'),
-     fs = require('fs'),
      nodemailer = require('nodemailer'),
      nodemailerKeys = require('../config/keys'),
 
@@ -33,16 +31,20 @@
              handshakePassword = (req.body.password === req.body.passConf),
              rand = Math.floor((Math.random() * 100) + 54),
              host = nodemailerKeys.nodemailerKeys.url,
-             link = "http://" + nodemailerKeys.nodemailerKeys.url + "/SendMail/" + rand
+             link = "http://" + nodemailerKeys.nodemailerKeys.url + "/SendMail/" + rand,
 
-         mailOptions = {
-             from: nodemailerKeys.nodemailerKeys.user,
-             to: req.body.email,
-             subject: "vérification de votre email",
-             rand: rand,
-             html: "Bonjour.<br> Merci de cliquer sur le lien ci-dessous pour verifier votre email : <br><a href=" + link + ">Cliquer ici pour pour verifier votre email</a>"
-         };
+             mailOptions = {
+                 from: nodemailerKeys.nodemailerKeys.user,
+                 to: req.body.email,
+                 subject: "vérification de votre email",
+                 rand: rand,
+                 html: "Bonjour.<br> Merci de cliquer sur le lien ci-dessous pour verifier votre email : <br><a href=" + link + ">Cliquer ici pour pour verifier votre email</a>"
+             };
+         checkChamps = req.body.firstname && req.body.firstname && req.body.email && req.body.password
 
+         console.log('checkChamps');
+         console.log(checkChamps);
+         console.log('req.body');
          console.log(req.body);
          console.log('link')
          console.log(link)
@@ -53,7 +55,13 @@
          console.log('handshakeEmail');
          console.log(handshakeEmail);
 
-         if (!handshakePassword) {
+         if (!checkChamps) {
+             return res.json({
+                     message: "Les champs indiqués par une * sont obligatoires"
+                 }),
+                 res.end("error champs obligatoire")
+
+         } else if (!handshakePassword) {
              return res.json({
                      message: "mot de passe different"
                  }),
@@ -78,6 +86,8 @@
 
                  (error, user) => {
                      if (error) {
+
+                         console.log('error 1')
                          console.log(error)
                          res.redirect('/')
 
