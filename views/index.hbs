@@ -16,24 +16,8 @@
 
 {{> Home/LienInfo}}
 
-<section>
-	<div class="container d-flex justify-content-center">
-		<div class="row">
-			<div class="col-md-12">
-				<div id="sfcn8h8c55pulp359p5bwsrmsxyzw5k4tbd"></div>
-				<script type="text/javascript"
-					src="https://counter4.stat.ovh/private/counter.js?c=n8h8c55pulp359p5bwsrmsxyzw5k4tbd&down=async"
-					async></script><br><a href="https://www.compteurdevisite.com"></a><noscript><a
-						href="https://www.compteurdevisite.com" title="compteur de visite"><img
-							src="https://counter4.stat.ovh/private/compteurdevisite.php?c=n8h8c55pulp359p5bwsrmsxyzw5k4tbd"
-							border="0" title="compteur de visite" alt="compteur de visite"></a></noscript>
-			</div>
-		</div>
-	</div>
-</section>
 
-
-
+{{#if isAdmin}}
 <section>
 	<div class="container d-flex justify-content-center">
 		<div class="row">
@@ -48,6 +32,12 @@
 		</div>
 	</div>
 </section>
+{{else}}
+{{/if}}
+
+
+
+
 
 
 <style>
