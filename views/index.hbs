@@ -1,12 +1,11 @@
-
 {{#if user}}
- {{else}}
+{{else}}
 <h5 class="defileParent">
-    <span class="defile"
-      data-text=" Pour profiter pleinement du site (voir plus de photos, ajouter des commentaires... Inscrivez vous !) "  >
-         Pour profiter pleinement du site (voir plus de photos, ajouter des commentaires... Inscrivez vous !
-    </span>
-</h5> 
+	<span class="defile"
+		data-text=" Pour profiter pleinement du site (voir plus de photos, ajouter des commentaires... Inscrivez vous !) ">
+		Pour profiter pleinement du site (voir plus de photos, ajouter des commentaires... Inscrivez vous !
+	</span>
+</h5>
 {{/if}}
 
 {{> Home/Bonjour}}
@@ -17,71 +16,104 @@
 
 {{> Home/LienInfo}}
 
-
+<section>
+	<div class="container d-flex justify-content-center">
+		<div class="row">
+			<div class="col-md-12">
+				<a href="http://www.mon-compteur.fr"><img src="http://www.mon-compteur.fr/html_c02genv2-70065-2"
+						border="0" /></a>
+			</div>
+		</div>
+	</div>
+</section>
 
 <style>
-.defileParent {
-	display: block;
-	margin: 3em auto;
-	overflow: hidden;
-	position: relative;
-	table-layout: fixed;
-	width: 95%;
-}
+	.defileParent {
+		display: block;
+		margin: 3em auto;
+		overflow: hidden;
+		position: relative;
+		table-layout: fixed;
+		width: 95%;
+	}
 
-   .defile {
-	display:block;
-	-webkit-animation:linear marqueelike 20s infinite ;
-	-moz-animation:linear marqueelike 20s infinite ;
-	-o-animation:linear marqueelike 20s infinite ;
-	-ms-animation:linear marqueelike 20s infinite ;
-	animation:linear marqueelike 20s infinite ;
-	margin-left:-100%;
-	padding:0 5px;
-	text-align:left;
-	height:125px;
-}
+	.defile {
+		display: block;
+		-webkit-animation: linear marqueelike 20s infinite;
+		-moz-animation: linear marqueelike 20s infinite;
+		-o-animation: linear marqueelike 20s infinite;
+		-ms-animation: linear marqueelike 20s infinite;
+		animation: linear marqueelike 20s infinite;
+		margin-left: -100%;
+		padding: 0 5px;
+		text-align: left;
+		height: 125px;
+	}
 
-.defile:after {
-	content:attr(data-text);
-	position:absolute;
-	white-space:nowrap;
-	padding-left:10px;
-}
+	.defile:after {
+		content: attr(data-text);
+		position: absolute;
+		white-space: nowrap;
+		padding-left: 10px;
+	}
 
-@-webkit-keyframes marqueelike {
-	0%, 100% {margin-left:0;}
-	99.99% {margin-left:-100%;}
- }
-@-moz-keyframes marqueelike {
-	0%, 100% {margin-left:0;}
-	99.99% {margin-left:-100%;}
- }
-@-o-keyframes marqueelike {
-	0%, 100% {margin-left:0;}
-	99.99% {margin-left:-100%;}
- }
-@-ms-keyframes marqueelike {
-	0%, 100% {margin-left:0;}
-	99.99% {margin-left:-100%;}
- }
-@keyframes marqueelike {
-	0%, 100% {margin-left:0;}
-	99.99% {margin-left:-100%;}
- }
+	@-webkit-keyframes marqueelike {
 
+		0%,
+		100% {
+			margin-left: 0;
+		}
+
+		99.99% {
+			margin-left: -100%;
+		}
+	}
+
+	@-moz-keyframes marqueelike {
+
+		0%,
+		100% {
+			margin-left: 0;
+		}
+
+		99.99% {
+			margin-left: -100%;
+		}
+	}
+
+	@-o-keyframes marqueelike {
+
+		0%,
+		100% {
+			margin-left: 0;
+		}
+
+		99.99% {
+			margin-left: -100%;
+		}
+	}
+
+	@-ms-keyframes marqueelike {
+
+		0%,
+		100% {
+			margin-left: 0;
+		}
+
+		99.99% {
+			margin-left: -100%;
+		}
+	}
+
+	@keyframes marqueelike {
+
+		0%,
+		100% {
+			margin-left: 0;
+		}
+
+		99.99% {
+			margin-left: -100%;
+		}
+	}
 </style>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
