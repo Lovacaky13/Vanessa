@@ -14,21 +14,21 @@
     </div>
 
     <!-- Modal ajouter un Atelier-->
-    <div class="modal fade" id="Atelier" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="Atelier" tabindex="-1" role="dialog" aria-labelledby="AtelierLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Créer un Atelier</h5>
+                    <h5 class="modal-title" id="AtelierLabel">Créer un Atelier</h5>
                 </div>
 
                 <form action="/Atelier" method="post" enctype="multipart/form-data">
                     <div class="modal-body">
 
                         <div class="form-group">
-                            <label for="formGroupExampleInput">Titre :</label>
-                            <input type="text" class="form-control" name='title' id="formGroupExampleInput">
+                            <label>Titre :</label>
+                            <input type="text" class="form-control" name='title'>
                         </div>
                         <div class="control">
                             <textarea class="textarea" name="content"></textarea>

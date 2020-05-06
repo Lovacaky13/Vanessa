@@ -62,7 +62,7 @@
             </div>
         </div>
     </div>
-   </section>
+</section>
 
 {{!-- Modal Modifier votre compte --}}
 <div class="modal fade" id="modalModifCompte" tabindex="-1" role="dialog" aria-labelledby="modalModifCompte"
@@ -72,15 +72,15 @@
             <div class="modal-header">
                 <form action="/Profil/{{sess.userId}}?_method=PUT" method="post">
                     <div class="modal-body">
-                        <label for="formGroupExampleInput">Prenom : </label>
+                        <label>Prenom : </label>
                         <input type="text" class="form-control" name='firstname' id="formGroupExampleInput"
                             value="{{ dbUserID.firstname }}">
 
-                        <label for="formGroupExampleInput">Nom : </label>
+                        <label>Nom : </label>
                         <input type="text" class="form-control" name='lastname' id="formGroupExampleInput"
                             value="{{ dbUserID.lastname }}">
 
-                        <label for="formGroupExampleInput">Email : </label>
+                        <label>Email : </label>
                         <input type="text" class="form-control" name='email' id="formGroupExampleInput"
                             value="{{ dbUserID.email }}">
 
@@ -113,14 +113,14 @@
                     enctype="application/x-www-form-urlencoded">
                     <div class="modal-body">
 
-                        <label for="formGroupExampleInput">Mot de passe : </label>
+                        <label>Mot de passe : </label>
                         <input type="password" class="form-control" name='password' required />
 
 
-                        <label for="formGroupExampleInput">Nouveau mot de passe : </label>
+                        <label>Nouveau mot de passe : </label>
                         <input type="password" class="form-control" name='newPassword' required />
 
-                        <label for="formGroupExampleInput">Confirmer Nouveau mot de passe :</label>
+                        <label>Confirmer Nouveau mot de passe :</label>
                         <input type="password" class="form-control" name='confNewPassword' required />
 
                         {{!-- Input hidden email --}}
@@ -154,8 +154,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title h5admin" id="modalDeleteUserLabel">Etes-vous sûr de vouloir supprimer votre
-                        compte ?</h5>
-                    </h4>
+                        compte ?</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

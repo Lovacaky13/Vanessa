@@ -3,26 +3,26 @@
 <section class="m-5 ">
   <!-- Button trigger modal ajouter un article -->
   <div class="row d-flex justify-content-center ">
-    <button type="button" class="btn btn-info  " data-toggle="modal" data-target="#exampleModal">
+    <button type="button" class="btn btn-info  " data-toggle="modal" data-target="#ModalAddArticle">
       Creer un article
     </button>
   </div>
 
   <!-- Modal ajouter un article -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  <div class="modal fade" id="ModalAddArticle" tabindex="-1" role="dialog" aria-labelledby="ModalAddArticleLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
 
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Creer un article</h5>
+          <h5 class="modal-title">Creer un article</h5>
         </div>
 
         <form action="/Article" method="post" enctype="multipart/form-data">
           <div class="modal-body">
             <div class="form-group">
-              <label for="formGroupExampleInput">Titre :</label>
-              <input type="text" class="form-control" name='title' id="formGroupExampleInput">
+              <label>Titre :</label>
+              <input type="text" class="form-control" name='title'>
             </div>
             <div class="control">
               <textarea class="textarea" name="content"></textarea>
@@ -74,8 +74,7 @@
 
           <div class="card-body">
             <h5 class="card-title"> {{ title }} </h5>
-            <p class="card-text textLimit" style="text-align: justify;"> {{ content }}
-            </p>
+            <p class="card-text textLimit" style="text-align: justify;"> {{ content }} </p>
             <p>Publié le {{ moment createDate format="DD-MM-YYYY"}}</p>
           </div>
           <div class="row mx-auto">
