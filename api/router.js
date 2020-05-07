@@ -24,7 +24,8 @@ const HomePage = require('./controllers/pages/HomePage'),
     SendMail = require('./controllers/pages/SendMail'),
     Atelier = require('./controllers/pages/Atelier'),
     AtelierSingle = require('./controllers/pages/AtelierSingle'),
-    CookieControllers = require('./controllers/CookieControllers')
+    CookieControllers = require('./controllers/CookieControllers'),
+    CustomerControllers = require('./controllers/CustomerControllers')
 
 /* Import middlewares
  *******************/
@@ -57,6 +58,15 @@ router.route('/admin')
 router.route('/adminUser/:id')
     .put(isAdmin, Admin.updateUser)
     .delete(isAdmin, Admin.deleteUser)
+
+// ******************* Page Admin CRUD Client s'identifier modifier supprimer utilisateur *********************
+router.route('/Customer')
+    .post(CustomerControllers.createCustomer)
+router.route('/admin')
+    .get(isAdmin, Admin.get)
+router.route('/adminCustomer/:id')
+    .put(isAdmin, Admin.updateCustomer)
+    .delete(isAdmin, Admin.deleteCustomer)
 
 // ******************* se loguer User  (express/session) *********************
 

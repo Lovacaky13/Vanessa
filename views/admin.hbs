@@ -19,12 +19,12 @@
 
                 <div class="card Mycard-simple bg-info">
                     <div class="card-header" id="headingUser">
-                      
-                            <button type="button" class="btn btn-outline-light" data-toggle="collapse"
-                                data-target="#collapseUser" aria-expanded="false" aria-controls="collapseUser">
-                                <h3>Liste Des Utilisateurs</h3>
-                            </button>
-                      
+
+                        <button type="button" class="btn btn-outline-light" data-toggle="collapse"
+                            data-target="#collapseUser" aria-expanded="false" aria-controls="collapseUser">
+                            <h3>Liste Des Utilisateurs</h3>
+                        </button>
+
                     </div>
                     <div id="collapseUser" class="collapse" aria-labelledby="headingUser" data-parent="#accordionAdmin">
 
@@ -40,12 +40,12 @@
                     <div class="accordion col-md-12 pt-2" id="accordionAdminMessage">
                         <div class="card Mycard-simple bg-info">
                             <div class="card-header" id="headingMessage">
-                               
-                                    <button type="button" class="btn btn-outline-light" data-toggle="collapse"
-                                        data-target="#collapseMessage" aria-expanded="false"
-                                        aria-controls="collapseMessage">
-                                        <h3> {{ counter dbMessage }} Messages</h3>
-                             
+
+                                <button type="button" class="btn btn-outline-light" data-toggle="collapse"
+                                    data-target="#collapseMessage" aria-expanded="false"
+                                    aria-controls="collapseMessage">
+                                    <h3> {{ counter dbMessage }} Messages</h3>
+
                             </div>
 
                             {{!------------------- dropdown  Message Non Lu ------------ --}}
@@ -54,12 +54,12 @@
 
                                 <div class="card Mycard-simple bg-info">
                                     <div class="card-header" id="headingMessage">
-                                       
-                                            <button type="button" class="btn btn-outline-light" data-toggle="collapse"
-                                                data-target="#collapseMessageNotChecked" aria-expanded="false"
-                                                aria-controls="collapseMessageNotChecked">
-                                                <h3> Messages Non Lus</h3>
-                                       
+
+                                        <button type="button" class="btn btn-outline-light" data-toggle="collapse"
+                                            data-target="#collapseMessageNotChecked" aria-expanded="false"
+                                            aria-controls="collapseMessageNotChecked">
+                                            <h3> Messages Non Lus</h3>
+
                                     </div>
                                     <div id="collapseMessageNotChecked" class="collapse"
                                         aria-labelledby="headingMessageNotChecked" data-parent="#accordionAdminMessage">
@@ -75,12 +75,12 @@
 
                                 <div class="card Mycard-simple bg-info">
                                     <div class="card-header" id="headingMessage">
-                                       
-                                            <button type="button" class="btn btn-outline-light" data-toggle="collapse"
-                                                data-target="#collapseMessageChecked" aria-expanded="false"
-                                                aria-controls="collapseMessageChecked">
-                                                <h3>Messages Lus</h3>
-                                       
+
+                                        <button type="button" class="btn btn-outline-light" data-toggle="collapse"
+                                            data-target="#collapseMessageChecked" aria-expanded="false"
+                                            aria-controls="collapseMessageChecked">
+                                            <h3>Messages Lus</h3>
+
                                     </div>
                                     <div id="collapseMessageChecked" class="collapse"
                                         aria-labelledby="headingMessageChecked" data-parent="#accordionAdminMessage">
@@ -100,11 +100,11 @@
             <div class="accordion col-md-12 pt-2" id="accordionAdmin">
                 <div class="card Mycard-simple bg-info">
                     <div class="card-header" id="headingArticle">
-                        
-                            <button type="button" class="btn btn-outline-light" data-toggle="collapse"
-                                data-target="#collapseArticle" aria-expanded="false" aria-controls="collapseArticle">
-                                <h3>Liste Des Articles</h3>
-                       
+
+                        <button type="button" class="btn btn-outline-light" data-toggle="collapse"
+                            data-target="#collapseArticle" aria-expanded="false" aria-controls="collapseArticle">
+                            <h3>Liste Des Articles</h3>
+
                     </div>
                     <div id="collapseArticle" class="collapse" aria-labelledby="headingArticle"
                         data-parent="#accordionAdmin">
@@ -117,25 +117,133 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="accordion col-md-12 pt-2" id="accordionAdmin">
+                <div class="card Mycard-simple bg-info">
+                    <div class="card-header" id="headingAtelier">
+
+                        <button type="button" class="btn btn-outline-light" data-toggle="collapse"
+                            data-target="#collapseAtelier" aria-expanded="false" aria-controls="collapseAtelier">
+                            <h3>Liste Des Ateliers</h3>
+
+                    </div>
+                    <div id="collapseAtelier" class="collapse" aria-labelledby="headingAtelier"
+                        data-parent="#accordionAdmin">
+
+                        {{!-- Components Liste Article Page Admin --}}
+                        {{> admin/adminAtelier}}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
         <div class="row">
             <div class="accordion col-md-12 pt-2" id="accordionAdmin">
                 <div class="card Mycard-simple bg-info">
                     <div class="card-header" id="headingRDV">
-                        
-                            <button type="button" class="btn btn-outline-light" data-toggle="collapse"
-                                data-target="#collapseRDV" aria-expanded="false" aria-controls="collapseRDV">
-                                <h3>Liste Des RDV</h3>
-                      
+
+                        <button type="button" class="btn btn-outline-light" data-toggle="collapse"
+                            data-target="#collapseRDV" aria-expanded="false" aria-controls="collapseRDV">
+                            <h3>Liste des Clients</h3>
+
                     </div>
                     <div id="collapseRDV" class="collapse" aria-labelledby="headingRDV" data-parent="#accordionAdmin">
 
                         {{!-- Components Liste RDV Page Admin --}}
-                        {{> admin/adminRDV}}
+                        {{> admin/adminCustomer}}
 
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</section>
+
+<section class="m-5">
+    <!-- Button trigger modal ajouter un client -->
+  <div class="row d-flex justify-content-center ">
+    <button type="button" class="btn btn-info  " data-toggle="modal" data-target="#ModalAddClient">
+      Creer une fiche client
+    </button>
+
+<!-- Modal ajouter un client -->
+  <div class="modal fade" id="ModalAddClient" tabindex="-1" role="dialog" aria-labelledby="ModalAddClientLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title">Creer une fiche client</h5>
+        </div>
+
+        <form action="/Customer" method="post" enctype="application/x-www-form-urlencoded">
+          <div class="modal-body">
+            
+            <div id='formRegister' class="modal-body">
+                <div class="row register-form " style="width: 100%">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Nom:</label>
+                            <input type="text" class="form-control" name="lastname"
+                                placeholder="votre Nom" required />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Prénom:</label>
+                            <input type="text" class="form-control"  name="firstname"
+                                placeholder="votre prénom" required />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row register-form " style="width: 100%">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Adresse :</label>
+                            <input type="text" class="form-control"  name="adress"
+                                placeholder=" votre adresse" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row register-form " style="width: 100%">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Code Postal :</label>
+                            <input type="text" class="form-control"  name="zip"
+                                placeholder="votre Code Postal" />
+                        </div>
+                        <div class="form-group">
+                            <label>Ville :</label>
+                            <input type="text" class="form-control"  name="city" placeholder="votre ville" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row register-form " style="width: 100%">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>E-mail:</label>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">@</span>
+                                <input type="email" class="form-control"  name="email"
+                                    placeholder="votre email" value="" required />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+           
+          </div>
+
+          <div class="modal-footer ">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </section>
