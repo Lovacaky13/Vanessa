@@ -2,16 +2,21 @@
   <div class="container">
     <div class="row">
 
-      <div class="col-md-5">
+      {{!-- <div class="col-md-5">
         <h1 class="font-weight-bold text-center" >Vanessa Binet <br>
          - ASG à Domicile -
         </h1>
+      </div> --}}
+
+      <div class="col-md-5">
+       <img src="assets/images/logo.jpg"" alt="">
       </div>
+
       {{#if user}}
-     
+
       <div class="col-md-7  ">
-        <h3 class="font-italic font-weight-bold text-right " id="clignotant" >Bonjour {{ sess.firstname }}</h4>
-        <h4 class="font-italic text-right" id="clignotant" >Bienvenue sur mon site</h4>
+        <h3 class="font-italic font-weight-bold text-right " id="clignotant">Bonjour {{ sess.firstname }}</h4>
+          <h4 class="font-italic text-right" id="clignotant">Bienvenue sur mon site</h4>
       </div>
     </div>
   </div>
@@ -20,12 +25,21 @@
 </section>
 
 <style>
-  #clignotant{
+  #clignotant {
     animation: clignotant 2s infinite;
-}
-@keyframes clignotant{
-    0%{opacity: 1;}
-    50%{opacity: 0;}
-    100%{opacity: 1;}
-}
+  }
+
+  @keyframes clignotant {
+    0% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
 </style>
