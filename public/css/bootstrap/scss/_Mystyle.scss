@@ -1,6 +1,6 @@
 //card
 .Mycard {
-    border-radius: 2%;
+    border-radius: 12px;
     border-color: rgb(48, 152, 217);
     transition: 1s;
     box-shadow: 10px 10px 5px rgba(48, 152, 217, 0.5);
@@ -13,7 +13,7 @@
 }
 
 .Mycard-simple {
-    border-radius: 10%;
+    border-radius: 12px;
     border-color: rgb(48, 152, 217);
     box-shadow: 10px 10px 5px rgba(48, 152, 217, 0.5);
 }

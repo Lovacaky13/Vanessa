@@ -1,45 +1,18 @@
-<section>
-  <div class="container">
-    <div class="row">
-
-      {{!-- <div class="col-md-5">
-        <h1 class="font-weight-bold text-center" >Vanessa Binet <br>
-         - ASG à Domicile -
-        </h1>
-      </div> --}}
-
-      <div class="col-md-5">
-       <img src="assets/images/logo.jpg"" alt="">
-      </div>
-
-      {{#if user}}
-
-      <div class="col-md-7  ">
-        <h3 class="font-italic font-weight-bold text-right " id="clignotant">Bonjour {{ sess.firstname }}</h4>
-          <h4 class="font-italic text-right" id="clignotant">Bienvenue sur mon site</h4>
+{{#if user}}
+<section class="m-5">
+  <div class="container ">
+    <div class="row align-items-center">
+      <div class="col-md-8">
+        <h3 class="font-italic font-weight-bold text-center">Bonjour {{ sess.firstname }}, Bienvenue sur mon site !</h3>
       </div>
     </div>
   </div>
-  {{/if}}
-
 </section>
+{{/if}}
+
 
 <style>
-  #clignotant {
-    animation: clignotant 2s infinite;
-  }
-
-  @keyframes clignotant {
-    0% {
-      opacity: 1;
-    }
-
-    50% {
-      opacity: 0;
-    }
-
-    100% {
-      opacity: 1;
-    }
+  .clip-polygon {
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
   }
 </style>

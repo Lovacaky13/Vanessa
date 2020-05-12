@@ -1,0 +1,12 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /Agenda/
+Disallow: /Contact/
+Disallow: /lostPassword/
+Disallow: /Page 404/
+Disallow: /Profil/
+Disallow: /SendMail/
+Disallow: /VerifMail/
+Disallow: /login/
+Disallow: /register/
+Disallow: /logout/

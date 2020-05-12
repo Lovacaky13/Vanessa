@@ -10158,7 +10158,7 @@ a.text-lolo:focus {
 }
 
 .Mycard {
-    border-radius: 2%;
+    border-radius: 12px;
     border-color: #3098d9;
     transition: 1s;
     box-shadow: 10px 10px 5px rgba(48, 152, 217, 0.5);
@@ -10171,7 +10171,7 @@ a.text-lolo:focus {
 }
 
 .Mycard-simple {
-    border-radius: 10%;
+    border-radius: 12px;
     border-color: #3098d9;
     box-shadow: 10px 10px 5px rgba(48, 152, 217, 0.5);
 }
