@@ -3,19 +3,27 @@
 <section class="m-5 p-3">
   <div class="container">
     <div class="row">
+      <h2>Mes derniers Articles ajoutés :</h2>
+    </div>
+    <div class="row">
+      <p>Ici prochainement, les moments partagés</p>
+    </div>
+
+    <div class="row">
       {{#each ArticleReverseLimited}}
       <div class="col-md-4 ">
         <div class="card Mycard  m-3 p-3" style="width: 100%;">
           <div class="row">
             <div class="col-md-12">
-              <img src="{{ image }}" class="card-img-top" alt="..."  style="max-width: 350px; max-height: 200px; display: block;">
+              <img src="{{ image }}" class="card-img-top" alt="..."
+                style="max-width: 350px; max-height: 200px; display: block;">
             </div>
           </div>
-          
-                  
+
+
           <div class="card-body">
             <h5 class="card-title"> {{ title }} </h5>
-            <p class="card-text textLimit" style="text-align: justify;" > {{ content }} </p>
+            <p class="card-text textLimit" style="text-align: justify;"> {{ content }} </p>
             <p>Publié le {{ moment createDate format="DD-MM-YYYY"}}</p>
           </div>
           <div class="row mx-auto">
@@ -29,17 +37,3 @@
     </div>
   </div>
 </section>
-
-<style> 
-        .textLimit{ 
-            overflow: hidden; 
-            text-overflow: ellipsis; 
-            display: -webkit-box; 
-            line-height: 16px;  
-            max-height: 320px;      
-              
-            /* The number of lines to be displayed */ 
-            -webkit-line-clamp: 5;  
-            -webkit-box-orient: vertical; 
-        } 
-    </style>  
