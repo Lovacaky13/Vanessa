@@ -1,34 +1,40 @@
-const assert = require('assert');
-const Article = require('../api/db/models/Article');
+const assert = require('assert'),
+    mocha = require('mocha'),
+    Article = require('../api/db/models/Article')
 
-// On donne un nom à notre test
+// // On donne un nom à notre test
 describe('Mocha // CRUD', () => {
     let article, dbArticle;
 
-    // Cette boucle sert pour créé un Article a chaque 'it' qu'executera Mocha
+    //  Cette boucle sert pour créé un Article a chaque 'it'    qu 'executera Mocha
     beforeEach((done) => {
-        article = new Article({ title: 'test' });
+        article = new Article({
+            title: 'test'
+        });
         article.save()
             .then(() => done());
     });
 
     it('CRUD // CREATE 1 // Créé article title "test"', (done) => {
-        const article = new Article({ title: 'test' });
+        const article = new Article({
+            title: 'test'
+        });
+        console.log(article)
         article.save()
             .then((art) => {
-                assert(!article.isNew);
+                //assert(!article.isNew);
                 done(console.log(art));
             });
     });
 
-    it('CRUD // READ 1 // Article "test"', (done) => {
-        Article.findOne({ title: 'test' })
-            .then((article) => {
-                assert(article.title === "test");
-                done(console.log(article));
-            })
-            .catch((err) => console.log(err));
-    })
+    // it('CRUD // READ 1 // Article "test"', (done) => {
+    //     Article.find({})
+    //         .then((article) => {
+    //             // assert(article.title === "test");
+    //             done(console.log(article));
+    //         })
+    //         .catch((err) => console.log(err));
+    // })
 
     // it('CRUD // READ 2 // Article "test" ID', (done) => {
     //     Article.findById({ _id: article._id })

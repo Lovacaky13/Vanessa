@@ -71,41 +71,59 @@
          }
      },
 
-     sendVerif: (req, res) => {
-         rand = Math.floor((Math.random() * 100) + 54),
-             host = nodemailerKeys.nodemailerKeys.url,
-             link = "http://" + nodemailerKeys.nodemailerKeys.url + "/lostPassword/" + rand
-
-         mailOptions = {
-             from: nodemailerKeys.nodemailerKeys.user,
-             to: req.body.email,
-             subject: "Merci de modifier votre mot de passe",
-             rand: rand,
-             html: "Bonjour.<br> Merci de cliquer sur le lien ci-dessous pour modifier votre mot de passe : <br><a href=" + link + ">Cliquer ici pour modifier votre mot de passe</a>"
-         }
-
-         console.log('mailOptions')
-         console.log(mailOptions)
-         console.log('req.body')
-         console.log(req.body)
-         console.log('link')
-         console.log(link)
-         console.log('nodemailerKeys.user')
-         console.log(nodemailerKeys.nodemailerKeys.user)
-         console.log('host')
-         console.log(host)
-
-         transporter.sendMail(mailOptions, (err, res, next) => {
-             if (err) {
-                 console.log(err)
-                 res.end("error")
-             } else {
-                 console.log("Message Envoyé")
-                 next()
-             }
+     sendVerif: async(req, res) => {
+         const handshakeEmail = await User.findOne({
+             email: req.body.email
          })
-         res.render('index')
+
+         console.log(handshakeEmail)
+
+         if (!handshakeEmail) {
+
+             console.log('pas user')
+
+             res.redirect('/')
+
+
+         } else if (handshakeEmail) {
+
+             rand = Math.floor((Math.random() * 100) + 54),
+                 host = nodemailerKeys.nodemailerKeys.url,
+                 link = "http://" + nodemailerKeys.nodemailerKeys.url + "/lostPassword/" + rand
+
+             mailOptions = {
+                 from: nodemailerKeys.nodemailerKeys.user,
+                 to: req.body.email,
+                 subject: "Merci de modifier votre mot de passe",
+                 rand: rand,
+                 html: "Bonjour.<br> Merci de cliquer sur le lien ci-dessous pour modifier votre mot de passe : <br><a href=" + link + ">Cliquer ici pour modifier votre mot de passe</a>"
+             }
+
+             console.log('mailOptions')
+             console.log(mailOptions)
+             console.log('req.body')
+             console.log(req.body)
+             console.log('link')
+             console.log(link)
+             console.log('nodemailerKeys.user')
+             console.log(nodemailerKeys.nodemailerKeys.user)
+             console.log('host')
+             console.log(host)
+
+             transporter.sendMail(mailOptions, (err, res, next) => {
+                 if (err) {
+                     console.log(err)
+                     res.end("error")
+                 } else {
+                     console.log("Message Envoyé")
+                     next()
+                 }
+             })
+             res.render('index')
+         }
      },
+
+
      verifMail: async(req, res) => {
 
          const handshakeEmail = await User.findOne({
