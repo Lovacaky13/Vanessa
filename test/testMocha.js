@@ -6,7 +6,7 @@ const assert = require('assert'),
 describe('Mocha // CRUD', () => {
     let article, dbArticle;
 
-    //  Cette boucle sert pour créé un Article a chaque 'it'    qu 'executera Mocha
+    // Cette boucle sert pour créé un Article a chaque 'it'    qu 'executera Mocha
     beforeEach((done) => {
         article = new Article({
             title: 'test'
@@ -15,17 +15,17 @@ describe('Mocha // CRUD', () => {
             .then(() => done());
     });
 
-    it('CRUD // CREATE 1 // Créé article title "test"', (done) => {
-        const article = new Article({
-            title: 'test'
-        });
-        console.log(article)
-        article.save()
-            .then((art) => {
-                //assert(!article.isNew);
-                done(console.log(art));
-            });
-    });
+    // it('CRUD // CREATE 1 // Créé article title "test"', (done) => {
+    //     const article = new Article({
+    //         title: 'test'
+    //     });
+    //     console.log(article)
+    //     article.save()
+    //         .then((art) => {
+    //             //assert(!article.isNew);
+    //             done(console.log(art));
+    //         });
+    // });
 
     // it('CRUD // READ 1 // Article "test"', (done) => {
     //     Article.find({})
@@ -63,27 +63,27 @@ describe('Mocha // CRUD', () => {
     // })
 
     // it('CRUD // DELETE 1 // title "test"', (done) => {
-    //   Article.deleteOne()
-    //     .then(() => Article.findOne({ title: 'test' }))
-    //     .then((art) => {
-    //       assert(art = []);
-    //       done(console.log(art));
-    //     })
-    //     .catch((err) => {
-    //       console.error("Handling promise rejection", err);
-    //     });
+    //     Article.deleteOne()
+    //         .then(() => Article.findOne({ title: 'test' }))
+    //         .then((art) => {
+    //             assert(art = []);
+    //             done(console.log(art));
+    //         })
+    //         .catch((err) => {
+    //             console.error("Handling promise rejection", err);
+    //         });
     // });
 
     // it('CRUD // DELETE ALL => title "test"', (done) => {
-    //   Article.deleteMany({ title: 'test' })
-    //     .then(() => Article.findOne({ title: 'test' }))
-    //     .then((art) => {
-    //       assert(art = []);
-    //       done(console.log(art));
-    //     })
-    //     .catch((err) => {
-    //       console.error("Handling promise rejection", err);
-    //     });
+    //     Article.deleteMany({ title: 'test' })
+    //         .then(() => Article.findOne({ title: 'test' }))
+    //         .then((art) => {
+    //             assert(art = []);
+    //             done(console.log(art));
+    //         })
+    //         .catch((err) => {
+    //             console.error("Handling promise rejection", err);
+    //         });
     // });
 
 

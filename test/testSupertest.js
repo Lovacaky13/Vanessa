@@ -1,7 +1,8 @@
-// const express = require('express'),
-//     request = require('supertest'),
-//     app = require('../server.js'); // référence à votre fichier server.js
+const express = require('express'),
+    request = require('supertest'),
+    app = require('../server.js'); // référence à votre fichier server.js
 
+console.log('coucou supertest')
 
 
 // // ==================== Test de l'API utilisateur ==================== 

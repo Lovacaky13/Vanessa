@@ -27,13 +27,16 @@ module.exports = {
     createArticle: async(req, res) => {
         const dbArticle = await Article.find({})
 
-        console.log('1')
-        console.log(req.body)
-        console.log(req.files)
-        console.log(req.files.imageGallery)
+        console.log('req.body'),
+            console.log(req.body),
+            console.log('req.files'),
+            console.log(req.files),
+            console.log('req.files.imageGallery'),
+            console.log(req.files.imageGallery),
+            console.log('req.files.image'),
+            console.log(req.files.image)
 
-
-        if (!req.files.imageGallery) {
+        if (!req.files.imageGallery && !req.files.image) {
             console.log('2')
             console.log('pas de req.file')
             Article.create({
@@ -42,7 +45,8 @@ module.exports = {
                 createDate: Date.now()
             })
             res.redirect('back')
-        } else if (req.files) {
+        } else
+        if (req.files) {
 
             const files = req.files.imageGallery,
                 image = req.files.image[0].filename,
