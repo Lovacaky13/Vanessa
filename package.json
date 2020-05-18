@@ -13,14 +13,14 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/Arinfo-Dev-Allonnes/"
+        "url": "git+https://github.com/Lovacaky13/Vanessa"
     },
     "author": "Lolo",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/Arinfo-Dev-Allonnes/trot-go/issues"
+        "url": "https://github.com/Lovacaky13/Vanessa"
     },
-    "homepage": "https://github.com/Arinfo-Dev-Allonnes/trot-go#readme",
+    "homepage": "https://github.com/Lovacaky13/Vanessa#readme",
     "dependencies": {
         "bcrypt": "^4.0.0",
         "bootstrap": "^4.4.1",
