@@ -15,13 +15,17 @@ module.exports = {
             sess = req.session,
             dbUserID = await User.findById(sess.userId),
             emailProfile = await req.body.email,
-            dbMessageNotChecked = await Message.find({ view: false })
+            dbMessageNotChecked = await Message.find({
+                view: false
+            })
 
         console.log(sess);
         if (!req.session) {
             res.redirect('/')
         } else if (req.session) {
-            User.findOne({ emailProfile },
+            User.findOne({
+                    emailProfile
+                },
                 (error, user) => {
                     if (!user) console.log('1')
                 })
@@ -61,15 +65,26 @@ module.exports = {
             handshake = (req.body.newPassword === req.body.confNewPassword),
             dbUserID = await User.findById(sess.userId)
 
-        const { email, password } = req.body,
-            query = { _id: req.params.id }
+        const {
+            email,
+            password
+        } = req.body,
+            query = {
+                _id: req.params.id
+            }
 
         console.log('update Password Profile')
         console.log(req.body)
 
         if (!handshake) {
-            console.log('handshake Err')
-            res.redirect('/')
+
+            console.log('password different');
+
+            req.flash('errorsPassword', "Les nouveaux mots de passe ne sont pas identiques")
+
+            res.render('Profil', {
+                errorsPassword: req.flash('errorsPassword'),
+            })
 
         } else if (handshake) {
             console.log('handshake OK')
@@ -85,7 +100,12 @@ module.exports = {
                         if (!same) {
 
                             console.log('Password Fail');
-                            res.redirect('/')
+                            req.flash('errorsPassword', "mot de passe incorrect")
+
+                            res.render('Profil', {
+                                errorsPassword: req.flash('errorsPassword'),
+                            })
+
 
                         } else if (same) {
                             const user = this
@@ -96,7 +116,10 @@ module.exports = {
                                     },
                                     (err) => {
                                         if (err) res.send(err)
-                                        else console.log('Password Update + hash ok'), res.render('Profil', { dbUserID, sess })
+                                        else console.log('Password Update + hash ok'), res.render('Profil', {
+                                            dbUserID,
+                                            sess
+                                        })
                                     })
                             })
                         } else {

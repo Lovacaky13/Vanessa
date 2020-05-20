@@ -32,8 +32,9 @@
          const sess = req.session,
              handshakeEmail = await User.findById(req.params.id)
          query = {
-             _id: req.params.id
-         }
+                 _id: req.params.id
+             },
+             handshakePassword = (req.body.newPassword === req.body.confNewPassword)
          console.log('1')
          console.log('update Password Profile')
          console.log(req.body)
@@ -50,8 +51,19 @@
              User.findOne(query, (error, user) => {
                  if (!user) {
                      return res.redirect('/')
-                 } else if (user) {
+                 } else if (user && (!handshakePassword)) {
                      console.log('User OK et handshake OK');
+
+                     console.log('password different');
+
+                     req.flash('errorsPassword1', "Les mots de passe ne sont pas identiques, Veuillez cliquez sur 'mot de passe oublié' pour recommencer")
+
+                     res.render('lostPassword', {
+                         errorsPassword1: req.flash('errorsPassword1'),
+                     })
+
+                 }
+                 if (user && handshakePassword) {
 
                      const user = this
                      bcrypt.hash(req.body.newPassword, 10, (err, encrypted) => {
@@ -80,9 +92,8 @@
 
          if (!handshakeEmail) {
 
-             console.log('1')
              req.flash('errorsEmailMdpOublie', "Cet E-mail ne corresponds à aucun compte")
-             console.log('2')
+
              res.render('index', {
                  errorsEmailMdpOublie: req.flash('errorsEmailMdpOublie'),
              })
