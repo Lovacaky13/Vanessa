@@ -80,10 +80,12 @@
 
          if (!handshakeEmail) {
 
-             console.log('pas user')
-
-             res.redirect('/')
-
+             console.log('1')
+             req.flash('errorsEmailMdpOublie', "Cet E-mail ne corresponds à aucun compte")
+             console.log('2')
+             res.render('index', {
+                 errorsEmailMdpOublie: req.flash('errorsEmailMdpOublie'),
+             })
 
          } else if (handshakeEmail) {
 

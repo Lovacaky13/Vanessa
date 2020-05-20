@@ -5,7 +5,6 @@
             <div class="modal-header">
                 <h5 class="modal-title">Se Connecter</h5>
             </div>
-
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-12">
@@ -35,12 +34,11 @@
                         </div>
                     </div>
                 </div>
-                <a href="#" data-toggle="modal" data-target="#modalmdpOublié"> mot de passe oublié ?</a>
+                <a href="#" data-toggle="modal" data-dismiss="modal" data-target="#modalmdpOublié"> mot de passe oublié
+                    ?</a>
             </div>
-
             <div class="modal-footer">
                 <button type="submit" class="btn btn-info" onclick="connexionModal()">Me connecter</button>
-
             </div>
         </div>
     </div>
@@ -57,11 +55,11 @@
             </div>
 
             <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-12">
-                        <label id="messageErrorAuth" class="text-danger">{{errors}}</label>
-                    </div>
+                {{#if errorsEmailMdpOublie}}
+                <div class="row m-1">
+                    <label class="text-danger">{{errorsEmailMdpOublie}}</label>
                 </div>
+                {{/if}}
                 <form action="/lostPassword" method="post" enctype="application/x-www-form-urlencoded">
                     <div class="modal-body">
                         <label>Email : </label>
@@ -73,7 +71,8 @@
                                         data-dismiss="modal">Annuler</button>
                                 </div>
                                 <div class="col-md-6">
-                                    <button type="submit" class="btn btn-success m-3">Envoyer </button>
+                                    <button type="submit"  class="btn btn-success m-3">Envoyer
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -83,6 +82,8 @@
         </div>
     </div>
 </div>
+
+
 
 <script>
     function connexionModal() {
@@ -111,12 +112,12 @@
                 console.log(statut);
                 console.log(erreur);
                 if (!json.noError) {
-                    // alert('Bonjour, Vous etes connecté !'
                     window.location.replace("/");
                 }
             }
         });
     };
+
 
     //function décache mot de passe
     $('.unmasklogin').on('click', function () {
@@ -166,8 +167,4 @@
             return tmp;
         }
     }
-
-
-
-
 </script>

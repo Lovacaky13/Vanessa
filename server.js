@@ -11,6 +11,7 @@ const
     MongoStore = require('connect-mongo')(session),
     helpers = require('handlebars-helpers'),
     cookieparser = require('cookie-parser'),
+    flash = require('express-flash'),
     port = 3000;
 
 //------------------------mongoose-------------------------------------
@@ -34,6 +35,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));;
+
+
+/*
+ *   FLash
+ * * * * * */
+app.use(flash())
+
 
 // ------------------------Handlebars----------------------------------
 app.set('view engine', 'hbs');
