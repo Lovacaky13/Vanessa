@@ -91,11 +91,13 @@
          console.log(handshakeEmail)
 
          if (!handshakeEmail) {
+             const email = req.body.email
 
              req.flash('errorsEmailMdpOublie', "Cet E-mail ne corresponds à aucun compte")
 
              res.render('index', {
                  errorsEmailMdpOublie: req.flash('errorsEmailMdpOublie'),
+                 email: email
              })
 
          } else if (handshakeEmail) {

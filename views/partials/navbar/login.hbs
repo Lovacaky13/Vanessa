@@ -60,10 +60,11 @@
                     <label class="text-danger">{{errorsEmailMdpOublie}}</label>
                 </div>
                 {{/if}}
+                
                 <form action="/lostPassword" method="post" enctype="application/x-www-form-urlencoded">
                     <div class="modal-body">
                         <label>Email : </label>
-                        <input type="email" class="form-control" name='email'>
+                        <input type="email" class="form-control" name='email'placeholder='{{email}}'>
                         <div class="modal-footer">
                             <div class="row">
                                 <div class="col-md-6">
@@ -78,6 +79,7 @@
                         </div>
                     </div>
                 </form>
+                
             </div>
         </div>
     </div>
