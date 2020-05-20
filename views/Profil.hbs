@@ -113,6 +113,12 @@
                     enctype="application/x-www-form-urlencoded">
                     <div class="modal-body">
 
+                        {{#if errorsPassword}}
+                        <div class="row m-1">
+                            <label class="text-danger">{{errorsPassword}}</label>
+                        </div>
+                        {{/if}}
+                      
                         <label>Mot de passe : </label>
                         <input type="password" class="form-control" name='password' required />
 

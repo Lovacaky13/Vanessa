@@ -131,10 +131,13 @@ router.route('/Contact/:id')
 // ******************* Nodemailer mot de passe oublié*********************  
 router.route('/lostPassword')
     .post(lostPassword.sendVerif)
+    .get(lostPassword.get)
 
 router.route('/lostPassword/:id')
     .get(lostPassword.verifMail)
     .put(lostPassword.updatePassword)
+
+
 
 // ******************* Nodemailer Verif Email*********************  
 router.route('/SendMail/:id')
