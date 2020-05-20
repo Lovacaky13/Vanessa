@@ -62,6 +62,7 @@
                                      maxAge: 86400000
                                  }),
                                  console.log(user._id)
+                             console.log(req.session)
                              res.redirect('/')
 
                          } else {
@@ -105,6 +106,7 @@
                              req.session.isBan = user.isBan
                              req.session.cookieNotAccept = user.cookieNotAccept
                              console.log(user._id)
+                             console.log(req.session)
                              res.redirect('/')
 
                          } else {
@@ -134,5 +136,6 @@
              res.redirect('/')
          })
          console.log('logout')
+         console.log(req.session)
      }
  }
