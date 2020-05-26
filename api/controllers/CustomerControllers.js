@@ -16,7 +16,26 @@
                  adress: req.body.adress,
                  zip: req.body.zip,
                  city: req.body.city,
+                 tutor: req.body.tutor,
+                 phone: req.body.phone,
                  email: req.body.email,
+                 medical: req.body.medical,
+                 diet: req.body.diet,
+                 up: req.body.up,
+                 cooked: req.body.cooked,
+                 aesthetic: req.body.aesthetic,
+                 cardGame: req.body.cardGame,
+                 game: req.body.game,
+                 walk: req.body.walk,
+                 gardening: req.body.gardening,
+                 sing: req.body.sing,
+                 manual: req.body.manual,
+                 memory: req.body.memory,
+                 gym: req.body.gym,
+                 mediaLibrary: req.body.mediaLibrary,
+                 other: req.body.other,
+
+
              },
 
              (error, Customer) => {
