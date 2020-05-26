@@ -30,6 +30,12 @@
                         data-target="#updateCustomer{{_id}}">
                         <i class="fas fa-pencil-alt"></i>
                     </button>
+
+                    <!-- Button trigger modal fiche client -->
+                    <button type="button" class="btn btn-success" data-toggle="modal"
+                        data-target="#viewCustomer{{_id}}">Voir
+
+                    </button>
                 </td>
             </tr>
         </tbody>
@@ -58,6 +64,7 @@
                         <label>Nom</label>
                         <input type="text" class="form-control" value="{{ lastname }}" name="lastname">
                     </div>
+
                     <div class="form-group">
                         <label> Prénom</label>
                         <input type="text" class="form-control" value="{{ firstname }}" name="firstname">
@@ -67,7 +74,6 @@
                         <label>Email</label>
                         <input type="email" class="form-control" value="{{ email }}" name="email">
                     </div>
-
                     <div class="form-group">
                         <label>adresse</label>
                         <input type="adress" class="form-control" value="{{ adress }}" name="adress">
@@ -82,8 +88,6 @@
                         <label>Ville</label>
                         <input type="city" class="form-control" value="{{ city }}" name="city">
                     </div>
-
-
 
                 </div>
                 <div class="modal-footer">
@@ -121,5 +125,116 @@
             </div>
         </div>
     </form>
+</div>
+{{/each}}
+
+<!-- Modal Btn Voir fiche client -->
+{{#each dbCustomer}}
+<div class="modal fade" id="viewCustomer{{_id}}" tabindex="-1" role="dialog" aria-labelledby="modalviewCustomer"
+    aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title"> Fiche de {{ lastname }} {{ firstname }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="row" style="width: 100%">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <p>Nom: {{ lastname }}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <p>Prénom: {{ firstname }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" style="width: 100%">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <p>Adresse : {{ adress }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" style="width: 100%">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <p>Code Postal : {{ zip }}</p>
+                        </div>
+                        <div class="form-group">
+                            <p>Ville : {{ city }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <h3> Nom-Prénom personne à prevenir :</h3>
+                    <p>{{ tutor }}</p>
+                </div>
+
+                <div class="form-group">
+                    <p> Tél : {{ phone }}</p>
+                </div>
+
+                <div class="row register-form " style="width: 100%">
+                    <div class="col-md-12">
+                        <p>E-mail: {{ email }}</p>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <h5> Problèmes médicaux :</h5>
+                    <p>{{ medical }}</p>
+                </div>
+
+                <div class="form-group">
+                    <h5> Régime :</h5>
+                    <p>{{ diet }}</p>
+                </div>
+
+                <h3><u>Habitude de vie</u></h3>
+                <div class="form-group">
+                    <p> Heure du levé : {{ up }}</p>
+                </div>
+
+                <h3><u>Ce que vous aimez faire</u></h3>
+
+                <ul>
+                    <li>{{ cooked }}</li>
+                    <li>{{ aesthetic }}</li>
+                    <li>{{ cardGame }}</li>
+                    <li>{{ game }}</li>
+                    <li>{{ walk }}</li>
+                    <li>{{ gardening }}</li>
+                    <li>{{ sing }}</li>
+                    <li>{{ manual }}</li>
+                    <li>{{ memory }}</li>
+                    <li>{{ gym }}</li>
+                    <li>{{ mediaLibrary }}</li>
+                </ul>
+
+                <div class="row" style="width: 100%">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <h5> Autres infos :</h5>
+                                <p>{{ other }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {{/each}}

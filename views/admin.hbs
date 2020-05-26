@@ -150,13 +150,13 @@
     <!-- Button trigger modal ajouter un client -->
     <div class="row d-flex justify-content-center ">
         <button type="button" class="btn btn-info  " data-toggle="modal" data-target="#ModalAddClient">
-            Creer une fiche client
+            Créer une fiche client
         </button>
 
         <!-- Modal ajouter un client -->
         <div class="modal fade" id="ModalAddClient" tabindex="-1" role="dialog" aria-labelledby="ModalAddClientLabel"
             aria-hidden="true">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-xl" role="document">
                 <div class="modal-content">
 
                     <div class="modal-header">
@@ -166,8 +166,8 @@
                     <form action="/Customer" method="post" enctype="application/x-www-form-urlencoded">
                         <div class="modal-body">
 
-                            <div id='formRegister' class="modal-body">
-                                <div class="row register-form " style="width: 100%">
+                            <div class="modal-body">
+                                <div class="row" style="width: 100%">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Nom:</label>
@@ -184,7 +184,7 @@
                                     </div>
                                 </div>
 
-                                <div class="row register-form " style="width: 100%">
+                                <div class="row" style="width: 100%">
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Adresse :</label>
@@ -194,7 +194,7 @@
                                     </div>
                                 </div>
 
-                                <div class="row register-form " style="width: 100%">
+                                <div class="row" style="width: 100%">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Code Postal :</label>
@@ -209,7 +209,16 @@
                                     </div>
                                 </div>
 
-                                <div class="row register-form " style="width: 100%">
+                                <div class="form-group">
+                                    <label> Nom-Prénom personne à prevenir</label>
+                                    <input type="text" class="form-control" value="{{ tutor }}" name="tutor">
+                                </div>
+                                <div class="form-group">
+                                    <label> Tél :</label>
+                                    <input type="tel" name="phone" placeholder="0611223344" pattern="[0-9]{2}[0-9]{2}[0-9]{2}[0-9]{2}[0-9]{2}">
+                                </div>
+                           
+                                 <div class="row register-form " style="width: 100%">
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>E-mail:</label>
@@ -222,12 +231,120 @@
                                     </div>
                                 </div>
 
-                            </div>
 
-                            <div class="modal-footer ">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                                <button type="submit" class="btn btn-primary">Enregistrer</button>
-                            </div>
+                                <div class="form-group">
+                                    <label> Problèmes médicaux :</label>
+                                    <input type="text" class="form-control" value="{{ medical }}" name="medical">
+                                </div>
+
+                                <div class="form-group">
+                                    <label> Régime :</label>
+                                    <input type="text" class="form-control" value="{{ diet }}" name="diet">
+                                </div>
+
+                                <h3><u>Habitude de vie</u></h3>
+                                <div class="form-group">
+                                    <label> Heure du levé :</label>
+                                    <input type="time" name="up" min="04:00" max="18:00" value="{{ up }}">
+                                </div>
+
+                                <h3><u>Ce que vous aimez faire</u></h3>
+
+
+                                <div class="row" style="width: 100%">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Cuisine</label>
+                                            <input type="checkbox" name="cooked" value="Cuisine">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Atelier Esthetique</label>
+                                            <input type="checkbox" name="aesthetic" value="Atelier Esthetique">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Jeux de cartes</label>
+                                            <input type="checkbox" name="cardGame" value="Jeux de cartes">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="width: 100%">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Jeux de société</label>
+                                            <input type="checkbox" name="game" value="Jeux de société">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Promenade</label>
+                                            <input type="checkbox" name="walk" value="Promenade">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Jardinage</label>
+                                            <input type="checkbox" name="gardening" value="Jardinage">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="row" style="width: 100%">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Atelier Chants</label>
+                                            <input type="checkbox" name="sing" value="Atelier Chants">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Atelier Manuel</label>
+                                            <input type="checkbox" name="manual" value="Atelier Manuel">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Atelier Mémoire</label>
+                                            <input type="checkbox" name="memory" value="Atelier Mémoire">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="width: 100%">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Atelier Gym</label>
+                                            <input type="checkbox" name="gym" value="Atelier Gym">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Médiathèque</label>
+                                            <input type="checkbox" name="mediaLibrary" value="Médiathèque">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="width: 100%">
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <div class="form-group">
+                                                <label> Autres infos :</label>
+                                                <input type="text" class="form-control" value="{{ other }}"
+                                                    name="other">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="modal-footer ">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                </div>
                     </form>
                 </div>
             </div>
