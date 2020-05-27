@@ -261,15 +261,22 @@ module.exports = {
 
     addCom: async(req, res) => {
         console.log('add com');
-
-        Com.create({
-            createDate: new Date(),
-            produit_id: req.params.id,
-            lastname: req.session.lastname,
-            firstname: req.session.firstname,
-            content: req.body.content,
+        const comUser = await User.findOne({
+            email: req.body.email
         })
-        res.redirect('back')
+
+        if (comUser) {
+            Com.create({
+                createDate: new Date(),
+                produit_id: req.params.id,
+                lastname: req.session.lastname,
+                firstname: req.session.firstname,
+                content: req.body.content,
+            })
+            res.redirect('back')
+        } else if (!comUser) {
+            res.redirect('back')
+        }
     },
 
     DelCom: async(req, res) => {
