@@ -43,39 +43,7 @@ const mongoose = require('mongoose'),
         up: {
             type: String,
         },
-        // cooked: {
-        //     type: String,
-        // },
-        // aesthetic: {
-        //     type: String,
-        // },
-        // cardGame: {
-        //     type: String,
-        // },
-        // game: {
-        //     type: String,
-        // },
-        // walk: {
-        //     type: String,
-        // },
-        // gardening: {
-        //     type: String,
-        // },
-        // sing: {
-        //     type: String,
-        // },
-        // manual: {
-        //     type: String,
-        // },
-        // memory: {
-        //     type: String,
-        // },
-        // gym: {
-        //     type: String,
-        // },
-        // mediaLibrary: {
-        //     type: String,
-        // },
+
         other: {
             type: String,
         },
