@@ -60,6 +60,7 @@
                                      domain: nodemailerKeys.nodemailerKeys.url,
                                      path: '/',
                                      maxAge: 86400000
+
                                  }),
                                  console.log(user._id)
                              console.log(req.session)
