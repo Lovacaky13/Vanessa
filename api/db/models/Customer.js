@@ -30,6 +30,10 @@ const mongoose = require('mongoose'),
             type: String,
             unique: true //l'email ne doit pas etre identique aux autres utilisateurs
         },
+        Atelier: {
+            type: Array,
+        },
+
         medical: {
             type: String,
         },
@@ -39,39 +43,39 @@ const mongoose = require('mongoose'),
         up: {
             type: String,
         },
-        cooked: {
-            type: String,
-        },
-        aesthetic: {
-            type: String,
-        },
-        cardGame: {
-            type: String,
-        },
-        game: {
-            type: String,
-        },
-        walk: {
-            type: String,
-        },
-        gardening: {
-            type: String,
-        },
-        sing: {
-            type: String,
-        },
-        manual: {
-            type: String,
-        },
-        memory: {
-            type: String,
-        },
-        gym: {
-            type: String,
-        },
-        mediaLibrary: {
-            type: String,
-        },
+        // cooked: {
+        //     type: String,
+        // },
+        // aesthetic: {
+        //     type: String,
+        // },
+        // cardGame: {
+        //     type: String,
+        // },
+        // game: {
+        //     type: String,
+        // },
+        // walk: {
+        //     type: String,
+        // },
+        // gardening: {
+        //     type: String,
+        // },
+        // sing: {
+        //     type: String,
+        // },
+        // manual: {
+        //     type: String,
+        // },
+        // memory: {
+        //     type: String,
+        // },
+        // gym: {
+        //     type: String,
+        // },
+        // mediaLibrary: {
+        //     type: String,
+        // },
         other: {
             type: String,
         },

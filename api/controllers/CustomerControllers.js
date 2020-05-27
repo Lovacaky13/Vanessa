@@ -8,7 +8,8 @@
 
  module.exports = {
      createCustomer: async(req, res) => {
-         const dbCustomer = await Customer.find({})
+         const dbCustomer = await Customer.find({}),
+             listAtelier = req.body.Atelier
 
          Customer.create({
                  lastname: req.body.lastname,
@@ -22,21 +23,11 @@
                  medical: req.body.medical,
                  diet: req.body.diet,
                  up: req.body.up,
-                 cooked: req.body.cooked,
-                 aesthetic: req.body.aesthetic,
-                 cardGame: req.body.cardGame,
-                 game: req.body.game,
-                 walk: req.body.walk,
-                 gardening: req.body.gardening,
-                 sing: req.body.sing,
-                 manual: req.body.manual,
-                 memory: req.body.memory,
-                 gym: req.body.gym,
-                 mediaLibrary: req.body.mediaLibrary,
+                 Atelier: listAtelier,
                  other: req.body.other,
 
-
              },
+
 
              (error, Customer) => {
                  if (error) {
