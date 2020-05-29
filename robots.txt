@@ -1,12 +1,11 @@
 User-agent: *
-Disallow: /admin/
-Disallow: /Agenda/
-Disallow: /Contact/
-Disallow: /lostPassword/
-Disallow: /Page 404/
-Disallow: /Profil/
-Disallow: /SendMail/
-Disallow: /VerifMail/
-Disallow: /login/
-Disallow: /register/
-Disallow: /logout/
+Disallow: /views/admin.hbs
+Disallow: /views/Agenda.hbs
+Disallow: /views/Profil.hbs
+Disallow: /views/lostPassword.hbs
+Disallow: /views/Page 404.hbs
+
+Allow: /views/Contact.hbs
+Allow: /views/index.hbs
+Allow: /views/Article.hbs
+Allow: /views/Atelier.hbs

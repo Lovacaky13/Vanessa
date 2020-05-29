@@ -2,14 +2,11 @@ const mongoose = require('mongoose'),
     bcrypt = require('bcrypt'),
     CustomerSchema = new mongoose.Schema({
 
-
         lastname: {
             type: String,
-
         },
         firstname: {
             type: String,
-
         },
         adress: {
             type: String,
@@ -33,7 +30,6 @@ const mongoose = require('mongoose'),
         Atelier: {
             type: Array,
         },
-
         medical: {
             type: String,
         },
@@ -43,11 +39,9 @@ const mongoose = require('mongoose'),
         up: {
             type: String,
         },
-
         other: {
             type: String,
         },
     })
-
 
 module.exports = mongoose.model('Customer', CustomerSchema)
