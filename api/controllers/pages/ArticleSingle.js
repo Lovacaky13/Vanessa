@@ -2,7 +2,8 @@ const Com = require('../../db/models/Commentaire'),
     Article = require("../../db/models/Article"),
     path = require('path'),
     fs = require('fs'),
-    Message = require('../../db/models/Message')
+    Message = require('../../db/models/Message'),
+    User = require('../../db/models/User')
 
 module.exports = {
 
@@ -262,7 +263,7 @@ module.exports = {
     addCom: async(req, res) => {
         console.log('add com');
         const comUser = await User.findOne({
-            email: req.body.email
+            email: req.session.email
         })
 
         if (comUser) {

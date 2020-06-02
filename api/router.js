@@ -107,6 +107,10 @@ router.route('/comment/:id')
     .post(ArticleSingle.addCom)
     .delete(isAdmin, ArticleSingle.DelCom)
 
+router.route('/AtelierComment/:id')
+    .post(AtelierSingle.addCom)
+    .delete(isAdmin, AtelierSingle.DelCom)
+
 // ******************* Mon Compte*********************  
 
 router.route('/Profil/:id')

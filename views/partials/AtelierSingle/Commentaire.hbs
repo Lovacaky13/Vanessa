@@ -51,7 +51,7 @@
 </section>
 
 <!-- Modal ajout Commentaire-->
-<form action="/comment/{{dbAtelier._id}}" method="post">
+<form action="/AtelierComment/{{dbAtelier._id}}" method="post">
     <div class="modal fade" id="Commentaire" tabindex="-1" role="dialog" aria-labelledby="Commentaire"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -83,7 +83,7 @@
 <!-- Modal supprimer Commentaire-->
 {{#each dbCom}}
 
-<form action="/comment/{{_id}}/?_method=DELETE" method="post">
+<form action="/AtelierComment/{{_id}}/?_method=DELETE" method="post">
     <div class="modal fade" id="supCommentaire" tabindex="-1" role="dialog" aria-labelledby="supCommentaire"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
