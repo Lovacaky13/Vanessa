@@ -23,9 +23,13 @@ module.exports = {
             author: req.body.author,
             email: req.body.email,
             message: req.body.message,
-
         })
-        res.redirect('back')
+        req.flash('messageEnvoyé', "Votre message a été envoyé avec succès, J'y repondrais rapidement")
+
+        res.render('Contact', {
+            messageEnvoyé: req.flash('messageEnvoyé'),
+        })
+
     },
 
     delMessage: async(req, res) => {
