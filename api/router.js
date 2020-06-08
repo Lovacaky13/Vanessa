@@ -157,4 +157,9 @@ router.get('/.well-known/brave-rewards-verification.txt', (req, res, next) => {
     res.send('This is a Brave Rewards publisher verification file.<br/><br/>Domain: vanessa-binet-asg.fr<br/>Token: a2aaa6e711cd365552a581594b3e26e0817d7e581c6f1dc310d81c2fa910714e')
 })
 
+
+/************** robot **************/
+router.get('/robots.txt', function(req, res) {
+    res.sendFile('robots.txt', { root: './' });
+});
 module.exports = router
