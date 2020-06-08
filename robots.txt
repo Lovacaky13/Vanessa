@@ -1,11 +1,27 @@
-User-agent: *
+
+# Groupe 1
+User-agent: Googlebot
+Allow: /
+Allow: /views/Contact.hbs
+Allow: /views/index.hbs
+Allow: /views/Atelier.hbs
 Disallow: /views/admin.hbs
 Disallow: /views/Agenda.hbs
 Disallow: /views/Profil.hbs
 Disallow: /views/lostPassword.hbs
 Disallow: /views/Page 404.hbs
 
+
+# Groupe 2
+User-agent: *
+Disallow: /views/admin.hbs
+Disallow: /views/Agenda.hbs
+Disallow: /views/Profil.hbs
+Disallow: /views/lostPassword.hbs
+Disallow: /views/Page 404.hbs
+Allow: /
 Allow: /views/Contact.hbs
 Allow: /views/index.hbs
-Allow: /views/Article.hbs
 Allow: /views/Atelier.hbs
+
+
