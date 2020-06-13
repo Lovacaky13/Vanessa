@@ -140,7 +140,7 @@ IMG.displayed {
     line-height: 16px;
     max-height: 320px;
     /* The number of lines to be displayed */
-    -webkit-line-clamp: 5;
+    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
 }
 
