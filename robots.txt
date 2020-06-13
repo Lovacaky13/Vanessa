@@ -5,6 +5,7 @@ Allow: /
 Allow: /views/Contact.hbs
 Allow: /views/index.hbs
 Allow: /views/Atelier.hbs
+Disallow: /views/Article.hbs
 Disallow: /views/admin.hbs
 Disallow: /views/Agenda.hbs
 Disallow: /views/Profil.hbs
