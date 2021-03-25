@@ -36,7 +36,7 @@
         "handlebars.moment": "^1.0.4",
         "method-override": "^3.0.0",
         "minimist": "^1.2.5",
-        "mongoose": "^5.9.16",
+        "mongoose": "^5.12.2",
         "multer": "^1.4.2",
         "nodemailer": "^6.4.6",
         "striptags": "^3.1.1",
