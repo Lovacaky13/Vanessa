@@ -22,7 +22,7 @@
     },
     "homepage": "https://github.com/Lovacaky13/Vanessa#readme",
     "dependencies": {
-        "bcrypt": "^4.0.1",
+        "bcrypt": "^5.0.1",
         "bootstrap": "^4.5.0",
         "ckeditor4": "^4.14.0",
         "connect-flash": "^0.1.1",
@@ -30,7 +30,7 @@
         "cookie-parser": "^1.4.5",
         "express": "^4.17.1",
         "express-flash": "0.0.2",
-        "express-handlebars": "^3.1.0",
+        "express-handlebars": "^7.0.0",
         "express-session": "^1.17.1",
         "handlebars-helpers": "^0.10.0",
         "handlebars.moment": "^1.0.4",
